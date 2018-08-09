@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#096a75">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/back"/>
+
+        <TextView
+            android:text="Profile"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginRight="25dp"
+            android:textColor="#fff"
+            android:layout_marginTop="13dp"/>
+
+    </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/linearlayt1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:layout_margin="02dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+
+          <android.support.v7.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="20dp"
+                  android:typeface="serif"
+                  android:textColor="#096a75"
+                  android:textSize="12sp"
+                  android:text="User Name" />
+
+              <FrameLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="36dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:layout_marginTop="10dp"
+                  android:background="@drawable/spinner_border_color">
+
+                  <android.support.v7.widget.AppCompatEditText
+                      android:id="@+id/gusername"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="left"
+                      android:textSize="14sp"
+                      android:typeface="serif"
+                      android:paddingLeft="12dp"
+                      android:paddingRight="12dp"
+                      android:textColor="#000"
+                      android:textColorHint="#757575"
+                      android:hint="Name"
+                      android:textCursorDrawable="@drawable/color_cursor"
+                      android:background="@drawable/spinner_border_color"/>
+
+                  <android.support.v7.widget.AppCompatImageButton
+                      android:id="@+id/edit_name"
+                      android:layout_width="14dp"
+                      android:layout_height="match_parent"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginBottom="10dp"
+                      android:layout_marginRight="10dp"
+                      android:layout_gravity="end"
+                      android:background="@drawable/edit"/>
+
+              </FrameLayout>
+
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="10dp"
+                  android:typeface="serif"
+                  android:textColor="#096a75"
+                  android:textSize="12sp"
+                  android:text="Phone Number" />
+
+              <FrameLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="36dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:layout_marginTop="10dp"
+                  android:background="@drawable/spinner_border_color">
+
+                  <android.support.v7.widget.AppCompatEditText
+                      android:id="@+id/gphonenumber"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="left"
+                      android:textSize="14sp"
+                      android:typeface="serif"
+                      android:paddingLeft="12dp"
+                      android:paddingRight="12dp"
+                      android:textColor="#000"
+                      android:textColorHint="#757575"
+                      android:hint="Phone Number"
+                      android:textCursorDrawable="@drawable/color_cursor"
+                      android:background="@drawable/spinner_border_color"/>
+
+                  <android.support.v7.widget.AppCompatImageButton
+                      android:id="@+id/edit_phone"
+                      android:layout_width="14dp"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="end"
+                      android:layout_marginBottom="10dp"
+                      android:layout_marginRight="10dp"
+                      android:layout_marginTop="10dp"
+                      android:background="@drawable/edit" />
+
+              </FrameLayout>
+
+              <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:typeface="serif"
+                android:textColor="#096a75"
+                android:textSize="12sp"
+                android:text="Email ID"/>
+
+              <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                  android:background="@drawable/spinner_border_color">
+
+              <android.support.v7.widget.AppCompatEditText
+              android:id="@+id/emailid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:textSize="14sp"
+                android:typeface="serif"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#757575"
+                android:hint="Email id"
+                  android:textCursorDrawable="@drawable/color_cursor"
+                android:background="@drawable/spinner_border_color"/>
+
+              <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/edit_email"
+                android:layout_width="14dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="end"
+                android:background="@drawable/edit"/>
+
+              </FrameLayout>
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="10dp"
+                  android:typeface="serif"
+                  android:textColor="#096a75"
+                  android:textSize="12sp"
+                  android:text="Date Of Birth"/>
+
+              <FrameLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="36dp"
+                  android:layout_marginBottom="10dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:layout_marginTop="10dp"
+                  android:background="@drawable/spinner_border_color">
+
+                  <android.support.v7.widget.AppCompatEditText
+                      android:id="@+id/dob"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="left"
+                      android:textSize="14sp"
+                      android:typeface="serif"
+                      android:paddingLeft="12dp"
+                      android:paddingRight="12dp"
+                      android:textColor="#000"
+                      android:textColorHint="#757575"
+                      android:hint="Date of Birth"
+                      android:textCursorDrawable="@drawable/color_cursor"
+                      android:background="@drawable/spinner_border_color"/>
+
+                  <android.support.v7.widget.AppCompatImageButton
+                      android:id="@+id/edit_DOB"
+                      android:layout_width="14dp"
+                      android:layout_height="match_parent"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginBottom="10dp"
+                      android:layout_marginRight="10dp"
+                      android:layout_gravity="end"
+                      android:background="@drawable/edit"/>
+
+              </FrameLayout>
+
+        <android.support.v7.widget.LinearLayoutCompat
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:visibility="gone" >
+
+        <android.support.v7.widget.AppCompatTextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="15dp"
+          android:layout_marginTop="10dp"
+          android:typeface="serif"
+          android:textColor="#096a75"
+          android:textSize="12sp"
+          android:text="Flat No."/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/spinner_border_color">
+
+         <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/flat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:textSize="14sp"
+            android:typeface="serif"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="#000"
+            android:textColorHint="#757575"
+            android:hint="Flat No."
+             android:textCursorDrawable="@drawable/color_cursor"
+            android:background="@drawable/spinner_border_color"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/edit_flat"
+            android:layout_width="14dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end"
+            android:background="@drawable/edit"/>
+
+         </FrameLayout>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+              <android.support.v7.widget.LinearLayoutCompat
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginBottom="30dp"
+                  android:visibility="gone" >
+
+                  <android.support.v7.widget.AppCompatTextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="15dp"
+                      android:layout_marginTop="10dp"
+                      android:typeface="serif"
+                      android:textColor="#096a75"
+                      android:textSize="12sp"
+                      android:text="Parking No."/>
+
+                  <FrameLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="36dp"
+                      android:layout_marginLeft="15dp"
+                      android:layout_marginRight="15dp"
+                      android:layout_marginTop="10dp"
+                      android:background="@drawable/spinner_border_color">
+
+                      <android.support.v7.widget.AppCompatEditText
+                          android:id="@+id/parking"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:layout_gravity="left"
+                          android:textSize="14sp"
+                          android:typeface="serif"
+                          android:paddingLeft="12dp"
+                          android:paddingRight="12dp"
+                          android:textColor="#000"
+                          android:textColorHint="#757575"
+                          android:hint="Parking No."
+                          android:textCursorDrawable="@drawable/color_cursor"
+                          android:background="@drawable/spinner_border_color"/>
+
+                      <android.support.v7.widget.AppCompatImageButton
+                          android:id="@+id/edit_parking"
+                          android:layout_width="14dp"
+                          android:layout_height="match_parent"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginBottom="10dp"
+                          android:layout_marginRight="10dp"
+                          android:layout_gravity="end"
+                          android:background="@drawable/edit"/>
+
+                  </FrameLayout>
+
+              </android.support.v7.widget.LinearLayoutCompat>
+
+
+             </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal|bottom">
+
+        <Button
+            android:id="@+id/updte"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:background="#096a75"
+            android:text="Update"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+</LinearLayout>

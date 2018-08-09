@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f7f7f7"
+    android:layout_marginTop="10dp">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/roundprofileicon"
+                android:gravity="center">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/profileicon_white"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="#d3d3d3"
+                android:layout_marginLeft="10dp"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/man_icon"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/Serv_name"
+                        android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/opensans_light"
+                    android:textColor="#3e3e3e"/>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="3dp"
+                        android:background="@drawable/hand_icon"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/reg_on"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13dp"
+                        android:fontFamily="@font/opensans_light"
+                         android:textColor="#3e3e3e"/>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/status"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:textColor="#3e3e3e"/>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" >
+
+                    <android.support.v7.widget.AppCompatRatingBar
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:numStars="5"
+
+                        android:stepSize="0.1"
+                        android:isIndicator="true" />
+
+                </LinearLayout>
+
+
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+        </android.support.v7.widget.LinearLayoutCompat>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#d3d3d3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/calling"/>
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/vndr_serviceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginLeft="20dp"
+                android:typeface="serif"
+                android:layout_gravity="center"
+                android:text="Call"
+                android:textColor="#3e3e3e" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/vndr_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginLeft="30dp"
+                android:typeface="serif"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:text="Call"
+                android:textColor="#3e3e3e" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/service_call"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"/>
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="#d3d3d3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+</android.support.v7.widget.LinearLayoutCompat>

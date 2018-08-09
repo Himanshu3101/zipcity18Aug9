@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight=".1">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="5dp"
+                     android:layout_marginLeft="20dp"
+                    android:background="@drawable/lift_arrow"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/liftno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Liftno"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#096a75"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight=".1">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginTop="5dp"
+                     android:background="@drawable/lift_arrow"
+                    android:layout_marginLeft="20dp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/liftno1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Liftno"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#096a75"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v7.widget.LinearLayoutCompat>

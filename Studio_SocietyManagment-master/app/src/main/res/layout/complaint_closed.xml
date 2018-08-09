@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f7f7f7"
+    android:gravity="center"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/opensans_light"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#096a75"
+        android:editable="false"
+        android:text="Verification Code"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <EditText
+            android:id="@+id/Closed_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:editable="false"
+            android:textAlignment="center"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textColorHint="#757575"
+            android:textColor="#3e3e3e"
+            android:textSize="13dp"
+            android:fontFamily="@font/opensans_light"
+            android:background="@drawable/spinner_border_color"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/com_changed"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textAlignment="center"
+        android:text="OK"
+
+        android:textColor="#fff"
+        android:background="#096a75"/>
+
+</LinearLayout>

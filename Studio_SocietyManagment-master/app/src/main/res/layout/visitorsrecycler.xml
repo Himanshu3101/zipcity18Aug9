@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight=".1">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/Visit_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kalpana"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textStyle="bold"
+                    android:textColor="#096a75" />
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/map_icon"/>
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Address :"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:textSize="13dp"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="#096a75"/>-->
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Visit_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#3e3e3e"
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="13dp" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <!--<android.support.v7.widget.LinearLayoutCompat-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:layout_marginLeft="8dp">-->
+
+                    <!--<android.support.v7.widget.AppCompatImageView-->
+                        <!--android:layout_width="13dp"-->
+                        <!--android:layout_height="13dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:background="@drawable/phone"/>-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Contact Number  :"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:textSize="13dp"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="#096a75" />-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="9999999999"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:textColor="#3e3e3e"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textSize="13dp"/>-->
+
+                <!--</android.support.v7.widget.LinearLayoutCompat>-->
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:layout_marginLeft="8dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/status"/>
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:text="Status "-->
+                        <!--android:layout_marginLeft="11dp"-->
+                        <!--android:textSize="13dp"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="#096a75"-->
+                        <!--/>-->
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Visit_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="check-in"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="06dp"
+                        android:textColor="#3e3e3e"
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="13dp"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight=".1"
+                        android:layout_marginLeft="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/clock_icon"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/Visit_fromDteTme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="FDate"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/opensans_light"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="#3e3e3e"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textColor="#096a75"
+                        android:textSize="12dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight=".1"
+                        android:gravity="left"
+                        android:layout_marginLeft="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/clock_icon"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/Visit_toDteTme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TDate"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/opensans_light"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="#3e3e3e"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--<android.support.v7.widget.LinearLayoutCompat-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginLeft="10dp">-->
+
+                    <!--<android.support.v7.widget.AppCompatImageView-->
+                        <!--android:layout_width="13dp"-->
+                        <!--android:layout_height="13dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:background="@drawable/clock_icon"/>-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/fromDateTime"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:textSize="13dp"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="#096a75"/>-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:id="@+id/Visit_fromDteTme"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="16 july 2018"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:textColor="#3e3e3e"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textSize="13dp"/>-->
+
+                <!--</android.support.v7.widget.LinearLayoutCompat>-->
+                <!--<android.support.v7.widget.LinearLayoutCompat-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginLeft="10dp">-->
+
+                    <!--<android.support.v7.widget.AppCompatImageView-->
+                        <!--android:layout_width="13dp"-->
+                        <!--android:layout_height="13dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:background="@drawable/clock_icon"/>-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/toDateTIme"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:textSize="13dp"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="#096a75"/>-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:id="@+id/Visit_toDteTme"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="16 july 2018"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:textColor="#3e3e3e"-->
+                        <!--android:fontFamily="@font/opensans_light"-->
+                        <!--android:textSize="13dp"/>-->
+                <!--</android.support.v7.widget.LinearLayoutCompat>-->
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/status_image"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="end"/>
+
+            </FrameLayout>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#d3d3d3"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/calling"/>
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:layout_marginLeft="20dp"
+            android:typeface="serif"
+            android:layout_gravity="center"
+            android:text="Call"
+            android:textColor="#3e3e3e" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/Visit_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:layout_marginLeft="30dp"
+            android:typeface="serif"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:text="Call"
+            android:textColor="#3e3e3e" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/visit_calling"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"/>
+
+    </FrameLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:background="#d3d3d3"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
+
+</android.support.v7.widget.LinearLayoutCompat>
+
+

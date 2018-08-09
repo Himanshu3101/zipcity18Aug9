@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.LinearLayoutCompat
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:layout_weight=".1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_weight=".1">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="17dp"
+                android:src="@drawable/gate_info_icon"
+                android:background="@drawable/roundhomepagebutton"/>
+
+             <android.support.v7.widget.AppCompatTextView
+                 android:id="@+id/gatesid"
+                 android:layout_below="@id/image"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Gates"
+                 android:textColor="#096a75"
+                 android:textSize="15dp"
+                 android:textAlignment="center"/>
+
+         </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight=".1">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+
+                    android:paddingTop="20dp"
+                    android:paddingBottom="17dp"
+                    android:src="@drawable/gate_info_icon"
+                    android:background="@drawable/roundhomepagebutton"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/gatesid1"
+                    android:layout_below="@id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gates"
+                    android:textColor="#096a75"
+                    android:textSize="15dp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+
+
+
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:layout_weight=".1">-->
+
+        <!--<android.support.v7.widget.LinearLayoutCompat-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="@drawable/roundhomepagebutton">-->
+
+            <!--<android.support.v7.widget.AppCompatImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:background="@drawable/gate_info_icon" />-->
+
+        <!--</android.support.v7.widget.LinearLayoutCompat>-->
+        <!--<android.support.v7.widget.AppCompatTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Gates"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginTop="80dp"-->
+            <!--android:textSize="18dp"-->
+            <!--android:textColor="#096a75"-->
+            <!--android:textAlignment="center"/>-->
+
+        <!--<android.support.v7.widget.AppCompatButton-->
+            <!--android:id="@+id/gates"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="36dp"-->
+            <!--android:background="@color/transparent"/>-->
+    <!--</FrameLayout>-->
+
+</android.support.v7.widget.LinearLayoutCompat>
+
+   <!--<android.support.v7.widget.LinearLayoutCompat-->
+       <!--android:layout_width="match_parent"-->
+       <!--android:layout_height="match_parent"-->
+       <!--android:orientation="vertical">-->
+
+
+
+       <!--<android.support.v7.widget.AppCompatTextView-->
+           <!--android:id="@+id/gatesid"-->
+           <!--android:layout_width="match_parent"-->
+           <!--android:layout_height="wrap_content"-->
+           <!--android:layout_margin="10dp"-->
+           <!--android:textColor="#096a75"-->
+           <!--android:textStyle="bold"-->
+           <!--android:text="Gates"-->
+           <!--android:textSize="20dp"-->
+           <!--android:textAlignment="center"/>-->
+   <!--</android.support.v7.widget.LinearLayoutCompat>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:background="#096a75" />-->
+

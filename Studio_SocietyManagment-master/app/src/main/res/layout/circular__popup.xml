@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="#f7f7f7">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="10dp">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/title_icon"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/p_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textSize="14dp"
+                    android:textColor="#3e3e3e"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight=".1"
+                    android:layout_marginLeft="10dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/clock_icon"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/p_fdate"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="FDate"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginLeft="13dp"
+                        android:textColor="#3e3e3e"
+                        android:textSize="13dp" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textColor="#096a75"
+                    android:textSize="12dp" />
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight=".1"
+                    android:gravity="end"
+                    android:layout_marginLeft="10dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/clock_icon"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/p_tdate"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="TDate"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="#3e3e3e"
+                        android:textSize="13dp" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/description_icon"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/p_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/opensans_light"
+                    android:textSize="14dp"
+                    android:textColor="#3e3e3e"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    </ScrollView>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d3d3d3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</android.support.v7.widget.LinearLayoutCompat>

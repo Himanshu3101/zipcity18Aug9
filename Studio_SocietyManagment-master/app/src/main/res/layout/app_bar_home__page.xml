@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".Home_Page">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#096a75 ">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/menu"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="05dp"
+            android:layout_marginTop="07dp"
+            android:background="@drawable/menu" />
+
+        <TextView
+            android:text="Homepage"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginLeft="40dp"
+            android:textColor="#fff"
+            android:paddingRight="50dp"
+            android:layout_marginTop="13dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/profile"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="04dp"
+                android:background="@drawable/profile"/>
+
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+                <!--android:id="@+id/logout"-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_marginTop="04dp"-->
+                <!--android:background="@drawable/logout"/>-->
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/notify"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="04dp"
+                android:background="@drawable/notification" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <include layout="@layout/content_home__page" />
+
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
+        <GridView
+            android:id="@+id/Homepage_gridview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:columnWidth="90dp"
+            android:numColumns="2"
+            android:verticalSpacing="15dp"
+            android:horizontalSpacing="15dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.design.widget.CoordinatorLayout>

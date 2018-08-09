@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ZipCity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Society Management</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">LogOut</string>
+    <string name="fromDateTime">Date &amp; Time from         :</string>
+    <string name="fromDateTimeTitle">Date &amp; Time from </string>
+    <string name="toDateTIme">Date &amp; Time to     :</string>
+    <string name="toDateTImeTitle">Date &amp; Time to</string>
+    <string name="BASE_URL">http://192.168.1.242:100/service1.svc</string>
+
+    <string name="firebase_cloud_messaging_token"></string>
+
+    <string name="basic_details">&#xf15B;</string>
+
+
+
+</resources>

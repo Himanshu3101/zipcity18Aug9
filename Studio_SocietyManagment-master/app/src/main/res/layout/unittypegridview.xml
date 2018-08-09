@@ -1,0 +1,128 @@
+<android.support.v7.widget.LinearLayoutCompat android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight=".1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="04dp"
+            android:background="@drawable/roundflatname"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/Unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="08dp"
+            android:text="1BHK"
+            android:textSize="11dp"
+            android:paddingTop="2dp"
+            android:fontFamily="@font/opensans_light"
+            android:textStyle="bold"
+            android:layout_marginLeft="39dp"
+            android:textColor="#096a75" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/unit_No"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"
+            android:layout_marginTop="4dp"
+            android:layout_alignTop="@+id/heading"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:fontFamily="@font/opensans_light"
+            android:textColor="#fff"
+            android:background="@drawable/roundsociertyinfoicon"/>
+
+    </FrameLayout>
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/r2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight=".1"-->
+    <!--android:layout_marginLeft="10dp">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:layout_marginTop="04dp"-->
+    <!--android:background="@drawable/roundflatname"/>-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+    <!--android:id="@+id/Unit2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="08dp"-->
+    <!--android:text="2BHK"-->
+    <!--android:textSize="11dp"-->
+    <!--android:paddingTop="2dp"-->
+    <!--android:fontFamily="@font/opensans_light"-->
+    <!--android:textStyle="bold"-->
+    <!--android:layout_marginLeft="39dp"-->
+    <!--android:textColor="#096a75" />-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="12"-->
+    <!--android:fontFamily="@font/opensans_light"-->
+    <!--android:layout_marginTop="4dp"-->
+    <!--android:layout_alignTop="@+id/heading"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="16dp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:background="@drawable/roundsociertyinfoicon"/>-->
+
+    <!--</FrameLayout>-->
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/r3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight=".1"-->
+    <!--android:layout_marginLeft="10dp">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:layout_marginTop="04dp"-->
+    <!--android:background="@drawable/roundflatname"/>-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+    <!--android:id="@+id/Unit3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="08dp"-->
+    <!--android:text="3BHK"-->
+    <!--android:textSize="11dp"-->
+    <!--android:paddingTop="2dp"-->
+    <!--android:fontFamily="@font/opensans_light"-->
+    <!--android:textStyle="bold"-->
+    <!--android:layout_marginLeft="39dp"-->
+    <!--android:textColor="#096a75" />-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="12"-->
+    <!--android:fontFamily="@font/opensans_light"-->
+    <!--android:layout_marginTop="4dp"-->
+    <!--android:layout_alignTop="@+id/heading"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="16dp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:background="@drawable/roundsociertyinfoicon"/>-->
+
+    <!--</FrameLayout>-->
+</android.support.v7.widget.LinearLayoutCompat>

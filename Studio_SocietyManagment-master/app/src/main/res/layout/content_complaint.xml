@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/spinner_border_color">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/requesttype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:textSize="15dp"
+            android:hint="Search by Flat Number"
+            android:textColorHint="#7a7a7a"
+            android:typeface="serif"
+            android:paddingLeft="12dp"
+            android:paddingTop="11dp"
+            android:textColor="#000"
+            android:background="@drawable/spinner_border_color"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="08dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end"
+            android:background="@drawable/search_icon"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/request_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"/>
+
+    </FrameLayout>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/complaint"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
+
+        <!--android:background="@drawable/requestbackground"-->
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+
+</LinearLayout>

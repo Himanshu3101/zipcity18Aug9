@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yoeki.iace.societymanagment">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <application
+        android:name="com.yoeki.iace.societymanagment.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/zipciti_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--android:theme="@style/AppTheme">-->
+        <activity android:name=".login" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.Society_dashboard" android:screenOrientation="portrait"/>
+        <activity android:name=".vendor_Reg" android:screenOrientation="portrait"/>
+        <activity android:name=".password_recovery" android:screenOrientation="portrait"/>
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.Basic" android:screenOrientation="portrait"/>
+        <activity android:name=".Home_Page" android:screenOrientation="portrait"/>
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.Lift_Info" android:screenOrientation="portrait"/>
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.FacilityInfo" android:screenOrientation="portrait"/>
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.Gates_Info" android:screenOrientation="portrait"/>
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.Parking_Info" android:screenOrientation="portrait"/>
+        <activity android:name=".Complaint_management.Complaint_management" android:screenOrientation="portrait"/>
+        <activity android:name=".Request_Management.Request_management" android:screenOrientation="portrait"/>
+        <activity android:name=".Request_Management.RequestCreated" android:screenOrientation="portrait"/>
+        <activity android:name=".Request_Management.Popup_Request" android:theme="@style/FullDialogActivityTheme" />
+        <activity android:name=".Complaint_management.ComplaintCreated" android:screenOrientation="portrait"/>
+        <activity android:name=".profile.Profile" android:screenOrientation="portrait"/>
+        <activity android:name=".Services.Services" android:screenOrientation="portrait"/>
+        <activity android:name=".Services.ServiceDetails" android:screenOrientation="portrait"/>
+        <activity android:name=".profile.Popup" android:screenOrientation="portrait" />
+        <activity android:name=".Circular.Circular" android:screenOrientation="portrait" />
+        <activity android:name=".Helpline.HelplineNo" android:screenOrientation="portrait" />
+        <activity android:name=".Notification.Notification" android:screenOrientation="portrait" />
+        <activity android:name=".Circular.Circular_Popup" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
+        <activity android:name=".Rules.Rules" android:screenOrientation="portrait" />
+        <activity android:name=".societymanagement.RequestManagement_Created" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
+        <activity android:name=".societymanagement.ComplaintPopup" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
+        <activity android:name=".societymanagement.ComplaintClosed" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
+        <activity android:name=".societymanagement.Complaint_Created" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
+
+        <activity android:name=".societymanagement.SocietyManagement" android:screenOrientation="portrait" />
+        <activity android:name=".Visitors_Management.VisitorsManagement" android:screenOrientation="portrait" />
+        <activity android:name=".Visitors_Management.visitor_notHome" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme"/>
+        <activity android:name=".societymanagement.RequestPopup" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme"/>
+        <activity android:name=".Visitors_Management.VisitorsNewRequest" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme"/>
+        <activity android:name=".Society_Information.OLD_Coding.Flat_Info.FlatInform" android:screenOrientation="portrait"/>
+        <!--<activity android:name=".VendorList.VendorList" android:screenOrientation="portrait"/>-->
+        <activity android:name=".VendorApproval.VendorApproval" android:screenOrientation="portrait"/>
+        <activity android:name=".Society_Information.New.Society_Info" android:screenOrientation="portrait"/>
+
+        <service
+            android:name=".Firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".Firebase.MyFirebaseInstanceID"
+            android:exported="false" />
+
+        <receiver
+            android:name=".Firebase.BootUpReciver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+
+
+</manifest>

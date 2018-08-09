@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/popupbackground"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="25dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="300dp"
+        android:background="#096a75"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:typeface="serif"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:editable="false"
+        android:text="Add Member"/>
+
+    <View
+        android:background="#d3d3d3"
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"/>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/linearlayt1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/usr_logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/img_bck"
+                android:layout_gravity="center"/>
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/chngepic"
+                android:layout_marginTop="-70dp"
+                android:layout_marginLeft="65dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"
+                android:layout_gravity="center"
+                android:src="@drawable/cam"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:typeface="serif"
+            android:textColor="#096a75"
+            android:textSize="12sp"
+            android:text="User Name" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/spinner_border_color">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/Mem_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:textSize="14sp"
+                android:typeface="serif"
+                android:paddingTop="5dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#3e3e3e"
+                android:textColorHint="#757575"
+                android:hint="name"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:background="@drawable/spinner_border_color"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:typeface="serif"
+            android:textColor="#096a75"
+            android:textSize="12sp"
+            android:text="Contact Number"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/spinner_border_color">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/Mem_contact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:textSize="14sp"
+                android:paddingTop="5dp"
+                android:typeface="serif"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#3e3e3e"
+                android:textColorHint="#757575"
+                android:hint="contact number"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:background="@drawable/spinner_border_color"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:typeface="serif"
+            android:textColor="#096a75"
+            android:textSize="12sp"
+            android:text="Gender"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/spinner_border_color">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/Member_gender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="08dp"
+                android:hint="Select Gender"
+                android:typeface="serif"
+                android:textColorHint="#757575"
+                android:textColor="#3e3e3e"
+                android:background="@drawable/spinner_border_color"/>
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="15dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="end"
+                android:background="@drawable/down_arrow"
+                />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/Mem_gender"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@color/transparent"/>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.LinearLayoutCompat
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp">
+
+      <android.support.v7.widget.AppCompatButton
+          android:id="@+id/mem_submit"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:text="Submit"
+         android:gravity="center"
+          android:background="#096a75"/>
+
+  </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</LinearLayout>
+
+
+</android.support.v7.widget.LinearLayoutCompat>

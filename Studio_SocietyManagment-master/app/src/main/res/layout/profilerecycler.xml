@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_marginTop="10dp">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/roundprofileicon"
+                android:gravity="center">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/profileicon_white"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="#d3d3d3"
+                android:layout_marginLeft="10dp"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/mem_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Name"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textStyle="bold"
+                    android:textColor="#096a75"
+                    android:layout_marginTop="10dp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/mem_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="Gender"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/opensans_light"
+                    android:textStyle="bold"
+                    android:textColor="#3e3e3e"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/mem_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="Contactnumber"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/opensans_light"
+                    android:textStyle="bold"
+                    android:textColor="#3e3e3e"
+                    android:layout_marginBottom="10dp"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+        </android.support.v7.widget.LinearLayoutCompat>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#d3d3d3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+         android:gravity="center">
+
+          <android.support.v7.widget.AppCompatImageView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:gravity="center"
+              android:background="@drawable/status"/>
+
+          <android.support.v7.widget.AppCompatButton
+              android:id="@+id/mem_status"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="ActivateD"
+              android:capitalize="words"
+              android:layout_marginLeft="10dp"
+              android:background="@color/transparent"
+              android:textColor="#096a75"/>
+      </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="#d3d3d3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v7.widget.LinearLayoutCompat>

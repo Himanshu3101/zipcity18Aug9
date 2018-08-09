@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <!--<item-->
+            <!--android:id="@+id/gallery"-->
+            <!--android:icon="@drawable/gallery"-->
+            <!--android:title="Gallery" />-->
+        <!--<item-->
+            <!--android:id="@+id/circular"-->
+            <!--android:icon="@drawable/circular"-->
+            <!--android:title="Circulars" />-->
+        <!--<item-->
+            <!--android:id="@+id/directory"-->
+            <!--android:icon="@drawable/directory"-->
+            <!--android:title="Directory" />-->
+        <item
+            android:id="@+id/rules"
+            android:icon="@drawable/rules"
+            android:title="Rules" />
+
+        <item
+            android:id="@+id/helpline"
+            android:icon="@drawable/calling"
+            android:title="Helpline No." />
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/share"
+            android:title="Share" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Log out" />
+    </group>
+
+    <!--&lt;!&ndash;<item android:title="Communicate"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/communicate">&ndash;&gt;-->
+        <!--&lt;!&ndash;<menu>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<item&ndash;&gt;&ndash;&gt;-->
+              <!--&lt;!&ndash;&lt;!&ndash;android:id="@+id/send"&ndash;&gt;&ndash;&gt;-->
+              <!--&lt;!&ndash;&lt;!&ndash;android:icon="@drawable/send"&ndash;&gt;&ndash;&gt;-->
+              <!--&lt;!&ndash;&lt;!&ndash;android:title="Send" />&ndash;&gt;&ndash;&gt;-->
+
+           <!--&lt;!&ndash;&ndash;&gt;-->
+           <!--&lt;!&ndash;&ndash;&gt;-->
+          <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--&lt;!&ndash;</menu>&ndash;&gt;-->
+    <!--</item>-->
+
+</menu>

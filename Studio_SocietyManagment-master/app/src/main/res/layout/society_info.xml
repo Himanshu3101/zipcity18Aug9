@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#096a75">
+
+        <ImageButton
+            android:id="@+id/New_Soc_bck"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="05dp"
+            android:layout_marginTop="07dp"
+            android:background="@drawable/back" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Society Info"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:paddingRight="50dp"
+            android:layout_marginTop="13dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <android.support.v7.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:paddingBottom="10dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Society Code:"
+            android:layout_weight=".1"
+            android:textSize="16dp"
+            android:fontFamily="@font/opensans_light"
+            android:textStyle="bold"
+            android:textColor="#096a75"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/S_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_light"
+            android:layout_marginRight="10dp"
+            android:gravity="end"
+            android:layout_weight=".1"
+            android:textSize="17dp"
+            android:textColor="#3e3e3e"/>
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#d3d3d3"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="10dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Society Name:"
+                android:layout_weight=".1"
+                android:textSize="16dp"
+                android:fontFamily="@font/opensans_light"
+                android:textStyle="bold"
+                android:textColor="#096a75"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/So_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_light"
+                android:layout_marginRight="10dp"
+                android:gravity="end"
+                android:layout_weight=".1"
+                android:textSize="17dp"
+                android:textColor="#3e3e3e"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#d3d3d3"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="15dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lift:"
+                android:textSize="16dp"
+                android:fontFamily="@font/opensans_light"
+                android:textStyle="bold"
+                android:textColor="#096a75"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="04dp"
+                        android:background="@drawable/roundflatname"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/lift"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="08dp"
+                        android:text="General Lift"
+                        android:paddingTop="2dp"
+                        android:textSize="11dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="39dp"
+                        android:textColor="#096a75" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Lift_G_No"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginTop="4dp"
+                        android:layout_alignTop="@+id/heading"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/roundsociertyinfoicon"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".1"
+                    android:layout_marginLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="04dp"
+                        android:background="@drawable/roundflatname"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/lift2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="08dp"
+                        android:text="Service Lift"
+                        android:paddingTop="2dp"
+                        android:textSize="11dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="39dp"
+                        android:textColor="#096a75" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Lift_S_No"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginTop="4dp"
+                        android:layout_alignTop="@+id/heading"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/roundsociertyinfoicon"/>
+
+                </FrameLayout>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#d3d3d3"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="15dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Parking:"
+                android:textSize="16dp"
+                android:fontFamily="@font/opensans_light"
+                android:textStyle="bold"
+                android:textColor="#096a75"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="04dp"
+                        android:background="@drawable/roundflatname"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/parking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="08dp"
+                        android:text="Common"
+                        android:textSize="11dp"
+                        android:paddingTop="2dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="39dp"
+                        android:textColor="#096a75" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/PARKING_C_No"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginTop="4dp"
+                        android:layout_alignTop="@+id/heading"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/roundsociertyinfoicon"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".1"
+                    android:layout_marginLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="04dp"
+                        android:background="@drawable/roundflatname"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/parking2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="08dp"
+                        android:text="Structured"
+                        android:textSize="11dp"
+                        android:paddingTop="2dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="39dp"
+                        android:textColor="#096a75" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/PARKING_S_No"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginTop="4dp"
+                        android:layout_alignTop="@+id/heading"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/roundsociertyinfoicon"/>
+
+                </FrameLayout>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#d3d3d3"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="15dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Unit Type:"
+                android:textSize="16dp"
+                android:fontFamily="@font/opensans_light"
+                android:textStyle="bold"
+                android:textColor="#096a75"/>
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <!--<HorizontalScrollView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:scrollbars="vertical">-->
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <GridView
+                        android:id="@+id/Society_gridview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:numColumns="3"
+                        android:columnWidth="200dp"
+                        android:verticalSpacing="10dp"
+                        android:horizontalSpacing="10dp"
+                        android:stretchMode="columnWidth"
+                      />
+                </android.support.v7.widget.LinearLayoutCompat>
+                <!--</HorizontalScrollView>-->
+            </ScrollView>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#d3d3d3"/>
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="15dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Facility:"
+                android:textSize="16dp"
+                android:fontFamily="@font/opensans_light"
+                android:textStyle="bold"
+                android:textColor="#096a75"/>
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <GridView
+                        android:id="@+id/Facility_gridview"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:numColumns="2"
+                        android:columnWidth="200dp"
+                        android:verticalSpacing="10dp"
+                        android:horizontalSpacing="10dp"
+                        android:stretchMode="columnWidth"
+                        android:gravity="center"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </ScrollView>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+</LinearLayout>
