@@ -7,10 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -33,6 +35,7 @@ public class ServiceDetails extends AppCompatActivity {
 
     ServicesDetailsRecyclerViewAdapter servicesdetailsadapter;
     AppCompatTextView title_serv;
+    AppCompatImageButton serv_detail_bck;
     private ArrayList<String> Ven_List;
     DBHandler dbHandler;
     ProgressDialog PD;
@@ -48,6 +51,7 @@ public class ServiceDetails extends AppCompatActivity {
 
         dbHandler = new DBHandler(this);
         recyclerView = (RecyclerView) findViewById(R.id.profile);
+        serv_detail_bck= (AppCompatImageButton) findViewById(R.id.serv_detail_bck);
         title_serv = (AppCompatTextView) findViewById(R.id.title_serv);
 
         Intent intent = getIntent();
@@ -59,7 +63,24 @@ public class ServiceDetails extends AppCompatActivity {
         PD.setMessage("Loading...");
         PD.setCancelable(false);
 
+        serv_detail_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Services.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         forSelectedService();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),Services.class);
+        startActivity(intent);
+        finish();
     }
 
     public void forSelectedService(){

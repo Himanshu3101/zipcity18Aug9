@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 
-import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.R;
 
 /**

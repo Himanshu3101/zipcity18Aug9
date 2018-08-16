@@ -8,18 +8,24 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
+import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
 
@@ -37,18 +43,80 @@ public class ComplaintManagement extends Fragment {
     private ArrayList<String> ComplaintList;
     private FloatingActionButton fab;
     ProgressDialog PD;
+    String Complaintids;
+    DBHandler db;
+    int StatID=0;
+    ArrayAdapter<String> compl_lst_Name;
+    Spinner srch_com_by_type;
+    AppCompatTextView complainttype;
     RecyclerView recyclerView;
     List<loginObject> loginBData;
+    static List<String> complainttList;
+    static ArrayList<String> ComplaintListArray;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
+        db = new DBHandler(getActivity());
         recyclerView = getView().findViewById(R.id.complaint);
         fab = (FloatingActionButton) getView().findViewById(R.id.fab);
+        complainttype = (AppCompatTextView)getView().findViewById(R.id.complainttype);
+        srch_com_by_type = (Spinner)getView().findViewById(R.id.srch_com_by_type);
 
+        ComplaintListArray = new ArrayList<>();
         PD = new ProgressDialog(getActivity());
         PD.setMessage("Loading...");
         PD.setCancelable(false);
+
+        try {
+            complainttList = db.getComplaintList();
+            for (final String list : complainttList) {
+                String log = list;
+                ComplaintListArray.add(log);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        compl_lst_Name = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, ComplaintListArray);
+        compl_lst_Name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        srch_com_by_type.setAdapter(compl_lst_Name);
+        compl_lst_Name.insert("--Search by Type--", 0);
+
+        srch_com_by_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String client_Selection = adapterView.getItemAtPosition(position).toString();
+                String check_client_nme = "--Select Request Type--";
+
+                if(!client_Selection.equals("--Search by Type--")){
+
+                    for (int i = 0; i < ComplaintListArray.size(); i++) {
+
+                        String listName = String.valueOf(ComplaintListArray.get(i));
+
+                        if (listName.equals(client_Selection)) {
+                            try{
+                                complainttype.setText(listName);
+                                Complaintids = String.valueOf(db.getComplaintListID(listName));
+                                StatID=1;
+
+                            }catch(Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    datafrcomplaint();
+                }else{
+                    complainttype.setText("--Search by Type--");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,13 +138,22 @@ public class ComplaintManagement extends Fragment {
 
     public void datafrcomplaint(){
         PD.show();
-        String  json_url = (getString(R.string.BASE_URL) + "/BindComplaints");
-
+        String  json_url;
+        HashMap<String, String> params;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String UID = prefs.getString("UserID"," ");
 
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("userId",UID);
+        if(StatID==1){
+            json_url = (getString(R.string.BASE_URL) + "/FilterComplaint");
+            params = new HashMap<String, String>();
+            params.put("UserId",UID);
+            params.put("ComplaintTypeId",Complaintids);
+            StatID=0;
+        }else{
+            json_url = (getString(R.string.BASE_URL) + "/BindComplaints");
+            params = new HashMap<String, String>();
+            params.put("userId",UID);
+        }
 
         JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(
                 params), new Response.Listener<JSONObject>() {
@@ -89,6 +166,7 @@ public class ComplaintManagement extends Fragment {
                 try {
                     JSONObject loginData = new JSONObject(String.valueOf(response));
                     String resStatus = loginData.getString("status");
+                    String mess = loginData.getString("message");
 
                     if (resStatus.equalsIgnoreCase("Success")) {
 
@@ -137,7 +215,7 @@ public class ComplaintManagement extends Fragment {
                         recyclerfrVisitor();
                     }else{
                         PD.dismiss();
-                        Toast.makeText(getContext(), "Please try after some time...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), mess, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -151,6 +229,10 @@ public class ComplaintManagement extends Fragment {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 

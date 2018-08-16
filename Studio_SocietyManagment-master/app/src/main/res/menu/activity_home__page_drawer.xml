@@ -16,15 +16,23 @@
             <!--android:id="@+id/directory"-->
             <!--android:icon="@drawable/directory"-->
             <!--android:title="Directory" />-->
+
         <item
-            android:id="@+id/rules"
-            android:icon="@drawable/rules"
-            android:title="Rules" />
+            android:id="@+id/societyInfo"
+            android:icon="@drawable/society_management_icon"
+            android:title="Society Info" />
 
         <item
             android:id="@+id/helpline"
             android:icon="@drawable/calling"
             android:title="Helpline No." />
+
+        <item
+            android:id="@+id/rules"
+            android:icon="@drawable/rules"
+            android:title="Rules" />
+
+
         <item
             android:id="@+id/share"
             android:icon="@drawable/share"

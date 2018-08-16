@@ -8,14 +8,18 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.yoeki.iace.societymanagment.Notification.Notification;
 import com.yoeki.iace.societymanagment.R;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -24,19 +28,21 @@ import java.io.IOException;
  */
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-//    private static int BIG_TEXT_NOTIFICATION_KEY = 0;
+    //    private static int BIG_TEXT_NOTIFICATION_KEY = 0;
     String filepath = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.notify.txt";
-    String Title,Desc;
+    String Title, Desc;
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Intent intent = new Intent(getApplicationContext(),Notification.class);
+        Intent intent = new Intent(getApplicationContext(), Notification.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-
-        Desc = String.valueOf(builder.setContentText(remoteMessage.getNotification().getBody()));
-        Title = String.valueOf(builder.setContentTitle(remoteMessage.getNotification().getTitle()));
-
+//        builder.setContentText(remoteMessage.getNotification().getBody());
+//        builder.setContentTitle(remoteMessage.getNotification().getTitle());
+        Desc = remoteMessage.getNotification().getBody();
+        Title = remoteMessage.getNotification().getTitle();
+        directory();
         builder.setContentTitle(Title);
         builder.setContentText(Desc);
         builder.setAutoCancel(true);
@@ -48,10 +54,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //        builder.setContentText("Reason - " + reason);
         builder.build().flags |= android.app.Notification.FLAG_AUTO_CANCEL;
 
-
-
-        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,builder.build());
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, builder.build());
         try {
             Uri Snotification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), Snotification);
@@ -59,8 +63,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        directory();
-        writenitem();
+
     }
 
     public void directory() {
@@ -71,6 +74,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             } else {
                 System.out.println("Directory is not created");
             }
+            writenitem();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,22 +83,47 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void writenitem() {
         try {
             File file = new File(filepath);
-            file.createNewFile();
-            writenotification();
+            if (file.exists()) {
+                readWriteFromFile(this);
+            } else {
+                file.createNewFile();
+                readWriteFromFile(this);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void writenotification() {
-        String FullNotification = Title+"~"+Desc;
-        String[] readitems = FullNotification.split("~");
+    private String readWriteFromFile(Context context) {
+
+        String ret = "";
+
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filepath));
-            bufferedWriter.write(readitems[0]+"$"+readitems[1]);
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            File file = new File(filepath);
+            if ( file != null ) {
+                FileReader fileReader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+                fileReader.close();
+                ret = stringBuilder.toString();
+            }
+            try {
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filepath));
+                bufferedWriter.write(ret+Title+ "~" +Desc+"$");
+                bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+        return ret;
     }
 }

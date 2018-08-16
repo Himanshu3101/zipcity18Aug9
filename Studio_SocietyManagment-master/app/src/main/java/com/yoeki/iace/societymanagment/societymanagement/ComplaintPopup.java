@@ -18,7 +18,7 @@ public class ComplaintPopup extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.complaint_popup);
-
+        this.setFinishOnTouchOutside(true);
         C_title =(TextView)  findViewById(R.id.c_title);
         C_type =(TextView)  findViewById(R.id.c_Type);
         C_name = (TextView) findViewById(R.id.c_name);

@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -62,6 +63,7 @@ public class VisitorsNewRequest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitors_newrequest);
 
+        this.setFinishOnTouchOutside(true);
         db=new DBHandler(this);
         NvisitorR = (AppCompatTextView)findViewById(R.id.NvisitorR);
         N_Flat_location = (AppCompatTextView)findViewById(R.id.N_Flat_location);
@@ -170,13 +172,14 @@ public class VisitorsNewRequest extends Activity {
             public void onClick(View v) {
                 validations();
                 if (validation == true) {
-                    Date fdate,tdate;
+                    Date fdate;
+                    Date tdate;
                     String[] from = Com_fromDate.split("\\s+");
                     String[] to = Com_toDate.split("\\s+");
 
                     try {
-                        fdate=new SimpleDateFormat("dd-MM-yyyy").parse(from[0]);
-                        tdate=new SimpleDateFormat("dd-MM-yyyy").parse(to[0]);
+                        fdate=new SimpleDateFormat("dd/MM/yyyy").parse(from[0]);
+                        tdate=new SimpleDateFormat("dd/MM/yyyy").parse(to[0]);
 
                         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                         Date d1 = sdf.parse(from[1]);
@@ -184,31 +187,26 @@ public class VisitorsNewRequest extends Activity {
                         long elapsed = d2.getTime() - d1.getTime();
                         String timegap = String.valueOf(elapsed);
 
+
+                        SimpleDateFormat asdf = new SimpleDateFormat("dd/MM/yyyy_HH:mm");
+                        String currentDateandTime = asdf.format(new Date());
+
                         if(fdate.after(tdate)){
                             Toast.makeText(VisitorsNewRequest.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
-                        }
-                        if(fdate.before(tdate)){
+                        }else if(fdate.before(tdate)){
 //                            Toast.makeText(VisitorsNewRequest.this, "From Date is greater then by To date", Toast.LENGTH_SHORT).show();
-                            if (!timegap.contains("-")){
+                                    forSumitionNewVisitordata();
+                        }else if(fdate.equals(tdate)){
+                            if (timegap.contains("-")){
+                                Toast.makeText(VisitorsNewRequest.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
+                            }else if(timegap.equals("0")){
+                                Toast.makeText(VisitorsNewRequest.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
+                            }else{
                                 try {
                                     forSumitionNewVisitordata();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                            }else{
-                                Toast.makeText(VisitorsNewRequest.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        if(fdate.equals(tdate)){
-//                            Toast.makeText(VisitorsNewRequest.this, "From Date is equal to To date", Toast.LENGTH_SHORT).show();
-                            if (!timegap.contains("-")){
-                                try {
-                                    forSumitionNewVisitordata();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }else{
-                                Toast.makeText(VisitorsNewRequest.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
                             }
                         }
                     } catch (ParseException e) {
@@ -252,7 +250,7 @@ public class VisitorsNewRequest extends Activity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                        date_time = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
                         //*************Call Time Picker Here ********************
                         tiemPicker();
                     }
@@ -335,6 +333,7 @@ public class VisitorsNewRequest extends Activity {
 
     public void forSumitionNewVisitordata(){
         PD.show();
+        String FullFromDte = null,FullToDte = null;
         String  json_url = (getString(R.string.BASE_URL) + "/InsertVisitors");
 
         String visit_name = N_Name.getText().toString();
@@ -347,13 +346,34 @@ public class VisitorsNewRequest extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String UID = prefs.getString("UserID"," ");
 
+
+        String[] dt = from_dte.split("/");
+        String mnth = dt[0];
+        if(mnth.length()==1){
+            String month = "0"+mnth;
+            FullFromDte = month+"/"+dt[1]+"/"+dt[2];
+        }else{
+            FullFromDte = from_dte;
+        }
+
+        String[] Tot = to_dte.split("/");
+        String mnthTo = Tot[0];
+        if(mnthTo.length()==1){
+            String monthl = "0"+mnthTo;
+            FullToDte = monthl+"/"+Tot[1]+"/"+Tot[2];
+        }else{
+            FullToDte = to_dte;
+        }
+
+
+
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("VisitorTypeId",VisitIds);
         params.put("Name",visit_name);
         params.put("ContactNo",visit_number);
         params.put("Address",visit_add);
-        params.put("FromDate",from_dte);
-        params.put("ToDate",to_dte);
+        params.put("FromDate",FullFromDte);
+        params.put("ToDate",FullToDte);
         params.put("userId",UID);
         params.put("UnitMasterDetailId",LocatIds);
 
@@ -365,6 +385,7 @@ public class VisitorsNewRequest extends Activity {
 
                         JSONObject loginData = new JSONObject(String.valueOf(response));
                         String resStatus = loginData.getString("status");
+                    String mess = loginData.getString("message");
                         if (resStatus.equals("Success")){
                             PD.dismiss();
                             Toast.makeText(VisitorsNewRequest.this, "Request Submitted", Toast.LENGTH_SHORT).show();
@@ -372,7 +393,7 @@ public class VisitorsNewRequest extends Activity {
                             startActivity(intent);
                         }else{
                             PD.dismiss();
-                            Toast.makeText(VisitorsNewRequest.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VisitorsNewRequest.this, mess, Toast.LENGTH_SHORT).show();
                         }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -386,6 +407,11 @@ public class VisitorsNewRequest extends Activity {
                     Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }

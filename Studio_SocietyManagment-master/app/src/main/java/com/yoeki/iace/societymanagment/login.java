@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -34,6 +35,8 @@ import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.Firebase.MyFirebaseInstanceID;
 import com.yoeki.iace.societymanagment.Firebase.SharedPreferenceUtils;
+import com.yoeki.iace.societymanagment.GateKeeper.GateKeeper;
+import com.yoeki.iace.societymanagment.Service_Provider.ServiceProvider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,11 +58,13 @@ public class login extends AppCompatActivity {
     private boolean mBounded;
     private static final String TAG = "Login";
 
-    String json_url,resStatus,resMessage,resUserID,resUserName,resUserRole,tokenR;
+
+    String json_url,resStatus,resMessage,resUserID,resUserName,resUserRole,tokenR,UserWiseId;
     List<loginObject> loginComplaintData,requestComplaintData,rejectionListData,bindUserData,userWiseRoleIdData,visitorData;
 
     int PERMISSION_ALL = 1;
-    String[] PERMISSIONS = {Manifest.permission.READ_CONTACTS, Manifest.permission.CALL_PHONE};
+    String[] PERMISSIONS = {Manifest.permission.READ_CONTACTS, Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE
+            ,Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     private final ServiceConnection mConnection = new ServiceConnection() {
         @SuppressWarnings("unchecked")
@@ -108,6 +113,12 @@ public class login extends AppCompatActivity {
         Forget_pswd = (AppCompatButton)findViewById(R.id.forget_pswd);
         Login = (AppCompatButton)findViewById(R.id.log_in);
         Vendor_regs = (AppCompatButton) findViewById(R.id.vndr_rgstn);
+
+//        Uname.setText("arun@gmail.com");
+//        Pswd.setText("SveLJf");
+
+//        Uname.setText("9013688825");
+//        Pswd.setText("000000");
 
         Uname.setText("aman@gmail.com");
         Pswd.setText("000000");
@@ -159,6 +170,8 @@ public class login extends AppCompatActivity {
         });
 
         getDeviceToken();
+
+
     }
 
     public String getDeviceToken() {
@@ -232,175 +245,193 @@ public class login extends AppCompatActivity {
 //            PD.dismiss();
 //            Toast.makeText(this, "Try Again...", Toast.LENGTH_SHORT).show();
 //        } else {
-            HashMap<String, String> params = new HashMap<String, String>();
-            params.put("emailId", userName);
-            params.put("password", password);
-            params.put("IMEI", "5678");
-            params.put("Token", tokenR);
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("emailId", userName);
+        params.put("password", password);
+        params.put("IMEI", "5678");
+        params.put("Token", tokenR);
 
-            JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(
-                    params), new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    JSONArray complaintArray = null, requestTypeArray = null, rejectionListArray = null, bindVisitorArray = null, bindUserArray = null, userWiseRoleArray = null;
+        JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(
+                params), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONArray complaintArray = null, requestTypeArray = null, rejectionListArray = null, bindVisitorArray = null, bindUserArray = null, userWiseRoleArray = null;
 
-                    try {
-                        JSONObject loginData = new JSONObject(String.valueOf(response));
-                        resStatus = loginData.getString("status");
-                        if (resStatus.equalsIgnoreCase("success")) {
-                            db.deleteall();
+                try {
+                    JSONObject loginData = new JSONObject(String.valueOf(response));
+                    resStatus = loginData.getString("status");
+                    if (resStatus.equalsIgnoreCase("success")) {
+                        db.deleteall();
 
-                            resMessage = loginData.getString("status");
-                            resUserID = loginData.getString("userId");
-                            resUserName = loginData.getString("userName");
-                            resUserRole = loginData.getString("userName");
-
-                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                            SharedPreferences.Editor edit = preferences.edit();
-                            edit.putString("UserID", resUserID);
-                            edit.commit();
+                        resMessage = loginData.getString("status");
+                        resUserID = loginData.getString("userId");
+                        resUserName = loginData.getString("userName");
+                        resUserRole = loginData.getString("userName");
 
 
-                            try {
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor edit = preferences.edit();
+                        edit.putString("UserID", resUserID);
+                        edit.commit();
+
+
+                        try {
 //                            Complaint List
-                                ArrayList<String> listVerID = new ArrayList<>();
-                                complaintArray = response.getJSONArray("list");
-                                loginComplaintData = new ArrayList<>();
-                                for (int i = 0; i < complaintArray.length(); ) {
-                                    JSONObject complaintJsonData = complaintArray.getJSONObject(i);
-                                    loginObject loginObject_recycler = new loginObject();
-                                    loginObject_recycler.ComplaintTypeId = complaintJsonData.getString("ComplaintTypeId");
-                                    loginObject_recycler.ComplaintTypeName = complaintJsonData.getString("ComplaintTypeName");
-                                    loginComplaintData.add(loginObject_recycler);
+                            ArrayList<String> listVerID = new ArrayList<>();
+                            complaintArray = response.getJSONArray("list");
+                            loginComplaintData = new ArrayList<>();
+                            for (int i = 0; i < complaintArray.length(); ) {
+                                JSONObject complaintJsonData = complaintArray.getJSONObject(i);
+                                loginObject loginObject_recycler = new loginObject();
+                                loginObject_recycler.ComplaintTypeId = complaintJsonData.getString("ComplaintTypeId");
+                                loginObject_recycler.ComplaintTypeName = complaintJsonData.getString("ComplaintTypeName");
+                                loginComplaintData.add(loginObject_recycler);
 
-                                    String ID = loginComplaintData.get(i).ComplaintTypeId;
-                                    String Name = loginComplaintData.get(i).ComplaintTypeName;
-                                    db.saveComplaint(new loginObject(ID, Name));
-                                    i++;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                String ID = loginComplaintData.get(i).ComplaintTypeId;
+                                String Name = loginComplaintData.get(i).ComplaintTypeName;
+                                db.saveComplaint(new loginObject(ID, Name));
+                                i++;
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                            try {
+                        try {
 //                            Request List
-                                requestTypeArray = response.getJSONArray("list1");
-                                requestComplaintData = new ArrayList<>();
-                                for (int i = 0; i < requestTypeArray.length(); ) {
-                                    JSONObject requestTypeJsonData = requestTypeArray.getJSONObject(i);
-                                    loginObject RequestObject_recycler = new loginObject();
-                                    RequestObject_recycler.RequestTypeId = requestTypeJsonData.getString("RequestTypeId");
-                                    RequestObject_recycler.RequestTypeName = requestTypeJsonData.getString("RequestTypeName");
-                                    requestComplaintData.add(RequestObject_recycler);
+                            requestTypeArray = response.getJSONArray("list1");
+                            requestComplaintData = new ArrayList<>();
+                            for (int i = 0; i < requestTypeArray.length(); ) {
+                                JSONObject requestTypeJsonData = requestTypeArray.getJSONObject(i);
+                                loginObject RequestObject_recycler = new loginObject();
+                                RequestObject_recycler.RequestTypeId = requestTypeJsonData.getString("RequestTypeId");
+                                RequestObject_recycler.RequestTypeName = requestTypeJsonData.getString("RequestTypeName");
+                                requestComplaintData.add(RequestObject_recycler);
 
-                                    String ID = requestComplaintData.get(i).RequestTypeId;
-                                    String Name = requestComplaintData.get(i).RequestTypeName;
-                                    db.saveRequest(new loginObject(ID, Name));
-                                    i++;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                String ID = requestComplaintData.get(i).RequestTypeId;
+                                String Name = requestComplaintData.get(i).RequestTypeName;
+                                db.saveRequest(new loginObject(ID, Name));
+                                i++;
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                            try {
+                        try {
 //                            Rejection List
-                                rejectionListArray = response.getJSONArray("rejectionList");
-                                rejectionListData = new ArrayList<>();
-                                for (int i = 0; i < rejectionListArray.length(); ) {
-                                    JSONObject rejectionJsonData = rejectionListArray.getJSONObject(i);
-                                    loginObject rejectionObject_recycler = new loginObject();
-                                    rejectionObject_recycler.RejectionId = rejectionJsonData.getString("id");
-                                    rejectionObject_recycler.RejectionName = rejectionJsonData.getString("name");
-                                    rejectionListData.add(rejectionObject_recycler);
+                            rejectionListArray = response.getJSONArray("rejectionList");
+                            rejectionListData = new ArrayList<>();
+                            for (int i = 0; i < rejectionListArray.length(); ) {
+                                JSONObject rejectionJsonData = rejectionListArray.getJSONObject(i);
+                                loginObject rejectionObject_recycler = new loginObject();
+                                rejectionObject_recycler.RejectionId = rejectionJsonData.getString("id");
+                                rejectionObject_recycler.RejectionName = rejectionJsonData.getString("name");
+                                rejectionListData.add(rejectionObject_recycler);
 
-                                    String ID = rejectionListData.get(i).RejectionId;
-                                    String Name = rejectionListData.get(i).RejectionName;
-                                    db.saveRejection(new loginObject(ID, Name));
-                                    i++;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                String ID = rejectionListData.get(i).RejectionId;
+                                String Name = rejectionListData.get(i).RejectionName;
+                                db.saveRejection(new loginObject(ID, Name));
+                                i++;
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                            try {
+                        try {
 //                            User Flat List
-                                bindUserArray = response.getJSONArray("BindUserFlatlist");
-                                bindUserData = new ArrayList<>();
-                                for (int i = 0; i < bindUserArray.length(); ) {
-                                    JSONObject bindUserJsonData = bindUserArray.getJSONObject(i);
-                                    loginObject bindUser_recycler = new loginObject();
-                                    bindUser_recycler.Location = bindUserJsonData.getString("Location");
-                                    bindUser_recycler.UnitMasterDetailId = bindUserJsonData.getString("UnitMasterDetailId");
-                                    bindUserData.add(bindUser_recycler);
+                            bindUserArray = response.getJSONArray("BindUserFlatlist");
+                            bindUserData = new ArrayList<>();
+                            for (int i = 0; i < bindUserArray.length(); ) {
+                                JSONObject bindUserJsonData = bindUserArray.getJSONObject(i);
+                                loginObject bindUser_recycler = new loginObject();
+                                bindUser_recycler.Location = bindUserJsonData.getString("Location");
+                                bindUser_recycler.UnitMasterDetailId = bindUserJsonData.getString("UnitMasterDetailId");
+                                bindUserData.add(bindUser_recycler);
 
-                                    String Name = bindUserData.get(i).UnitMasterDetailId;
-                                    String ID = bindUserData.get(i).Location;
-                                    db.saveFlatList(new loginObject(Name, ID));
-                                    i++;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                String Name = bindUserData.get(i).UnitMasterDetailId;
+                                String ID = bindUserData.get(i).Location;
+                                db.saveFlatList(new loginObject(Name, ID));
+                                i++;
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                            try {
+                        try {
 //                            UserWise RoleID List
-                                userWiseRoleArray = response.getJSONArray("UserWiseRoleIdlist");
-                                userWiseRoleIdData = new ArrayList<>();
-                                for (int i = 0; i < userWiseRoleArray.length(); ) {
-                                    JSONObject userWiseRoleJsonData = userWiseRoleArray.getJSONObject(i);
-                                    loginObject userWiseRole_recycler = new loginObject();
-                                    userWiseRole_recycler.UserRoleId = userWiseRoleJsonData.getString("UserRoleId");
-                                    userWiseRoleIdData.add(userWiseRole_recycler);
+                            userWiseRoleArray = response.getJSONArray("UserWiseRoleIdlist");
+                            userWiseRoleIdData = new ArrayList<>();
+                            for (int i = 0; i < userWiseRoleArray.length(); ) {
+                                JSONObject userWiseRoleJsonData = userWiseRoleArray.getJSONObject(i);
+                                loginObject userWiseRole_recycler = new loginObject();
+                                userWiseRole_recycler.UserRoleId = userWiseRoleJsonData.getString("UserRoleId");
+                                userWiseRoleIdData.add(userWiseRole_recycler);
 
-                                    String ID = userWiseRoleIdData.get(i).UserRoleId;
-                                    db.saveUserWiseRoleID(new loginObject(ID));
-                                    i++;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                UserWiseId = userWiseRoleIdData.get(i).UserRoleId;
+                                db.saveUserWiseRoleID(new loginObject(UserWiseId));
+                                i++;
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                            try {
+                        try {
 //                            Visitor List
-                                bindVisitorArray = response.getJSONArray("VisitorTypelist");
-                                visitorData = new ArrayList<>();
-                                for (int i = 0; i < bindVisitorArray.length(); ) {
-                                    JSONObject userWiseRoleJsonData = bindVisitorArray.getJSONObject(i);
-                                    loginObject userWiseRole_recycler = new loginObject();
+                            bindVisitorArray = response.getJSONArray("VisitorTypelist");
+                            visitorData = new ArrayList<>();
+                            for (int i = 0; i < bindVisitorArray.length(); ) {
+                                JSONObject userWiseRoleJsonData = bindVisitorArray.getJSONObject(i);
+                                loginObject userWiseRole_recycler = new loginObject();
 
-                                    userWiseRole_recycler.visitor_lst_id = userWiseRoleJsonData.getString("VisitorTypeId");
-                                    userWiseRole_recycler.visitor_nme = userWiseRoleJsonData.getString("VisitorTypeName");
-                                    visitorData.add(userWiseRole_recycler);
+                                userWiseRole_recycler.visitor_lst_id = userWiseRoleJsonData.getString("VisitorTypeId");
+                                userWiseRole_recycler.visitor_nme = userWiseRoleJsonData.getString("VisitorTypeName");
+                                visitorData.add(userWiseRole_recycler);
 
-                                    String ID = visitorData.get(i).visitor_lst_id;
-                                    String Name = visitorData.get(i).visitor_nme;
-                                    db.saveVisitorList(new loginObject(Name, ID));
-                                    i++;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                String ID = visitorData.get(i).visitor_lst_id;
+                                String Name = visitorData.get(i).visitor_nme;
+                                db.saveVisitorList(new loginObject(Name, ID));
+                                i++;
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                            PD.dismiss();
+                        PD.dismiss();
+                        if(UserWiseId.equals("4")){
+                            Intent intent = new Intent(login.this, ServiceProvider.class);
+                            startActivity(intent);
+                        }else if(UserWiseId.equals("3")){
                             Intent intent = new Intent(login.this, Home_Page.class);
                             startActivity(intent);
-                        } else {
-                            PD.dismiss();
-                            Toast.makeText(login.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Intent intent = new Intent(login.this, GateKeeper.class);
+                            startActivity(intent);
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+
+
+                    } else {
+                        PD.dismiss();
+                        Toast.makeText(login.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    PD.dismiss();
-                    Toast.makeText(login.this, "Server_Error", Toast.LENGTH_SHORT).show();
-                    Log.w("error in response", "Error: " + error.getMessage());
-                }
-            });
-            MyApplication.getInstance().addToReqQueue(req);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                PD.dismiss();
+                Toast.makeText(login.this, "Server_Error", Toast.LENGTH_SHORT).show();
+                Log.w("error in response", "Error: " + error.getMessage());
+            }
+        });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
+        MyApplication.getInstance().addToReqQueue(req);
 //        }
     }
+
 }

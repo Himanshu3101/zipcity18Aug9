@@ -56,6 +56,8 @@ public class RequestManagement_Created extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.request_management__created);
+
+        this.setFinishOnTouchOutside(true);
         db = new DBHandler(this);
         Request_Type = (AppCompatTextView) findViewById(R.id.request);
         Flat_Location = (AppCompatTextView) findViewById(R.id.location);
@@ -164,8 +166,8 @@ public class RequestManagement_Created extends Activity {
 
 
                     try {
-                        fdate=new SimpleDateFormat("dd-MM-yyyy").parse(from[0]);
-                        tdate=new SimpleDateFormat("dd-MM-yyyy").parse(to[0]);
+                        fdate=new SimpleDateFormat("dd/MM/yyyy").parse(from[0]);
+                        tdate=new SimpleDateFormat("dd/MM/yyyy").parse(to[0]);
 
                         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                         Date d1 = sdf.parse(from[1]);
@@ -237,7 +239,7 @@ public class RequestManagement_Created extends Activity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                        date_time = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
                         //*************Call Time Picker Here ********************
                         tiemPicker();
                     }
@@ -317,6 +319,7 @@ public class RequestManagement_Created extends Activity {
 
     public void forSumitionNewRequestdata(){
         PD.show();
+        String FullFromDte = null,FullToDte = null;
         String  json_url = (getString(R.string.BASE_URL) + "/InsertRequest");
 
         String Request_title = R_Title.getText().toString();
@@ -329,6 +332,24 @@ public class RequestManagement_Created extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String UID = prefs.getString("UserID"," ");
 
+        String[] dt = fromdte.split("/");
+        String mnth = dt[0];
+        if(mnth.length()==1){
+            String month = "0"+mnth;
+            FullFromDte = month+"/"+dt[1]+"/"+dt[2];
+        }else{
+            FullFromDte = fromdte;
+        }
+
+        String[] Tot = todte.split("/");
+        String mnthTo = Tot[0];
+        if(mnthTo.length()==1){
+            String monthl = "0"+mnthTo;
+            FullToDte = monthl+"/"+Tot[1]+"/"+Tot[2];
+        }else{
+            FullToDte = todte;
+        }
+
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("CreatedBy",UID);
         params.put("RequestType",RequestIds);
@@ -336,8 +357,8 @@ public class RequestManagement_Created extends Activity {
         params.put("Description",Request_descr);
         params.put("VendorId", "0");
         params.put("UnitMasterDetailId",LocatIds);
-        params.put("FromDate", fromdte);
-        params.put("ToDate", todte);
+        params.put("FromDate", FullFromDte);
+        params.put("ToDate", FullToDte);
 
 
         JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(

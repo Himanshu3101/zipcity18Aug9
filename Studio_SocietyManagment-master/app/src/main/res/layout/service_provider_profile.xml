@@ -1,0 +1,232 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#096a75 ">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/Ser_Pro_bck"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="05dp"
+            android:layout_marginTop="07dp"
+            android:background="@drawable/back" />
+
+        <android.support.v7.widget.AppCompatTextView
+
+            android:text="Service Provider Profile"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:paddingRight="50dp"
+            android:layout_marginTop="13dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp" />
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="end"-->
+            <!--android:layout_marginRight="15dp">-->
+
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+                <!--android:id="@+id/add_member"-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_marginTop="04dp"-->
+                <!--android:background="@drawable/add_member"-->
+                <!--/>-->
+
+            <!--&lt;!&ndash;<android.support.v7.widget.AppCompatImageButton&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/logout"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="04dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/logout"/>&ndash;&gt;-->
+        <!--</LinearLayout>-->
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.LinearLayoutCompat
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:layout_marginTop="10dp">
+
+           <android.support.v7.widget.LinearLayoutCompat
+               android:layout_width="match_parent"
+               android:layout_height="180dp"
+               android:orientation="vertical"
+               android:layout_marginTop="10dp">
+
+               <android.support.v7.widget.AppCompatImageView
+                   android:id="@+id/usr_logo"
+                   android:layout_width="150dp"
+                   android:layout_height="150dp"
+                   android:background="@drawable/img_bck"
+                   android:layout_gravity="center"/>
+
+               <android.support.v7.widget.AppCompatImageButton
+                   android:id="@+id/chngepic"
+                   android:layout_marginTop="-70dp"
+                   android:layout_marginLeft="65dp"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:background="@color/transparent"
+                   android:layout_gravity="center"
+                   android:src="@drawable/cam"/>
+
+           </android.support.v7.widget.LinearLayoutCompat>
+
+
+  <ScrollView
+      android:layout_height="match_parent"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="30dp">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+
+          <android.support.v7.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:paddingBottom="10dp">
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Name:"
+                  android:layout_weight=".1"
+                  android:textSize="15dp"
+                  android:fontFamily="@font/opensans_light"
+                  android:textStyle="bold"
+                  android:textColor="#096a75"/>
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:id="@+id/serviceprovider_name"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/opensans_light"
+                  android:layout_marginRight="10dp"
+                  android:layout_weight=".1"
+                  android:textSize="15dp"
+                  android:text="name"
+                  android:textColor="#3e3e3e"/>
+          </android.support.v7.widget.LinearLayoutCompat>
+
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:background="#d3d3d3"/>
+
+          <android.support.v7.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:paddingBottom="10dp">
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Contact No:"
+                  android:layout_weight=".1"
+                  android:textSize="15dp"
+                  android:fontFamily="@font/opensans_light"
+                  android:textStyle="bold"
+                  android:textColor="#096a75"/>
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:id="@+id/profilecontactno"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="contactno"
+                  android:fontFamily="@font/opensans_light"
+                  android:layout_marginRight="10dp"
+                  android:layout_weight=".1"
+                  android:textSize="15dp"
+                  android:textColor="#3e3e3e"/>
+          </android.support.v7.widget.LinearLayoutCompat>
+
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:background="#d3d3d3"/>
+
+          <android.support.v7.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:paddingBottom="10dp">
+
+              <android.support.v7.widget.AppCompatTextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Service Type:"
+                  android:layout_weight=".1"
+                  android:textSize="15dp"
+                  android:fontFamily="@font/opensans_light"
+                  android:textStyle="bold"
+                  android:textColor="#096a75"/>
+
+              <android.support.v7.widget.AppCompatImageButton
+                  android:id="@+id/addservicetype"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_marginRight="05dp"
+                  android:background="@drawable/man_icon_withplus" />
+
+          </android.support.v7.widget.LinearLayoutCompat>
+
+          <android.support.v7.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+              android:layout_marginTop="10dp"
+              android:background="@drawable/popupbackground"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:layout_marginBottom="10dp">
+
+              <android.support.v7.widget.RecyclerView
+                  android:id="@+id/profile_servicetype"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginBottom="10dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scrollbars="vertical"/>
+
+          </android.support.v7.widget.LinearLayoutCompat>
+
+
+      </LinearLayout>
+  </ScrollView>
+
+       </android.support.v7.widget.LinearLayoutCompat>
+
+</LinearLayout>

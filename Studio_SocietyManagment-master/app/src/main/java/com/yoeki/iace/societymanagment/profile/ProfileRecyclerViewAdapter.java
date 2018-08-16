@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -57,28 +58,40 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         String unit = mData.get(position);
         String[] Break = unit.split(",");
 
-        if(Break[0].equalsIgnoreCase("null")){
+        if (Break[0].equalsIgnoreCase("null")|| Break[0].equalsIgnoreCase("") || Break[0].equalsIgnoreCase(" ")){
             holder.memName.setText("");
         }else {
             holder.memName.setText(Break[0]);
         }
 
-        if(Break[1].equalsIgnoreCase("null")){
+        if(Break[1].equalsIgnoreCase("null")|| Break[1].equalsIgnoreCase("") || Break[1].equalsIgnoreCase(" ")){
             holder.memGender.setText("");
         }else {
             holder.memGender.setText(Break[1]);
         }
 
-        if(Break[2].equalsIgnoreCase("null")){
+        if(Break[2].equalsIgnoreCase("null")|| Break[2].equalsIgnoreCase("") || Break[2].equalsIgnoreCase(" ")){
             holder.memContact.setText("");
         }else {
             holder.memContact.setText(Break[2]);
         }
 
-        if(Break[3].equalsIgnoreCase("null")){
+        if(Break[3].equalsIgnoreCase("null")|| Break[3].equalsIgnoreCase("") || Break[3].equalsIgnoreCase(" ")){
             holder.mem_status.setText("");
         }else {
             holder.mem_status.setText(Break[3]);
+        }
+
+        if(Break[4].equalsIgnoreCase("null")|| Break[4].equalsIgnoreCase("") || Break[4].equalsIgnoreCase(" ")){
+            holder.mem_logID.setText("");
+        }else {
+            holder.mem_logID.setText(Break[4]);
+        }
+
+        if(Break[5].equalsIgnoreCase("null")|| Break[5].equalsIgnoreCase("") || Break[5].equalsIgnoreCase(" ")){
+            holder.mem_ID.setText("");
+        }else {
+            holder.mem_ID.setText(Break[5]);
         }
     }
 
@@ -91,7 +104,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView memName,memGender,memContact;
+        AppCompatTextView memName,memGender,memContact,mem_logID,mem_ID;
         AppCompatButton mem_status;
         ProgressDialog PD;
 
@@ -101,6 +114,8 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
             memGender = itemView.findViewById(R.id.mem_gender);
             memContact = itemView.findViewById(R.id.mem_contact);
             mem_status = itemView.findViewById(R.id.mem_status);
+            mem_logID = itemView.findViewById(R.id.mem_logID);
+            mem_ID = itemView.findViewById(R.id.mem_ID);
 
             PD = new ProgressDialog(context);
             PD.setMessage("Loading...");
@@ -122,9 +137,12 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
 
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                 String UID = prefs.getString("UserID"," ");
+                String MemLogID = mem_logID.getText().toString();
+                String MemID = mem_ID.getText().toString();
 
                 HashMap<String, String> params = new HashMap<String, String>();
-                params.put("UserId",UID);
+                params.put("UserId",MemLogID);
+                params.put("UserSecondaryId",MemID);
 
                 JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(
                         params), new Response.Listener<JSONObject>() {
@@ -135,13 +153,14 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
                         try {
                             JSONObject loginData = new JSONObject(String.valueOf(response));
                             String resStatus = loginData.getString("status");
+                            String msg = loginData.getString("message");
                             if (resStatus.equalsIgnoreCase("Success")) {
                                 String Status = loginData.getString("UserStatus");
-                                memContact.setText(Status);
+                                mem_status.setText(Status);
                                 PD.dismiss();
                             }else{
                                 PD.dismiss();
-                                Toast.makeText(context, "Please try after some time...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -153,6 +172,11 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
                         Log.w("error in response", "Error: " + error.getMessage());
                     }
                 });
+
+                req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
                 MyApplication.getInstance().addToReqQueue(req);
         }
     }

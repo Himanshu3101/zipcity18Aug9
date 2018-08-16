@@ -82,6 +82,28 @@
                     android:textColor="#3e3e3e"
                     android:layout_marginBottom="10dp"/>
 
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/mem_logID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textStyle="bold"
+                    android:textColor="#096a75"
+                    android:layout_marginTop="10dp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/mem_ID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textStyle="bold"
+                    android:textColor="#096a75"
+                    android:layout_marginTop="10dp"/>
+
             </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
         <View

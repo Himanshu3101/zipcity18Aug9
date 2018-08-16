@@ -8,18 +8,24 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
+import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
 
@@ -39,17 +45,80 @@ public class RequestManagement extends Fragment {
     RecyclerView requestRecycler;
     FloatingActionButton fab;
     ProgressDialog PD;
+    DBHandler db;
     List<loginObject> loginBData;
+    Spinner srch_req_by_type;
+    static List<String> requestList;
+    static ArrayList<String> RequestListArray;
+    ArrayAdapter<String> reqt_lst_Name;
+    AppCompatTextView requesttype;
+    String Requestids;
+    int S = 0;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+        db = new DBHandler(getActivity());
         requestRecycler = getView().findViewById(R.id.request);
         fab = (FloatingActionButton) getView().findViewById(R.id.Rfab);
+        requesttype = (AppCompatTextView)getView().findViewById(R.id.requesttypeData);
+        srch_req_by_type = (Spinner)getView().findViewById(R.id.srch_req_by_type);
 
+
+        RequestListArray = new ArrayList<>();
         PD = new ProgressDialog(getActivity());
         PD.setMessage("Loading...");
         PD.setCancelable(false);
+
+
+        try {
+            requestList = db.getReqList();
+            for (final String list : requestList) {
+                String log = list;
+                RequestListArray.add(log);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        reqt_lst_Name = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, RequestListArray);
+        reqt_lst_Name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        srch_req_by_type.setAdapter(reqt_lst_Name);
+        reqt_lst_Name.insert("--Search by Type--", 0);
+
+        srch_req_by_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String client_Selection = adapterView.getItemAtPosition(position).toString();
+                String check_client_nme = "--Select Request Type--";
+
+                if(!client_Selection.equals("--Search by Type--")){
+
+                    for (int i = 0; i < RequestListArray.size(); i++) {
+
+                        String listName = String.valueOf(RequestListArray.get(i));
+
+                        if (listName.equals(client_Selection)) {
+                            try{
+                                requesttype.setText(listName);
+                                Requestids = String.valueOf(db.getReqListID(listName));
+                                S=1;
+
+                            }catch(Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    datafrrequest();
+                }else{
+                    requesttype.setText("--Search by Type--");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +138,22 @@ public class RequestManagement extends Fragment {
 
     public void datafrrequest(){
         PD.show();
-        String  json_url = (getString(R.string.BASE_URL) + "/BindRequests");
-
+        String  json_url;
+        HashMap<String, String> params;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String UID = prefs.getString("UserID"," ");
 
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("userId",UID);
+        if(S==1){
+            json_url = (getString(R.string.BASE_URL) + "/FilterRequset");
+            params = new HashMap<String, String>();
+            params.put("UserId",UID);
+            params.put("ComplaintTypeId",Requestids);
+                S=0;
+        }else{
+            json_url = (getString(R.string.BASE_URL) + "/BindRequests");
+            params = new HashMap<String, String>();
+            params.put("userId",UID);
+        }
 
         JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(
                 params), new Response.Listener<JSONObject>() {
@@ -111,6 +189,8 @@ public class RequestManagement extends Fragment {
                                 loginObject_recycler.req_todte = BDetailJsonData.getString("ToDate");
                                 loginObject_recycler.req_desc = BDetailJsonData.getString("description");
                                 loginObject_recycler.req_vendr_mobile = BDetailJsonData.getString("VendorContactNo");
+                                loginObject_recycler.req_uniq_code = BDetailJsonData.getString("UniqueCode");
+                                loginObject_recycler.req_Id = BDetailJsonData.getString("requestId");
                                 loginBData.add(loginObject_recycler);
 
                                 String Req_name = loginBData.get(i).req_title;
@@ -125,9 +205,11 @@ public class RequestManagement extends Fragment {
                                 String Req_todte = loginBData.get(i).req_todte;
                                 String Req_desc = loginBData.get(i).req_desc;
                                 String Req_vendr_mobileNo = loginBData.get(i).req_vendr_mobile;
+                                String Req_uniq = loginBData.get(i).req_uniq_code;
+                                String Req_ID = loginBData.get(i).req_Id;
 
                                 String RequestDetails = Req_name+"~"+Req_type+"~"+Req_vndrNme+"~"+Req_unit+"~"+Req_createdOn+"~"+Req_createdBy+"~"+Req_requestNo
-                                        +"~"+Req_status+"~"+Req_fromdte+"~"+Req_todte+"~"+Req_desc+"~"+Req_vendr_mobileNo;
+                                        +"~"+Req_status+"~"+Req_fromdte+"~"+Req_todte+"~"+Req_desc+"~"+Req_vendr_mobileNo+"~"+Req_uniq+"~"+Req_ID;
 
                                 RequestList.add(RequestDetails);
                                 i++;
@@ -154,6 +236,11 @@ public class RequestManagement extends Fragment {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 

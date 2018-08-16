@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -123,7 +124,7 @@ public class password_recovery extends AppCompatActivity {
                         Toast.makeText(password_recovery.this, passMessage, Toast.LENGTH_SHORT).show();
                     }else{
                         PD.dismiss();
-                        Toast.makeText(password_recovery.this, "Email Doesn't Exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(password_recovery.this, resStatusForgetPassword, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -137,6 +138,11 @@ public class password_recovery extends AppCompatActivity {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }

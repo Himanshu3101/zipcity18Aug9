@@ -67,9 +67,20 @@
                     android:textSize="13dp"
                     android:textColor="#3e3e3e"/>
 
-            </android.support.v7.widget.LinearLayoutCompat>
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/R_descriptionfull"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/transparent"
+                    />
 
+            </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/r_dialogbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"/>
     </FrameLayout>
 
     <View

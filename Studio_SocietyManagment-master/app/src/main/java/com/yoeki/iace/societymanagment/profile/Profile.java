@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
@@ -19,11 +20,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yoeki.iace.societymanagment.ChangePassword;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
-import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
 
@@ -37,10 +39,11 @@ import java.util.List;
 
 public class Profile extends AppCompatActivity {
     AppCompatEditText Po_username,Po_phonenumber,Po_emailid,Po_dob,Po_flatno,Po_parking;
-    AppCompatImageButton edit_Name,edit_Phone,edit_Email,edit_Dateofbirth,edit_flatno,edit_Parking;
+    AppCompatImageButton edit_Name,edit_Phone,edit_Email,edit_Dateofbirth,edit_flatno,edit_Parking,changepassword;
     List<loginObject> loginBData;
     Button Update;
     Boolean validation;
+    AppCompatButton unit_btn,parking_btn;
 
     AppCompatTextView name,role,address,allot_parking,allot_unit;
     AppCompatImageButton add_member,Pro_bck;
@@ -48,6 +51,7 @@ public class Profile extends AppCompatActivity {
     private ArrayList<String> Mem_List;
     RecyclerView recyclerView;
     ProgressDialog PD;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +72,34 @@ public class Profile extends AppCompatActivity {
 //        edit_flatno=(AppCompatImageButton)findViewById(R.id.edit_flat);
 //        edit_Parking=(AppCompatImageButton)findViewById(R.id.edit_parking);
 
-        name = (AppCompatTextView)findViewById(R.id.name);
+        name = (AppCompatTextView)findViewById(R.id.Pro_name);
         role = (AppCompatTextView)findViewById(R.id.role);
         address = (AppCompatTextView)findViewById(R.id.address);
         allot_parking = (AppCompatTextView)findViewById(R.id.allot_parking);
         allot_unit = (AppCompatTextView)findViewById(R.id.allot_unit);
         Pro_bck=(AppCompatImageButton)findViewById(R.id.Pro_bck);
         add_member=(AppCompatImageButton)findViewById(R.id.add_member);
+        changepassword=(AppCompatImageButton)findViewById(R.id.changepassword);
+
         recyclerView = findViewById(R.id.member_list);
+
+        unit_btn=(AppCompatButton)findViewById(R.id.unit_btn);
+        parking_btn=(AppCompatButton)findViewById(R.id.parking_btn);
+
+        unit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Alloted_Unit.class);
+                startActivity(intent);
+            }
+        });
+        parking_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Alloted_Parking.class);
+                startActivity(intent);
+            }
+        });
 
         Pro_bck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +116,16 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ChangePassword.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         PD = new ProgressDialog(Profile.this);
         PD.setMessage("Loading...");
@@ -203,11 +237,13 @@ public class Profile extends AppCompatActivity {
                params), new Response.Listener<JSONObject>() {
            @Override
            public void onResponse(JSONObject response) {
+               String mes;
                JSONArray ProfileDetailArray = null,requestTypeArray = null,rejectionListArray = null,bindUserArray = null,userWiseRoleArray = null;
 
                try {
                    JSONObject loginData = new JSONObject(String.valueOf(response));
                    String resStatus = loginData.getString("status");
+                   mes = loginData.getString("message");
                    if (resStatus.equalsIgnoreCase("Success")) {
 
 //                           Owner Details
@@ -230,6 +266,8 @@ public class Profile extends AppCompatActivity {
 //                      Assigen Parking
                        try {
                            ProfileDetailArray = response.getJSONArray("listAssignParking");
+                           String dta = String.valueOf(ProfileDetailArray.length());
+                           allot_parking.setText(dta);
                            loginBData = new ArrayList<>();
                            for (int i = 0; i < ProfileDetailArray.length();) {
                                JSONObject BDetailJsonData = ProfileDetailArray.getJSONObject(i);
@@ -237,7 +275,7 @@ public class Profile extends AppCompatActivity {
                                loginObject_recycler.New_Parking_Count = BDetailJsonData.getString("NoOfCount");
                                loginBData.add(loginObject_recycler);
                                String Parking_count = loginBData.get(i).New_Parking_Count;
-                               allot_parking.setText(Parking_count);
+//                               allot_parking.setText(Parking_count);
                                i++;
                            }
                        }catch(Exception e){
@@ -247,6 +285,8 @@ public class Profile extends AppCompatActivity {
 //                      Assigen Unit
                        try {
                            ProfileDetailArray = response.getJSONArray("listAssignUnits");
+                           String dta = String.valueOf(ProfileDetailArray.length());
+                           allot_unit.setText(dta);
                            loginBData = new ArrayList<>();
                            for (int i = 0; i < ProfileDetailArray.length();) {
                                JSONObject BDetailJsonData = ProfileDetailArray.getJSONObject(i);
@@ -254,7 +294,8 @@ public class Profile extends AppCompatActivity {
                                loginObject_recycler.New_Unit_Count = BDetailJsonData.getString("NoOfCount");
                                loginBData.add(loginObject_recycler);
                                String Unit_count = loginBData.get(i).New_Unit_Count;
-                               allot_unit.setText(Unit_count);
+//                               String unitcount= ProfileDetailArray.getString(i);
+
                                i++;
                            }
                        }catch(Exception e){
@@ -272,14 +313,18 @@ public class Profile extends AppCompatActivity {
                                loginObject_recycler.Mem_Gender = BDetailJsonData.getString("Gender");
                                loginObject_recycler.Mem_Mobile = BDetailJsonData.getString("MobileNo");
                                loginObject_recycler.Mem_Status = BDetailJsonData.getString("UserStatus");
+                               loginObject_recycler.Mem_logId = BDetailJsonData.getString("UserloginId");
+                               loginObject_recycler.Mem_Id = BDetailJsonData.getString("UserId");
                                loginBData.add(loginObject_recycler);
 
                                String M_name = loginBData.get(i).Mem_Name;
                                String M_Gender = loginBData.get(i).Mem_Gender;
                                String M_Mobile = loginBData.get(i).Mem_Mobile;
                                String M_Status = loginBData.get(i).Mem_Status;
+                               String M_LOGID = loginBData.get(i).Mem_logId;
+                               String M_ID = loginBData.get(i).Mem_Id;
 
-                               String MemberDetais = M_name+","+M_Gender+","+M_Mobile+","+M_Status;
+                               String MemberDetais = M_name+","+M_Gender+","+M_Mobile+","+M_Status+","+M_LOGID+","+M_ID;
                                Mem_List.add(MemberDetais);
                                i++;
                            }
@@ -290,7 +335,7 @@ public class Profile extends AppCompatActivity {
                        PD.dismiss();
                    }else{
                        PD.dismiss();
-                       Toast.makeText(Profile.this, "Please try after some time...", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(Profile.this, mes, Toast.LENGTH_SHORT).show();
                    }
                } catch (JSONException e) {
                    e.printStackTrace();
@@ -299,9 +344,17 @@ public class Profile extends AppCompatActivity {
        }, new Response.ErrorListener() {
            @Override
            public void onErrorResponse(VolleyError error) {
+               PD.dismiss();
+               Toast.makeText(Profile.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
                Log.w("error in response", "Error: " + error.getMessage());
            }
        });
+
+       req.setRetryPolicy(new DefaultRetryPolicy(5000,
+               DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+               DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
        MyApplication.getInstance().addToReqQueue(req);
     }
 

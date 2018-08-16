@@ -73,6 +73,7 @@ public class Popup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profilepopup);
 
+        this.setFinishOnTouchOutside(true);
         imageView = (AppCompatImageView)findViewById(R.id.usr_logo);
         chngepic = (AppCompatImageButton)findViewById(R.id.chngepic);
         Mem_username = (AppCompatEditText)findViewById(R.id.Mem_username);

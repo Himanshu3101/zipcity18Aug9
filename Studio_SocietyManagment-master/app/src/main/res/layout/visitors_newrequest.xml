@@ -200,6 +200,7 @@
                    android:paddingLeft="12dp"
                    android:paddingRight="12dp"
                    android:textColor="#3e3e3e"
+                   android:maxLength="12"
                    android:textSize="14sp"
                    android:typeface="serif"
                    android:background="@drawable/spinner_border_color"

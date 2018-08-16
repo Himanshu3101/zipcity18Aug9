@@ -20,6 +20,7 @@ import com.yoeki.iace.societymanagment.Circular.Circular;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.Helpline.HelplineNo;
 import com.yoeki.iace.societymanagment.Notification.Notification;
+import com.yoeki.iace.societymanagment.Recharge.Recharge;
 import com.yoeki.iace.societymanagment.Rules.Rules;
 import com.yoeki.iace.societymanagment.Services.Services;
 import com.yoeki.iace.societymanagment.Society_Information.New.Society_Info;
@@ -45,10 +46,11 @@ public class Home_Page extends AppCompatActivity {
 
     GridView HomePagegrid;
     String[] SocietyName = {
-            "Society Information",
-            "Society Management",
-            "Visitors Management",
+//            "Society Info",
+            "Complaint/Request",
+            "Visitors ",
             "Services",
+            "Recharge",
             "Gallery",
             "Circular",
 //            "Profile",
@@ -58,11 +60,11 @@ public class Home_Page extends AppCompatActivity {
 
     } ;
     int[] SocietyIcon = {
-            R.drawable.society_management_icon,
+//            R.drawable.society_management_icon,
             R.drawable.societ_mgmnt,
             R.drawable.complaintmanagementicon,
             R.drawable.visitorsmanagement_icon,
-//            R.drawable.profileicon,
+            R.drawable.recharge_icon,
             R.drawable.gallery,
             R.drawable.news,
 //            R.drawable.regularpasses_icon,
@@ -93,16 +95,16 @@ public class Home_Page extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = null;
                 if(position == 0){
-                    myIntent = new Intent(view.getContext(), Society_Info.class);
-                }
-                if(position == 1){
                     myIntent = new Intent(view.getContext(), SocietyManagement.class);
                 }
-                if(position ==2){
+                if(position == 1){
                     myIntent = new Intent(view.getContext(), VisitorsManagement.class);
                 }
-                if(position ==3){
+                if(position ==2){
                     myIntent = new Intent(view.getContext(), Services.class);
+                }
+                if(position ==3){
+                    myIntent = new Intent(view.getContext(), Recharge.class);
                 }
 //                if(position ==4){
 //                    myIntent = new Intent(view.getContext(), Profile.class);
@@ -274,9 +276,13 @@ public class Home_Page extends AppCompatActivity {
 
                 switch (item.getItemId()){
 
-                    case R.id.helpline:
-                        Intent intent=new Intent(Home_Page.this,HelplineNo.class);
+                    case R.id.societyInfo:
+                        Intent intent=new Intent(Home_Page.this,Society_Info.class);
                         startActivity(intent);
+                        break;
+                    case R.id.helpline:
+                        Intent intent2=new Intent(Home_Page.this,HelplineNo.class);
+                        startActivity(intent2);
                         break;
                     case R.id.rules:
                         Intent intent1=new Intent(Home_Page.this,Rules.class);
@@ -295,7 +301,7 @@ public class Home_Page extends AppCompatActivity {
                         drawer.openDrawer(Gravity.START);
                         AlertDialog.Builder builder = new AlertDialog.Builder(Home_Page.this);
                         builder.setCancelable(false);
-                        builder.setMessage("Do you want to Log-Out?");
+                        builder.setMessage("Do you want to log out?");
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -46,6 +47,8 @@ public class Complaint_Created extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.complaint_created);
+
+        this.setFinishOnTouchOutside(true);
         db = new DBHandler(this);
         Complaint_Type = (AppCompatTextView) findViewById(R.id.complaint);
         Complaint_Location = (AppCompatTextView) findViewById(R.id.location);
@@ -223,6 +226,11 @@ public class Complaint_Created extends Activity {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }

@@ -17,7 +17,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
-import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
 
@@ -37,6 +36,7 @@ public class Rules extends AppCompatActivity {
     RecyclerView RulesrecyclerView;
     ProgressDialog PD;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +54,7 @@ public class Rules extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Home_Page.class);
                 startActivity(intent);
+                finish();
             }
         });
 

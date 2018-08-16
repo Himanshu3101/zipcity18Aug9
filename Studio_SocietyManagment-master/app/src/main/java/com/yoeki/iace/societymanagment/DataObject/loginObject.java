@@ -142,6 +142,26 @@ public class loginObject implements Serializable {
     public String Rules_description;
     public String VerificationCode;
     public String VerificationName;
+    public String Parking_no;
+    public String Unit_no;
+    public String Unit_status;
+    public String req_uniq_code;
+    public String GK_Name;
+    public String GK_Address;
+    public String GK_Fdate;
+    public String GK_Tdate;
+    public String GK_Status;
+    public String GK_ContactNo;
+    public String GK_name;
+    public String GK_role;
+    public String GK_contactno;
+    public String req_req_id;
+    public String req_Id;
+    public String Mem_logId;
+    public String Mem_Id;
+    public String Profile_Name;
+    public String Profile_Contact;
+    public String Profile_ServiceType;
 
     public static String getVisitor_nme() {
         return visitor_nme;

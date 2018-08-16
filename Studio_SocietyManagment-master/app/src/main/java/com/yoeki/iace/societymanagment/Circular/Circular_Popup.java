@@ -2,11 +2,9 @@ package com.yoeki.iace.societymanagment.Circular;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.R;
 
 public class Circular_Popup extends Activity {
@@ -16,6 +14,8 @@ public class Circular_Popup extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.circular__popup);
+
+        this.setFinishOnTouchOutside(true);
         P_title =  findViewById(R.id.p_title);
         P_fdate =  findViewById(R.id.p_fdate);
         P_tdate =  findViewById(R.id.p_tdate);

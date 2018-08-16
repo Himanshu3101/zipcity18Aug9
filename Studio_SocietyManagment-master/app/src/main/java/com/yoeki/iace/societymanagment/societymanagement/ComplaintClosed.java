@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -35,6 +36,7 @@ public class ComplaintClosed extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.complaint_closed);
 
+        this.setFinishOnTouchOutside(true);
         Intent intent= getIntent();
         UCode = intent.getStringExtra("Unique");
         Compl_ID = intent.getStringExtra("Comp_ID");
@@ -88,7 +90,7 @@ public class ComplaintClosed extends Activity {
 
                     if (resStatus.equalsIgnoreCase("Success")) {
                         PD.dismiss();
-                        Toast.makeText(getApplicationContext(), "Complaint Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Complaint Successfully Closed", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplication(),SocietyManagement.class);
                         startActivity(intent);
                         finish();
@@ -108,6 +110,11 @@ public class ComplaintClosed extends Activity {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }

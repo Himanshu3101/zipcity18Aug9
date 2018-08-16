@@ -133,13 +133,13 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
             String dottedelement=null;
             if(Break[10].length()>35){
 
-                dottedelement  =  Break[3].substring(0,32)+"...";
+                dottedelement  =  Break[10].substring(0,32)+"...";
 
                 holder.Req_description.setText(dottedelement);
             }else{
 
                 holder.Req_description.setText(dottedelement);
-                holder.Req_description.setText(Break[3]);
+                holder.Req_description.setText(Break[10]);
             }
 
         }
@@ -161,6 +161,22 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
             }
         }catch(Exception e){e.printStackTrace();}
 
+        try {
+            if (Break[12].equalsIgnoreCase("null")|| Break[12].equalsIgnoreCase("") || Break[12].equalsIgnoreCase(" ")){
+                holder.Req_uniqueCode.setText("N/A");
+            } else {
+                holder.Req_uniqueCode.setText(Break[12]);
+            }
+        }catch(Exception e){e.printStackTrace();}
+
+
+        try {
+            if (Break[13].equalsIgnoreCase("null")|| Break[13].equalsIgnoreCase("") || Break[13].equalsIgnoreCase(" ")){
+                holder.Req_IID.setText("N/A");
+            } else {
+                holder.Req_IID.setText(Break[13]);
+            }
+        }catch(Exception e){e.printStackTrace();}
     }
 
     // total number of rows
@@ -173,7 +189,7 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         AppCompatTextView Req_title,Req_Type,Req_name,Req_flat,req_cre_on,req_cre_by,Req_request,Req_status,Req_fdate,Req_tdate
-        ,Req_description,descripFull,vndr_number;
+        ,Req_description,descripFull,vndr_number,Req_uniqueCode,Req_IID;
         AppCompatButton req_call,requestpopup;
 
         ViewHolder(View itemView) {
@@ -193,6 +209,8 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
             vndr_number = itemView.findViewById(R.id.vndr_number);
             req_call = itemView.findViewById(R.id.req_call);
             requestpopup=itemView.findViewById(R.id.btnfrRequestShow);
+            Req_uniqueCode = itemView.findViewById(R.id.Req_uniqueCode);
+            Req_IID = itemView.findViewById(R.id.Req_IID);
 
             requestpopup.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -208,6 +226,8 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
                     String r_fdate = Req_fdate.getText().toString();
                     String r_tdate = Req_tdate.getText().toString();
                     String r_descriptionfull = descripFull.getText().toString();
+                    String r_uniqueCo = Req_uniqueCode.getText().toString();
+                    String r_reqId = Req_IID.getText().toString();
 
                     Intent intent=new Intent(context,RequestPopup.class);
                     intent.putExtra("R_title", r_title);
@@ -221,6 +241,8 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
                     intent.putExtra("R_fdate", r_fdate);
                     intent.putExtra("R_tdate", r_tdate);
                     intent.putExtra("R_descrfull", r_descriptionfull);
+                    intent.putExtra("R_Unique", r_uniqueCo);
+                    intent.putExtra("R_ReqID", r_reqId);
                     context.startActivity(intent);
                 }
             });

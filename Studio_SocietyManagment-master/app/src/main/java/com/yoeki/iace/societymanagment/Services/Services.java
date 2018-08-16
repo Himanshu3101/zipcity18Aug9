@@ -9,13 +9,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
-import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
 
@@ -110,9 +111,16 @@ public class Services extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                PD.dismiss();
+                Toast.makeText(getApplicationContext(), "Something went Wrong :"+error, Toast.LENGTH_SHORT).show();
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         try {
             MyApplication.getInstance().addToReqQueue(req,"BottomService");
         }catch(Exception e){

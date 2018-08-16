@@ -28,6 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -358,6 +359,11 @@ public class vendor_Reg extends AppCompatActivity {
                     Log.w("error in response", "Error: " + error.getMessage());
                 }
             });
+
+            req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
             try {
                 MyApplication.getInstance().addToReqQueue(req,"BottomService");
             }catch(Exception e){
@@ -473,6 +479,11 @@ public class vendor_Reg extends AppCompatActivity {
                     Log.w("error in response", "Error: " + error.getMessage());
                 }
             });
+
+
+            req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             try {
                 MyApplication.getInstance().addToReqQueue(req,"BottomService");
             }catch(Exception e){
@@ -524,6 +535,11 @@ public class vendor_Reg extends AppCompatActivity {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         try {
             MyApplication.getInstance().addToReqQueue(req,"BottomService");
         }catch(Exception e){
@@ -571,7 +587,7 @@ public class vendor_Reg extends AppCompatActivity {
                         Toast.makeText(vendor_Reg.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
                     }else{
                         PD.dismiss();
-                        Toast.makeText(vendor_Reg.this, "Somethng Problem Occured", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(vendor_Reg.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -585,6 +601,11 @@ public class vendor_Reg extends AppCompatActivity {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }

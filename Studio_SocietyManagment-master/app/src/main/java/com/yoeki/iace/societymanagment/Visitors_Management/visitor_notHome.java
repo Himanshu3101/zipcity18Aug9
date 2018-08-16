@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -70,6 +71,7 @@ public class visitor_notHome extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitor_not_home);
 
+        this.setFinishOnTouchOutside(true);
         db = new DBHandler(this);
         Visit_emergencyNo = (EditText) findViewById(R.id.Visit_emergencyNo);
 //        visit_location = (AppCompatTextView) findViewById(R.id.visit_location);
@@ -98,8 +100,8 @@ public class visitor_notHome extends Activity  {
 
 
                     try {
-                        fdate=new SimpleDateFormat("dd-MM-yyyy").parse(from[0]);
-                        tdate=new SimpleDateFormat("dd-MM-yyyy").parse(to[0]);
+                        fdate=new SimpleDateFormat("dd/MM/yyyy").parse(from[0]);
+                        tdate=new SimpleDateFormat("dd/MM/yyyy").parse(to[0]);
 
                         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                         Date d1 = sdf.parse(from[1]);
@@ -108,7 +110,8 @@ public class visitor_notHome extends Activity  {
                         String timegap = String.valueOf(elapsed);
 
                         if(fdate.after(tdate)){
-                            Toast.makeText(visitor_notHome.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
+                            forsubmit();
+//                            Toast.makeText(visitor_notHome.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
                         }
                         if(fdate.before(tdate)){
 //                            Toast.makeText(VisitorsNewRequest.this, "From Date is greater then by To date", Toast.LENGTH_SHORT).show();
@@ -171,7 +174,7 @@ public class visitor_notHome extends Activity  {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                        date_time = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
                         //*************Call Time Picker Here ********************
                         tiemPicker();
                     }
@@ -262,6 +265,7 @@ public class visitor_notHome extends Activity  {
 
     public void forsubmit(){
         PD.show();
+        String FullFromDte = null,FullToDte = null;
         String json_url=(getString(R.string.BASE_URL) + "/ChangeVisitorStatus");
 
         final String Vndr_EM_Contact = Visit_emergencyNo.getText().toString();
@@ -271,10 +275,29 @@ public class visitor_notHome extends Activity  {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String UID = prefs.getString("UserID"," ");
 
+
+        String[] dt = vndr_visitFromdate.split("/");
+        String mnth = dt[0];
+        if(mnth.length()==1){
+            String month = "0"+mnth;
+            FullFromDte = month+"/"+dt[1]+"/"+dt[2];
+        }else{
+            FullFromDte = vndr_visitFromdate;
+        }
+
+        String[] Tot = vndr_visitTodate.split("/");
+        String mnthTo = Tot[0];
+        if(mnthTo.length()==1){
+            String monthl = "0"+mnthTo;
+            FullToDte = monthl+"/"+Tot[1]+"/"+Tot[2];
+        }else{
+            FullToDte = vndr_visitTodate;
+        }
+
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("UserId",UID);
-        params.put("FromDate", vndr_visitFromdate);
-        params.put("ToDate",vndr_visitTodate);
+        params.put("FromDate", FullFromDte);
+        params.put("ToDate",FullToDte);
         params.put("EmergencyContactNo",Vndr_EM_Contact);
         params.put("MemberStatus","N");
 
@@ -309,6 +332,11 @@ public class visitor_notHome extends Activity  {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }
