@@ -271,40 +271,40 @@ public class RequestManagement_Created extends Activity {
 
     public boolean validations() {
         validation = true;
+        String rqst_type = Request_Type.getText().toString();
+        String flt_loc = Flat_Location.getText().toString();
+        String tit = R_Title.getText().toString();
+        String tdte = R_tdate.getText().toString();
+        String fdte = R_fdate.getText().toString();
 
-        if (Request_Type.getText().toString().equals("") && Flat_Location.getText().toString().equals("") &&
-                R_Title.getText().toString().equals("") && R_Description.getText().toString().equals("") &&
-                R_tdate.getText().toString().equals("") && R_fdate.getText().toString().equals(""))
+        if (rqst_type.equals("Select Request Type") && flt_loc.equals("Select Flat Number") && tit.equals("") && tdte.equals("") &&fdte.equals(""))
 
         {
             validation = false;
             Request_Type.setError("Select Request Type");
             Flat_Location.setError("Select Flat Location");
             R_Title.setError("Enter Title");
-            R_Description.setError("Enter Description");
+//            R_Description.setError("Enter Description");
             R_tdate.setError("Enter Date & TIme");
             R_fdate.setError("Enter Date & TIme");
 
 
-        } else if (Request_Type.getText().toString().equals("")) {
+        } else if (rqst_type.equals("Select Request Type")) {
             validation = false;
             Request_Type.setError("Select Request Type");
-        } else if (Flat_Location.getText().toString().equals("")) {
+        } else if (flt_loc.equals("Select Flat Number") ) {
             validation = false;
             Flat_Location.setError("Select Flat Location");
         }
-        else if (R_Title.getText().toString().equals("")) {
+        else if (tit.equals("")) {
             validation = false;
             R_Title.setError("Enter Title");
-//        }else if (R_Description.getText().toString().equals("")) {
-//            validation = false;
-//            R_Description.setError("Enter Description");
         }
-        else if (R_fdate.getText().toString().equals("")) {
+        else if (tdte.equals("")) {
             validation = false;
             Toast.makeText(this, getString(R.string.forValidToast), Toast.LENGTH_SHORT).show();
             R_fdate.setError("Enter Date & TIme");
-        }else if (R_tdate.getText().toString().equals("")) {
+        }else if (fdte.equals("")) {
             validation = false;
             Toast.makeText(this, getString(R.string.forValidToast), Toast.LENGTH_SHORT).show();
             R_tdate.setError("Enter Date & TIme");

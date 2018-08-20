@@ -249,7 +249,7 @@ public class ServiceProvider extends AppCompatActivity {
                                 String Req_ID = loginBData.get(i).req_req_id;
 
                                 String RequestDetails = Req_name+"~"+Req_type+"~"+Req_vndrNme+"~"+Req_unit+"~"+Req_createdOn+"~"+Req_createdBy+"~"+Req_requestNo
-                                        +"~"+Req_status+"~"+Req_fromdte+"~"+Req_todte+"~"+Req_desc+"~"+Req_vendr_mobileNo/*+"~"+Req_uni*/+"~"+Req_ID;
+                                        +"~"+Req_status+"~"+Req_fromdte+"~"+Req_todte+"~"+Req_desc+"~"+Req_vendr_mobileNo+"~"+Req_uniq+"~"+Req_ID;
 
                                 RequestList.add(RequestDetails);
                                 i++;

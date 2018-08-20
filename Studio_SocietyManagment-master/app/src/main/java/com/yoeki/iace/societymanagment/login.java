@@ -121,7 +121,7 @@ public class login extends AppCompatActivity {
 //        Pswd.setText("000000");
 
         Uname.setText("9015032816");
-        Pswd.setText("111111");
+        Pswd.setText("000000");
 
         PD = new ProgressDialog(login.this);
         PD.setMessage("Loading...");

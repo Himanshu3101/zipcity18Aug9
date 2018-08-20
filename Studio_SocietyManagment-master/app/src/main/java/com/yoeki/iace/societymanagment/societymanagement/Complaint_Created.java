@@ -89,6 +89,7 @@ public class Complaint_Created extends Activity {
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Complaint_Type.setText(checkedItem.toString());
                                     PD.dismiss();
+//                                    ((AlertDialog) dialog).setCanceledOnTouchOutside(false);
                                     try {
                                         ComplaintIds = String.valueOf(db.getComplaintListID(checkedItem.toString()));
                                     } catch (Exception e) {
@@ -126,7 +127,7 @@ public class Complaint_Created extends Activity {
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Complaint_Location.setText(checkedItem.toString());
                                     PD.dismiss();
-
+                                    ((AlertDialog) dialog).setCanceledOnTouchOutside(false);
                                     try{
                                         LocatIds = String.valueOf(db.getFlatListID(checkedItem.toString()));
                                     }catch(Exception e){
@@ -135,6 +136,7 @@ public class Complaint_Created extends Activity {
                                 }
                             })
                             .show();
+
                 }catch(Exception e){
                     e.printStackTrace();
                 }
@@ -153,25 +155,24 @@ public class Complaint_Created extends Activity {
     }
     public boolean validations() {
         validation = true;
+        String com_t = Complaint_Type.getText().toString();
+        String com_loc = Complaint_Location.getText().toString();
+        String com_tit = C_Title.getText().toString();
+        if (com_t.equals("Select Complaint Type") && com_loc.equals("Select Flat Location") &&
+                C_Title.getText().toString().equals("")) {
 
-        if (Complaint_Type.getText().toString().equals("") && Complaint_Location.getText().toString().equals("") &&
-                C_Title.getText().toString().equals("") && C_Description.getText().toString().equals(""))
-
-        {
             validation = false;
             Complaint_Type.setError("Select Complaint Type");
-            Complaint_Location.setError("Select Flat Location");
+            Complaint_Location.setError("Select Flat Number");
             C_Title.setError("Enter Title");
-            C_Description.setError("Enter Description");
 
-
-        } else if (Complaint_Type.getText().toString().equals("")) {
+        } else if (com_t.equals("Select Complaint Type") || com_t.equals(null)) {
             validation = false;
             Complaint_Type.setError("Select Complaint Type");
-        } else if (Complaint_Location.getText().toString().equals("")) {
+        } else if (com_loc.equals("Select Flat Number") || com_loc.equals(null)) {
             validation = false;
-            Complaint_Location.setError("Select Flat Location");
-        } else if (C_Title.getText().toString().equals("")) {
+            Complaint_Location.setError("Select Flat Number");
+        } else if (com_tit.equals("") || com_tit.equals(null)) {
             validation = false;
             C_Title.setError("Enter Title");
 //        }else if (C_Description.getText().toString().equals("")) {

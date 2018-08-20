@@ -168,10 +168,18 @@ public class ServiceProviderRecyclerViewAdapter extends RecyclerView.Adapter<Ser
         }catch(Exception e){e.printStackTrace();}
 
         try{
-            if(Break[12].equalsIgnoreCase("null")|| Break[9].equalsIgnoreCase("") || Break[9].equalsIgnoreCase(" ")){
+            if(Break[12].equalsIgnoreCase("null")|| Break[12].equalsIgnoreCase("") || Break[12].equalsIgnoreCase(" ")){
+                holder.verif_code.setText("N/A");
+            }else {
+                holder.verif_code.setText(Break[12]);
+            }
+        }catch(Exception e){e.printStackTrace();}
+
+        try{
+            if(Break[13].equalsIgnoreCase("null")|| Break[13].equalsIgnoreCase("") || Break[13].equalsIgnoreCase(" ")){
                 holder.req_iid.setText("N/A");
             }else {
-                holder.req_iid.setText(Break[12]);
+                holder.req_iid.setText(Break[13]);
             }
         }catch(Exception e){e.printStackTrace();}
     }
@@ -186,7 +194,7 @@ public class ServiceProviderRecyclerViewAdapter extends RecyclerView.Adapter<Ser
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder{
         AppCompatTextView Ser_Req_title,Ser_Req_Type,Ser_Req_name,Ser_Req_flat,Ser_req_cre_on,Ser_req_cre_by,Ser_Req_request,Ser_Req_status
-                ,Ser_Req_fdate,Ser_Req_tdate,Ser_Req_description,req_iid,stat_of_Req;
+                ,Ser_Req_fdate,Ser_Req_tdate,Ser_Req_description,req_iid,stat_of_Req,verif_code;
         AppCompatButton Ser_whole_btnfrRequest,Ser_CallRequest,Ser_AcceptRequest;
         ProgressDialog PD;
         String IDofReq, StatusSEnd, statusSend;
@@ -214,6 +222,7 @@ public class ServiceProviderRecyclerViewAdapter extends RecyclerView.Adapter<Ser
             btn_frame = itemView.findViewById(R.id.btn_frame);
 
             req_iid = itemView.findViewById(R.id.req_iid);
+            verif_code = itemView.findViewById(R.id.verif_code);
 
             Ser_whole_btnfrRequest = itemView.findViewById(R.id.Ser_whole_btnfrRequest);
             Ser_AcceptRequest = itemView.findViewById(R.id.Ser_AcceptRequest);
@@ -233,12 +242,13 @@ public class ServiceProviderRecyclerViewAdapter extends RecyclerView.Adapter<Ser
                         datafrAcceptByService();
                     }else{
                         String idRequestService = req_iid.getText().toString();
+                        String code_service = verif_code.getText().toString();
                         statusSend="R";
 
                         Intent intent=new Intent(context,service_closed.class);
                         intent.putExtra("id_request", idRequestService);
                         intent.putExtra("Status_send", statusSend);
-
+                        intent.putExtra("code", code_service);
                         context.startActivity(intent);
                     }
                 }

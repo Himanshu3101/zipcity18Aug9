@@ -442,6 +442,19 @@
                 android:editable="false"
                 android:textColor="#3e3e3e" />
 
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/verif_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginLeft="20dp"
+                android:typeface="serif"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:editable="false"
+                android:textColor="#3e3e3e" />
+
+
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/Ser_AcceptRequest"
                 android:layout_width="match_parent"

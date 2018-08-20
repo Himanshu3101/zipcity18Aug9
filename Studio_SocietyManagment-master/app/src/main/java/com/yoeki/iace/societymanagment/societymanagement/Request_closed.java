@@ -43,7 +43,7 @@ public class Request_closed extends Activity {
     RatingBar Req_Closed_submit_rating_btn;
     ProgressDialog PD;
 
-    String idReques,feedbackStat;
+    String idReques,feedbackStat = "",fbckstat;
     Boolean validation;
     ArrayList<String> feedbackIDs;
     String feedback[];
@@ -91,11 +91,10 @@ public class Request_closed extends Activity {
                                     ListView lw = ((AlertDialog)dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Req_Closed_submit_feedback.setText(checkedItem.toString());
-                                    if(checkedItem.toString().equals("Satisfy")){
-                                        f=0;
+                                    if(checkedItem.toString().equals("Satisfy")) {
+                                        f = 0;
                                         feedbackStat = "S";
-
-                                    }else{
+                                    }else if(checkedItem.toString().equals("Not Satisfy")){
                                         f=1;
                                         feedbackStat = "N";
                                     }
@@ -116,14 +115,22 @@ public class Request_closed extends Activity {
         Req_Closed_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validations();
-
-                if (validation == true) {
-                    try {
-                        forClosedRequest();
-                    }catch(Exception e){
-                        e.printStackTrace();
+                try {
+                    fbckstat = feedbackStat;
+                    if (fbckstat.equals("") || fbckstat.equals("null")) {
+                        Toast.makeText(Request_closed.this, "Please Select Feedback", Toast.LENGTH_SHORT).show();
+                    } else {
+                        validations();
+                        if (validation == true) {
+                            try {
+                                forClosedRequest();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
         });
@@ -131,26 +138,22 @@ public class Request_closed extends Activity {
 
     public boolean validations() {
         validation = true;
+        String fbck = Req_Closed_submit_feedback.getText().toString();
+        String rson = Req_Closed_submit_reason.getText().toString();
         if(f==0){
-            if (Req_Closed_submit_feedback.getText().toString().equals("")){
+            if (fbck.equals("") || fbck.equals(null)){
                 validation = false;
                 Req_Closed_submit_feedback.setError("Select Feedbacks");
 
-            }else if (Req_Closed_submit_feedback.getText().toString().equals("")) {
+            }else  if (fbck.equals("") || fbck.equals(null)) {
                 validation = false;
                 Req_Closed_submit_feedback.setError("Select Feedbacks");
             }
         }else{
-            if (Req_Closed_submit_feedback.getText().toString().equals("") &&
-                    Req_Closed_submit_reason.getText().toString().equals("")) {
+            if (fbck.equals("") || fbck.equals(null)){
                 validation = false;
                 Req_Closed_submit_feedback.setError("Select Feedbacks");
-                Req_Closed_submit_reason.setError("Enter Reason");
-
-            }else if (Req_Closed_submit_feedback.getText().toString().equals("")) {
-                validation = false;
-                Req_Closed_submit_feedback.setError("Select Feedbacks");
-            }else if (Req_Closed_submit_reason.getText().toString().equals("")) {
+            }else if (rson.equals("") || rson.equals(null)){
                 validation = false;
                 Req_Closed_submit_reason.setError("Enter Reason");
             }

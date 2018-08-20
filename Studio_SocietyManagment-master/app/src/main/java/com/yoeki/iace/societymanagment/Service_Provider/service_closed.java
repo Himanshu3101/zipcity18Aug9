@@ -33,7 +33,7 @@ public class service_closed extends Activity {
     EditText Ser_Prov_Closed_submit_code;
     Button Ser_Prov_Closed_submit;
     ProgressDialog PD;
-    String UID,state,idReques;
+    String UID,state,idReques,coeVerif;
     private ArrayList<String> RequestList;
     Boolean validation;
 
@@ -55,17 +55,21 @@ public class service_closed extends Activity {
         Intent intent= getIntent();
         state = intent.getStringExtra("Status_send");
         idReques = intent.getStringExtra("id_request");
+        coeVerif = intent.getStringExtra("code");
 
         Ser_Prov_Closed_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validations();
-
                 if (validation == true) {
-                    try {
-                        datafrClosedByService();
-                    }catch(Exception e){
-                        e.printStackTrace();
+                    if (Ser_Prov_Closed_submit_code.getText().toString().equals(coeVerif)){
+                        try {
+                            datafrClosedByService();
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }else{
+                        Toast.makeText(service_closed.this, "Verification Code is Incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

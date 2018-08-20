@@ -11,6 +11,7 @@
     <string name="toDateTImeTitle">Date &amp; Time to*</string>
     <string name="forValidToast">Date &amp; Time</string>
     <string name="BASE_URL">http://192.168.1.242:100/service1.svc</string>
+    <!--<string name="BASE_URL">http://192.168.1.242:100/service1.svc</string>-->
 
     <string name="firebase_cloud_messaging_token"></string>
 
