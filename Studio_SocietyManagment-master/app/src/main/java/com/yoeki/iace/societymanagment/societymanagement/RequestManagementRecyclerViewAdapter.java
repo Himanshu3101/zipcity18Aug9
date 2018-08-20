@@ -212,6 +212,8 @@ public class RequestManagementRecyclerViewAdapter extends RecyclerView.Adapter<R
             Req_uniqueCode = itemView.findViewById(R.id.Req_uniqueCode);
             Req_IID = itemView.findViewById(R.id.Req_IID);
 
+//            Req_title.setPaintFlags(Req_title.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
             requestpopup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

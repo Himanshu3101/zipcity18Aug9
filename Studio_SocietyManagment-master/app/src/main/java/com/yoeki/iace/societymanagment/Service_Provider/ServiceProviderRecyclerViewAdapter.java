@@ -189,7 +189,7 @@ public class ServiceProviderRecyclerViewAdapter extends RecyclerView.Adapter<Ser
                 ,Ser_Req_fdate,Ser_Req_tdate,Ser_Req_description,req_iid,stat_of_Req;
         AppCompatButton Ser_whole_btnfrRequest,Ser_CallRequest,Ser_AcceptRequest;
         ProgressDialog PD;
-        String IDofReq;
+        String IDofReq, StatusSEnd, statusSend;
         View div;
         FrameLayout btn_frame;
         private ArrayList<String> RequestList;
@@ -226,28 +226,68 @@ public class ServiceProviderRecyclerViewAdapter extends RecyclerView.Adapter<Ser
             Ser_AcceptRequest.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    datafrAcceptByService();
+                    StatusSEnd = stat_of_Req.getText().toString();
+
+                    if(StatusSEnd.equals("Accept")){
+                        statusSend="A";
+                        datafrAcceptByService();
+                    }else{
+                        String idRequestService = req_iid.getText().toString();
+                        statusSend="R";
+
+                        Intent intent=new Intent(context,service_closed.class);
+                        intent.putExtra("id_request", idRequestService);
+                        intent.putExtra("Status_send", statusSend);
+
+                        context.startActivity(intent);
+                    }
                 }
             });
 
             Ser_whole_btnfrRequest.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String ser_r_title = Ser_Req_title.getText().toString();
+                    String ser_r_type = Ser_Req_Type.getText().toString();
+                    String ser_r_name = Ser_Req_name.getText().toString();
+                    String ser_r_flat = Ser_Req_flat.getText().toString();
+                    String ser_r_createdon = Ser_req_cre_on.getText().toString();
+                    String ser_r_createdby = Ser_req_cre_by.getText().toString();
+                    String ser_r_requestno = Ser_Req_request.getText().toString();
+                    String ser_r_status = Ser_Req_status.getText().toString();
+                    String ser_r_fdate = Ser_Req_fdate.getText().toString();
+                    String ser_r_tdate = Ser_Req_tdate.getText().toString();
+                    String ser_r_description = Ser_Req_description.getText().toString();
+                    String ser_r_stat = stat_of_Req.getText().toString();
 
+                    Intent intent=new Intent(context,Service_provider_Popup.class);
+                    intent.putExtra("ser_R_title", ser_r_title);
+                    intent.putExtra("ser_R_type", ser_r_type);
+                    intent.putExtra("ser_R_name", ser_r_name);
+                    intent.putExtra("ser_R_flat", ser_r_flat);
+                    intent.putExtra("ser_R_createdon", ser_r_createdon);
+                    intent.putExtra("ser_R_createdby", ser_r_createdby);
+                    intent.putExtra("ser_R_requestno", ser_r_requestno);
+                    intent.putExtra("ser_R_status", ser_r_status);
+                    intent.putExtra("ser_R_fdate", ser_r_fdate);
+                    intent.putExtra("ser_R_tdate", ser_r_tdate);
+                    intent.putExtra("ser_R_descrfull", ser_r_description);
+                    intent.putExtra("ser_R_state", ser_r_stat);
+                    context.startActivity(intent);
                 }
             });
         }
 
         public void datafrAcceptByService(){
             PD.show();
-            String  json_url, statusSend;
+            String  json_url;
             HashMap<String, String> params;
-            String StatusSEnd = stat_of_Req.getText().toString();
-            if(StatusSEnd.equals("Accept")){
-                statusSend="A";
-            }else{
-                statusSend="R";
-            }
+            StatusSEnd = stat_of_Req.getText().toString();
+//            if(StatusSEnd.equals("Accept")){
+//                statusSend="A";
+//            }else{
+//                statusSend="R";
+//            }
             IDofReq = req_iid.getText().toString();
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             String UID = prefs.getString("UserID"," ");

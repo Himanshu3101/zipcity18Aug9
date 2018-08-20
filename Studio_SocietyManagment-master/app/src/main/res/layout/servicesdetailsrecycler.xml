@@ -11,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/popupbackground">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -55,21 +57,29 @@
                     android:layout_marginTop="5dp">
 
                     <android.support.v7.widget.AppCompatImageView
-                        android:layout_width="13dp"
-                        android:layout_height="13dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/man_icon"/>
 
                     <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/Serv_name"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="07dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                        android:layout_marginTop="02dp"
+                        android:textStyle="bold"
                     android:textSize="14dp"
                     android:fontFamily="@font/opensans_light"
-                    android:textColor="#3e3e3e"/>
+                    android:textColor="#096a75"/>
 
                 </android.support.v7.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#096a75"
+                    android:layout_marginTop="05dp"/>
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -78,15 +88,16 @@
                     android:layout_marginTop="5dp">
 
                     <android.support.v7.widget.AppCompatImageView
-                        android:layout_width="13dp"
-                        android:layout_height="13dp"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="3dp"
                         android:background="@drawable/hand_icon"/>
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/reg_on"
-                        android:layout_marginLeft="20dp"
+                       android:layout_marginTop="03dp"
+                        android:layout_marginLeft="05dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="13dp"
@@ -154,7 +165,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:layout_marginTop="5dp">
 
             <android.support.v7.widget.AppCompatImageButton
                 android:layout_width="25dp"
@@ -195,12 +207,12 @@
 
         </FrameLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="#d3d3d3"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1.5dp"-->
+            <!--android:background="#d3d3d3"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"/>-->
 
     </android.support.v7.widget.LinearLayoutCompat>
 

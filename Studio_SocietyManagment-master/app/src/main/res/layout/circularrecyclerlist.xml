@@ -4,7 +4,11 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_marginTop="10dp">
+    android:background="@drawable/popupbackground"
+    android:layout_marginRight="6dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="5dp">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -153,11 +157,11 @@
             android:background="@color/transparent"/>
     </FrameLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#d3d3d3"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#d3d3d3"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"/>-->
 
 </android.support.v7.widget.LinearLayoutCompat>

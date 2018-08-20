@@ -39,7 +39,7 @@
             android:textStyle="bold"
             android:textColor="#096a75"
             android:editable="false"
-            android:text="Complaint Type"/>
+            android:text="Complaint Type*"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
             android:textStyle="bold"
             android:textColor="#096a75"
             android:editable="false"
-            android:text="Flat Location"/>
+            android:text="Flat Number*"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_gravity="left"
                 android:textSize="12dp"
                 android:fontFamily="@font/opensans_light"
-                android:text="Select Flat Location"
+                android:text="Select Flat Number"
                 android:paddingLeft="12dp"
                 android:paddingTop="08dp"
                 android:textColor="#3e3e3e"
@@ -191,7 +191,7 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:id="@+id/description"
-            android:layout_height="36dp"
+            android:layout_height="56dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -204,10 +204,11 @@
                 android:layout_height="match_parent"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textColorHint="#757575"
-                android:hint="Enter Request Title"
+                android:hint="Enter Complaint Description"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:textColor="#3e3e3e"
+                android:maxLines="3"
                 android:layout_gravity="left"
                 android:textSize="14dp"
                 android:fontFamily="@font/opensans_light"

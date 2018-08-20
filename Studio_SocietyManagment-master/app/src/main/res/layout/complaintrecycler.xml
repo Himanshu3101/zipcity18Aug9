@@ -2,16 +2,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#f7f7f7"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
-   android:layout_marginBottom="10dp">
+    android:layout_height="165dp"
+    android:layout_marginBottom="10dp"
+    android:background="#f7f7f7">
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/popupbackground">
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/com_title"
@@ -21,7 +23,15 @@
             android:textSize="15dp"
             android:fontFamily="@font/opensans_bold"
             android:textStyle="bold"
-            android:textColor="#096a75" />
+            android:textColor="#096a75"
+            android:inputType="textCapSentences"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#096a75"
+            android:layout_marginTop="10dp"
+            />
 
         <LinearLayout
            android:layout_width="match_parent"
@@ -31,15 +41,20 @@
            android:layout_marginRight="7dp"
            android:layout_marginTop="5dp">
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               android:layout_weight=".1">
+           <!--<LinearLayout-->
+               <!--android:layout_width="match_parent"-->
+               <!--android:layout_height="wrap_content"-->
+               <!--android:orientation="horizontal"-->
+               <!--android:layout_weight=".1">-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1">
 
                <android.support.v7.widget.AppCompatImageView
-                   android:layout_width="12dp"
-                   android:layout_height="12dp"
+                   android:layout_width="11dp"
+                   android:layout_height="11dp"
                    android:layout_marginTop="3dp"
                    android:background="@drawable/created_on"/>
 
@@ -49,33 +64,47 @@
                    android:layout_height="wrap_content"
                    android:text="Createdon"
                    android:fontFamily="@font/opensans_light"
-                   android:layout_marginLeft="13dp"
+                   android:layout_marginLeft="15dp"
                    android:textColor="#3e3e3e"
                    android:textSize="12dp" />
-           </LinearLayout>
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               android:layout_weight=".1"
-               android:layout_marginLeft="5dp">
+
+            </RelativeLayout>
+           <!--</LinearLayout>-->
+
+           <!--<LinearLayout-->
+               <!--android:layout_width="match_parent"-->
+               <!--android:layout_height="wrap_content"-->
+               <!--android:orientation="horizontal"-->
+               <!--android:layout_weight=".1"-->
+               <!--android:layout_marginLeft="5dp">-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".15">
 
                <android.support.v7.widget.AppCompatImageView
+                   android:id="@+id/img"
                    android:layout_width="13dp"
                    android:layout_height="13dp"
                    android:layout_marginTop="3dp"
+
                    android:background="@drawable/created_by"/>
 
                <android.support.v7.widget.AppCompatTextView
                    android:id="@+id/com_cre_by"
+                   android:layout_alignLeft="@+id/img"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="CreatedBy"
                    android:fontFamily="@font/opensans_light"
-                   android:layout_marginLeft="8dp"
+                   android:layout_marginLeft="15dp"
+                   android:textAlignment="textEnd"
                    android:textColor="#3e3e3e"
                    android:textSize="12dp" />
-           </LinearLayout>
+
+            </RelativeLayout>
+           <!--</LinearLayout>-->
 
        </LinearLayout>
         <LinearLayout
@@ -86,10 +115,15 @@
             android:layout_marginRight="7dp"
             android:layout_marginTop="5dp">
 
-            <LinearLayout
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_weight=".1">-->
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_weight=".1">
 
                 <android.support.v7.widget.AppCompatImageView
@@ -104,16 +138,24 @@
                     android:layout_height="wrap_content"
                     android:text="flatno"
                     android:fontFamily="@font/opensans_light"
-                    android:layout_marginLeft="13dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="1dp"
                     android:textColor="#3e3e3e"
                     android:textSize="12dp" />
-            </LinearLayout>
-            <LinearLayout
+
+            </RelativeLayout>
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_weight=".1"-->
+                <!--android:layout_marginLeft="5dp">-->
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight=".1"
-                android:layout_marginLeft="5dp">
+                android:layout_weight=".15">
 
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="13dp"
@@ -125,12 +167,18 @@
                     android:id="@+id/com_complaintno"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="complaintno"
+                    android:text="Complaintno"
                     android:fontFamily="@font/opensans_light"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="02dp"
                     android:textColor="#3e3e3e"
                     android:textSize="12dp" />
-            </LinearLayout>
+            <!--</LinearLayout>-->
+            </RelativeLayout>
+
+
+
+
 
         </LinearLayout>
         <LinearLayout
@@ -153,7 +201,8 @@
                     android:layout_height="wrap_content"
                     android:text="asdfga"
                     android:fontFamily="@font/opensans_light"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="03dp"
+                    android:layout_marginTop="1dp"
                     android:textColor="#3e3e3e"
                     android:textSize="12dp"/>
 
@@ -168,24 +217,28 @@
                     android:textColor="#3e3e3e"
                     android:textSize="12dp"/>
             </LinearLayout>
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginTop="5dp">
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginLeft="11dp"
                 android:layout_weight=".1">
 
                 <android.support.v7.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="2dp"
                     android:background="@drawable/status"/>
 
                 <android.support.v7.widget.AppCompatTextView
@@ -193,7 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Accepted"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginLeft="5dp"
                     android:textColor="#3e3e3e"
                     android:fontFamily="@font/opensans_light"
@@ -221,17 +274,19 @@
                     android:fontFamily="@font/opensans_light"
                     android:textSize="12dp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
                 android:layout_weight=".1">
 
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="13dp"
                     android:layout_marginLeft="10dp"
                     android:layout_height="13dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/hand_icon"/>
 
                 <android.support.v7.widget.AppCompatTextView
@@ -239,12 +294,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fateh singh"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginLeft="5dp"
                     android:textColor="#3e3e3e"
                     android:fontFamily="@font/opensans_light"
                     android:textSize="12dp"/>
             </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -255,7 +312,7 @@
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/man_icon"/>
 
                 <android.support.v7.widget.AppCompatTextView
@@ -264,7 +321,7 @@
                     android:layout_height="wrap_content"
                     android:text="Carpenter"
                     android:textColor="#3e3e3e"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/opensans_light"
                     android:textSize="12dp"/>
@@ -272,15 +329,13 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="#d3d3d3"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+
+
+
 
     </LinearLayout>
+
+
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btnfrComplaintShow"

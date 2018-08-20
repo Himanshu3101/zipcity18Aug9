@@ -11,43 +11,70 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <FrameLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="@drawable/spinner_border_color">
+            android:orientation="horizontal"
+            android:background="@drawable/popupbackground"
+            android:layout_margin="05dp">
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/requesttypeData"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:textSize="15dp"
-                android:textColorHint="#7a7a7a"
-                android:typeface="serif"
-                android:paddingLeft="12dp"
-                android:paddingTop="11dp"
-                android:textColor="#000"
-                android:background="@drawable/spinner_border_color"/>
+                android:id="@+id/srch_req_by_type"
+                android:textSize="17dp"
+                android:layout_weight=".1"
+                android:layout_marginRight="20dp"
+                android:background="#00000000"
+                android:popupTheme="@android:style/ThemeOverlay.Material.Light"/>
 
             <android.support.v7.widget.AppCompatImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="08dp"
-                android:layout_marginRight="10dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="05dp"
                 android:layout_gravity="end"
-                android:background="@drawable/search_icon"
-                />
+                android:background="@drawable/search_icon"/>
 
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                android:id="@+id/srch_req_by_type"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:background="@drawable/spinner_border_color">-->
+
+            <!--<android.support.v7.widget.AppCompatTextView-->
+                <!--android:id="@+id/requesttypeData"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColorHint="#7a7a7a"-->
+                <!--android:typeface="serif"-->
+                <!--android:paddingLeft="12dp"-->
+                <!--android:paddingTop="11dp"-->
+                <!--android:textColor="#000"-->
+                <!--android:background="@drawable/spinner_border_color"/>-->
+
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="08dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_gravity="end"-->
+                <!--android:background="@drawable/search_icon"-->
+                <!--/>-->
+
+            <!--<com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+                <!--android:id="@+id/srch_req_by_type"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:textColor="#000"-->
+                <!--android:textSize="15dp"/>-->
 
 
-        </FrameLayout>
+        <!--</FrameLayout>-->
 
         <android.support.v7.widget.RecyclerView
             android:layout_marginTop="5dp"

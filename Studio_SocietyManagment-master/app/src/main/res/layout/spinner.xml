@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:background="@drawable/spinner_border_color">-->
+
+    <android.support.v7.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/complainttype"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:textSize="15dp"
+        android:hint="Search by Flat Number"
+        android:textColorHint="#7a7a7a"
+        android:typeface="serif"
+        android:paddingLeft="12dp"
+        android:textColor="#000" />
+
+    <!--<android.support.v7.widget.AppCompatImageButton -->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginTop="08dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_gravity="end"-->
+        <!--android:background="@drawable/search_icon"/>-->
+
+    <!--</FrameLayout>-->

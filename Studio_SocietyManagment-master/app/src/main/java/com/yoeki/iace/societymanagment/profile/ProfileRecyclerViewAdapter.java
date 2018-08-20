@@ -156,7 +156,11 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
                             String msg = loginData.getString("message");
                             if (resStatus.equalsIgnoreCase("Success")) {
                                 String Status = loginData.getString("UserStatus");
-                                mem_status.setText(Status);
+                                if(Status.equals("ACTIVE")){
+                                    mem_status.setText("Deactive");
+                                }else{
+                                    mem_status.setText("Active");
+                                }
                                 PD.dismiss();
                             }else{
                                 PD.dismiss();

@@ -144,7 +144,9 @@ public class Complaint_Created extends Activity {
             @Override
             public void onClick(View v) {
                 validations();
-                forSumitionNewComplaintdata();
+                if (validation == true) {
+                    forSumitionNewComplaintdata();
+                }
 
             }
         });
@@ -169,12 +171,12 @@ public class Complaint_Created extends Activity {
         } else if (Complaint_Location.getText().toString().equals("")) {
             validation = false;
             Complaint_Location.setError("Select Flat Location");
-        }else if (C_Title.getText().toString().equals("")) {
+        } else if (C_Title.getText().toString().equals("")) {
             validation = false;
             C_Title.setError("Enter Title");
-        }else if (C_Description.getText().toString().equals("")) {
-            validation = false;
-            C_Description.setError("Enter Description");
+//        }else if (C_Description.getText().toString().equals("")) {
+//            validation = false;
+//            C_Description.setError("Enter Description");
         }
         return validation;
     }

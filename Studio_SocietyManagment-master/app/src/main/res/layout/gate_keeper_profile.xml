@@ -7,28 +7,46 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="#096a75">
+        android:background="#096a75 ">
 
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/gatekeeper_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="05dp"
-            android:layout_marginTop="08dp"
+            android:layout_marginTop="07dp"
             android:background="@drawable/back" />
 
-        <TextView
-            android:text="Gate Keeper Profile"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <android.support.v7.widget.AppCompatTextView
+
+            android:text="Profile"
             android:textAlignment="center"
             android:textStyle="bold"
             android:textColor="#fff"
             android:paddingRight="50dp"
-            android:layout_marginTop="13dp"/>
+            android:layout_marginTop="13dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="15dp">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/gate_changepassword"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="04dp"
+                android:background="@drawable/change_password_icon"/>
+
+        </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
+
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -36,6 +36,10 @@ public class Alloted_Unit extends Activity {
     RecyclerView UnitrecyclerView;
     ProgressDialog PD;
 
+    ChargeRecyclerViewAdapter cadapter;
+    private ArrayList<String> ChargesList;
+    RecyclerView ChargesrecyclerView;
+    List<loginObject>  ChargesBData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,8 @@ public class Alloted_Unit extends Activity {
 
 
         this.setFinishOnTouchOutside(true);
-       UnitrecyclerView = findViewById(R.id.allotedunit);
+         UnitrecyclerView = findViewById(R.id.allotedunit);
+        ChargesrecyclerView = findViewById(R.id.charges);
 
         PD = new ProgressDialog(Alloted_Unit.this);
         PD.setMessage("Loading...");
@@ -86,12 +91,15 @@ public class Alloted_Unit extends Activity {
             public void onResponse(JSONObject response) {
                 JSONArray UnitDetailArray = null;
                 UnitList = new ArrayList<>();
+                ChargesList=new ArrayList<>();
+
                 try {
                     JSONObject loginData = new JSONObject(String.valueOf(response));
                     String resStatus = loginData.getString("status");
                     if (resStatus.equalsIgnoreCase("Success")) {
+
+                        //  Alloted unit Details
                         try {
-//                           unit Details
                             UnitDetailArray = response.getJSONArray("listAssignUnits");
                             UnitBData = new ArrayList<>();
                             for (int i = 0; i < UnitDetailArray.length();) {
@@ -112,6 +120,29 @@ public class Alloted_Unit extends Activity {
                         }catch(Exception e){
                             e.printStackTrace();
                         }
+//charges details
+//                        try {
+//                            UnitDetailArray = response.getJSONArray("listAssignUnits");
+//                            ChargesBData = new ArrayList<>();
+//                            for (int i = 0; i < UnitDetailArray.length();) {
+//                                JSONObject ChargesDetailJsonData = UnitDetailArray.getJSONObject(i);
+//                                loginObject loginObject_recycler = new loginObject();
+//
+//                                loginObject_recycler.Charges_Type = ChargesDetailJsonData.getString("NoOfCount");
+//                                loginObject_recycler.Charges_Amount = ChargesDetailJsonData.getString("UnitStatus");
+//
+//                                ChargesBData.add(loginObject_recycler);
+//                                String CH_TYPE = ChargesBData.get(i).Charges_Type;
+//                                String CH_AMOUNT = ChargesBData.get(i).Charges_Amount;
+//
+//                                String ChargesDetails = CH_TYPE+"&"+CH_AMOUNT;
+//                                ChargesList.add(ChargesDetails);
+//                                i++;
+//                            }
+//                        }catch(Exception e){
+//                            e.printStackTrace();
+//                        }
+
                         recycler();
                         PD.dismiss();
                     }else{
@@ -132,9 +163,24 @@ public class Alloted_Unit extends Activity {
     }
 
     public void recycler(){
-        UnitrecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        uadapter = new AllotedUnitRecyclerViewAdapter(this, UnitList);
-        UnitrecyclerView.setAdapter(uadapter);
+
+        try {
+            UnitrecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            uadapter = new AllotedUnitRecyclerViewAdapter(this, UnitList);
+            UnitrecyclerView.setAdapter(uadapter);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            ChargesrecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            cadapter = new ChargeRecyclerViewAdapter(this, ChargesList);
+            ChargesrecyclerView.setAdapter(cadapter);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 }
 

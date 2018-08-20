@@ -4,23 +4,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f7f7f7">
+    android:background="@drawable/popupbackground"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp">
+        android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp">
+            android:orientation="horizontal">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -258,7 +256,15 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="5dp">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+             android:background="@drawable/calling"
+            android:layout_gravity="center"
+            android:layout_marginRight="60dp"/>
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/text"
@@ -271,12 +277,6 @@
             android:text="Call to Member"
             android:textColor="#3e3e3e" />
 
-        <!--<android.support.v7.widget.AppCompatImageButton-->
-            <!--android:layout_width="25dp"-->
-            <!--android:layout_height="25dp"-->
-            <!--android:layout_marginRight="@+id/text"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:background="@drawable/calling"/>-->
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/Visit_number"
@@ -299,12 +299,12 @@
 
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:background="#d3d3d3"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1.5dp"-->
+        <!--android:background="#d3d3d3"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_marginRight="5dp"/>-->
 
 </android.support.v7.widget.LinearLayoutCompat>
 

@@ -92,12 +92,11 @@ public class visitor_notHome extends Activity  {
             @Override
             public void onClick(View v) {
                 validations();
-
                 if (validation == true) {
-                    Date fdate,tdate;
+                    Date fdate;
+                    Date tdate;
                     String[] from = Com_fromDate.split("\\s+");
                     String[] to = Com_toDate.split("\\s+");
-
 
                     try {
                         fdate=new SimpleDateFormat("dd/MM/yyyy").parse(from[0]);
@@ -110,31 +109,21 @@ public class visitor_notHome extends Activity  {
                         String timegap = String.valueOf(elapsed);
 
                         if(fdate.after(tdate)){
-                            forsubmit();
-//                            Toast.makeText(visitor_notHome.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
-                        }
-                        if(fdate.before(tdate)){
+                            Toast.makeText(visitor_notHome.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
+                        }else if(fdate.before(tdate)){
 //                            Toast.makeText(VisitorsNewRequest.this, "From Date is greater then by To date", Toast.LENGTH_SHORT).show();
-                            if (!timegap.contains("-")){
-                                try {
-                                    forsubmit();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }else{
+                            forsubmit();
+                        }else if(fdate.equals(tdate)){
+                            if (timegap.contains("-")){
                                 Toast.makeText(visitor_notHome.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        if(fdate.equals(tdate)){
-//                            Toast.makeText(VisitorsNewRequest.this, "From Date is equal to To date", Toast.LENGTH_SHORT).show();
-                            if (!timegap.contains("-")){
+                            }else if(timegap.equals("0")){
+                                Toast.makeText(visitor_notHome.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
+                            }else{
                                 try {
                                     forsubmit();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                            }else{
-                                Toast.makeText(visitor_notHome.this, "Please Enter Correct time", Toast.LENGTH_SHORT).show();
                             }
                         }
                     } catch (ParseException e) {

@@ -170,6 +170,7 @@ public class VisitorsNewRequest extends Activity {
         New_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                New_submit.setEnabled(false);
                 validations();
                 if (validation == true) {
                     Date fdate;
@@ -188,8 +189,8 @@ public class VisitorsNewRequest extends Activity {
                         String timegap = String.valueOf(elapsed);
 
 
-                        SimpleDateFormat asdf = new SimpleDateFormat("dd/MM/yyyy_HH:mm");
-                        String currentDateandTime = asdf.format(new Date());
+//                        SimpleDateFormat asdf = new SimpleDateFormat("dd/MM/yyyy_HH:mm");
+//                        String currentDateandTime = asdf.format(new Date());
 
                         if(fdate.after(tdate)){
                             Toast.makeText(VisitorsNewRequest.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
@@ -213,7 +214,7 @@ public class VisitorsNewRequest extends Activity {
                         e.printStackTrace();
                     }
                 }
-
+                New_submit.setEnabled(true);
             }
         });
 
@@ -294,9 +295,7 @@ public class VisitorsNewRequest extends Activity {
         if (NvisitorR.getText().toString().equals("") && N_Flat_location.getText().toString().equals("") &&
         N_fdate.getText().toString().equals("") && N_tdate.getText().toString().equals("") &&
         N_Name.getText().toString().equals("") && N_Enter_number.getText().toString().equals("")&&
-        N_address.getText().toString().equals(""))
-
-        {
+        N_address.getText().toString().equals("")) {
             validation = false;
             NvisitorR.setError("Select Visitor Type");
             N_Flat_location.setError("Select Flat Location");
@@ -324,10 +323,11 @@ public class VisitorsNewRequest extends Activity {
         }else if (N_Enter_number.getText().toString().equals("")) {
             validation = false;
             N_Enter_number.setError("Enter Visitor Number");
-        }else if (N_address.getText().toString().equals("")) {
-            validation = false;
-            N_address.setError("Enter Visitor Address");
         }
+//        else if (N_address.getText().toString().equals("")) {
+//            validation = false;
+//            N_address.setError("Enter Visitor Address");
+//        }
         return validation;
     }
 
@@ -393,9 +393,11 @@ public class VisitorsNewRequest extends Activity {
                             startActivity(intent);
                         }else{
                             PD.dismiss();
+                            New_submit.setEnabled(true);
                             Toast.makeText(VisitorsNewRequest.this, mess, Toast.LENGTH_SHORT).show();
                         }
                 } catch (Exception e) {
+                    New_submit.setEnabled(true);
                     e.printStackTrace();
                 }
             }
@@ -403,6 +405,7 @@ public class VisitorsNewRequest extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 PD.dismiss();
+                New_submit.setEnabled(true);
                     Toast.makeText(VisitorsNewRequest.this, "Something Went Wrong...Please try after sometime", Toast.LENGTH_SHORT).show();
                     Log.w("error in response", "Error: " + error.getMessage());
             }

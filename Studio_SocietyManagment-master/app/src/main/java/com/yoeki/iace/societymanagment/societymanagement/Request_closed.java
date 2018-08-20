@@ -83,7 +83,7 @@ public class Request_closed extends Activity {
             public void onClick(View v) {
                 try {
                     new AlertDialog.Builder(Request_closed.this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-                            .setTitle("Select Visitor Type")
+                            .setTitle("Select Feedback")
                             .setSingleChoiceItems(feedback, 0, null)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {

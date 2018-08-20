@@ -54,6 +54,8 @@ public class ComplaintManagement extends Fragment {
     static List<String> complainttList;
     static ArrayList<String> ComplaintListArray;
 
+    private boolean _isOpened;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -62,6 +64,10 @@ public class ComplaintManagement extends Fragment {
         fab = (FloatingActionButton) getView().findViewById(R.id.fab);
         complainttype = (AppCompatTextView)getView().findViewById(R.id.complainttype);
         srch_com_by_type = (Spinner)getView().findViewById(R.id.srch_com_by_type);
+
+//        srch_com_by_type.setBackgroundResource(R.drawable.popupbackground);
+//        srch_com_by_type.setForegroundTintList( );
+
 
         ComplaintListArray = new ArrayList<>();
         PD = new ProgressDialog(getActivity());
@@ -78,7 +84,7 @@ public class ComplaintManagement extends Fragment {
             e.printStackTrace();
         }
 
-        compl_lst_Name = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, ComplaintListArray);
+        compl_lst_Name =new ArrayAdapter<String>(getContext(),R.layout.spinner, ComplaintListArray);
         compl_lst_Name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         srch_com_by_type.setAdapter(compl_lst_Name);
         compl_lst_Name.insert("--Search by Type--", 0);
@@ -97,7 +103,7 @@ public class ComplaintManagement extends Fragment {
 
                         if (listName.equals(client_Selection)) {
                             try{
-                                complainttype.setText(listName);
+//                                complainttype.setText(listName);
                                 Complaintids = String.valueOf(db.getComplaintListID(listName));
                                 StatID=1;
 
@@ -108,28 +114,29 @@ public class ComplaintManagement extends Fragment {
                     }
                     datafrcomplaint();
                 }else{
-                    complainttype.setText("--Search by Type--");
+                    datafrcomplaint();
+//                    complainttype.setText("--Search by Type--");
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
         fab.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplication(), Complaint_Created.class);
                 startActivity(intent);
-
             }
         });
-        datafrcomplaint();
+            datafrcomplaint();
 //        ComplaintList = new ArrayList<>();
-
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -225,7 +232,7 @@ public class ComplaintManagement extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 PD.dismiss();
-                Toast.makeText(getContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went Wrong "+error, Toast.LENGTH_SHORT).show();
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });

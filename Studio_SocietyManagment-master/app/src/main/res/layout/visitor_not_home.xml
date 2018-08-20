@@ -37,7 +37,7 @@
             android:textStyle="bold"
             android:textColor="#096a75"
             android:editable="false"
-            android:text="Enter Emergency contact"/>
+            android:text="Enter Emergency contact*"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -53,6 +53,7 @@
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:paddingLeft="12dp"
+                android:maxLength="12"
                 android:paddingRight="12dp"
                 android:textColor="#3e3e3e"
                 android:textSize="14sp"

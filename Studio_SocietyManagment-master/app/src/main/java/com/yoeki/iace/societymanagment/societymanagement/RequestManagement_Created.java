@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -177,29 +178,20 @@ public class RequestManagement_Created extends Activity {
 
                         if(fdate.after(tdate)){
                             Toast.makeText(RequestManagement_Created.this, "From Date not less then by To date", Toast.LENGTH_SHORT).show();
-                        }
-                        if(fdate.before(tdate)){
+                        }else if(fdate.before(tdate)){
 //                            Toast.makeText(VisitorsNewRequest.this, "From Date is greater then by To date", Toast.LENGTH_SHORT).show();
-                            if (!timegap.contains("-")){
-                                try {
-                                    forSumitionNewRequestdata();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }else{
+                            forSumitionNewRequestdata();
+                        }else if(fdate.equals(tdate)){
+                            if (timegap.contains("-")){
                                 Toast.makeText(RequestManagement_Created.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        if(fdate.equals(tdate)){
-//                            Toast.makeText(VisitorsNewRequest.this, "From Date is equal to To date", Toast.LENGTH_SHORT).show();
-                            if (!timegap.contains("-")){
+                            }else if(timegap.equals("0")){
+                                Toast.makeText(RequestManagement_Created.this, "Pease Enter Correct time", Toast.LENGTH_SHORT).show();
+                            }else{
                                 try {
                                     forSumitionNewRequestdata();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                            }else{
-                                Toast.makeText(RequestManagement_Created.this, "Please Enter Correct time", Toast.LENGTH_SHORT).show();
                             }
                         }
                     } catch (ParseException e) {
@@ -300,17 +292,21 @@ public class RequestManagement_Created extends Activity {
         } else if (Flat_Location.getText().toString().equals("")) {
             validation = false;
             Flat_Location.setError("Select Flat Location");
-        }else if (R_Title.getText().toString().equals("")) {
+        }
+        else if (R_Title.getText().toString().equals("")) {
             validation = false;
             R_Title.setError("Enter Title");
-        }else if (R_Description.getText().toString().equals("")) {
+//        }else if (R_Description.getText().toString().equals("")) {
+//            validation = false;
+//            R_Description.setError("Enter Description");
+        }
+        else if (R_fdate.getText().toString().equals("")) {
             validation = false;
-            R_Description.setError("Enter Description");
-        }else if (R_fdate.getText().toString().equals("")) {
-            validation = false;
+            Toast.makeText(this, getString(R.string.forValidToast), Toast.LENGTH_SHORT).show();
             R_fdate.setError("Enter Date & TIme");
         }else if (R_tdate.getText().toString().equals("")) {
             validation = false;
+            Toast.makeText(this, getString(R.string.forValidToast), Toast.LENGTH_SHORT).show();
             R_tdate.setError("Enter Date & TIme");
         }
         return validation;
@@ -390,6 +386,12 @@ public class RequestManagement_Created extends Activity {
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 }

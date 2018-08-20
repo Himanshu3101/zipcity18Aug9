@@ -104,10 +104,12 @@ public class GateKeeper extends AppCompatActivity {
 
                     case R.id.helpline:
                         Intent intent=new Intent(GateKeeper.this,HelplineNo.class);
+                        intent.putExtra("fromHelpline","GateKeeper");
                         startActivity(intent);
                         break;
                     case R.id.rules:
                         Intent intent1=new Intent(GateKeeper.this,Rules.class);
+                        intent1.putExtra("fromRules","GateKeeper");
                         startActivity(intent1);
                         break;
                     case R.id.share:

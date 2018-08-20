@@ -21,6 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
+import com.yoeki.iace.societymanagment.GateKeeper.GateKeeperProfile;
+import com.yoeki.iace.societymanagment.Service_Provider.ServiceProvider;
+import com.yoeki.iace.societymanagment.Service_Provider.ServiceProviderProfile;
 import com.yoeki.iace.societymanagment.profile.Profile;
 
 import org.json.JSONException;
@@ -38,11 +41,14 @@ public class ChangePassword extends Activity {
     DBHandler dbHandler;
     AppCompatButton Submit;
     Boolean validation;
+    String tochangePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
+        this.setFinishOnTouchOutside(true);
+
         oldpass = (EditText) findViewById(R.id.oldpass);
         newpass = (EditText) findViewById(R.id.newpass);
         confpass = (EditText) findViewById(R.id.confpass);
@@ -53,6 +59,9 @@ public class ChangePassword extends Activity {
         PD = new ProgressDialog(ChangePassword.this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
+
+        Intent intent= getIntent();
+        tochangePassword = intent.getStringExtra("frompassword");
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,8 +118,18 @@ public class ChangePassword extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(),Profile.class);
-        startActivity(intent);
+        if(tochangePassword.equals("Profile")){
+            Intent intent1 =new Intent(getApplicationContext(), Profile.class);
+            startActivity(intent1);
+        }else if (tochangePassword.equals("ServceProfile")){
+            Intent intent1 =new Intent(getApplicationContext(), ServiceProviderProfile.class);
+            startActivity(intent1);
+        }else if(tochangePassword.equals("GateProfile")){
+            Intent intent1 =new Intent(getApplicationContext(), GateKeeperProfile.class);
+            startActivity(intent1);
+        }else{
+
+        }
         finish();
     }
 
@@ -121,8 +140,6 @@ public class ChangePassword extends Activity {
 
         final String Old_Pass =  oldpass.getText().toString();
         final String New_Pass =  newpass.getText().toString();
-
-
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String UID = prefs.getString("UserID", " ");
@@ -146,9 +163,26 @@ public class ChangePassword extends Activity {
                         oldpass.setText("");
                         newpass.setText("");
                         Toast.makeText(ChangePassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(ChangePassword.this, Profile.class);
-                        startActivity(intent);
+//                        Intent intent=new Intent(ChangePassword.this, Profile.class);
+//                        startActivity(intent);
+                        if(tochangePassword.equals("Profile")){
+                            Intent intent1 =new Intent(getApplicationContext(), Profile.class);
+                            intent1.putExtra("frompassword","Profile");
+                            startActivity(intent1);
+                        }else if (tochangePassword.equals("ServceProfile")){
+                            Intent intent1 =new Intent(getApplicationContext(), ServiceProviderProfile.class);
+                            intent1.putExtra("frompassword","ServceProfile");
+                            startActivity(intent1);
+                        }else if(tochangePassword.equals("GateProfile")){
+                            Intent intent1 =new Intent(getApplicationContext(), GateKeeperProfile.class);
+                            intent1.putExtra("frompassword","GateProfile");
+                            startActivity(intent1);
+                        }else{
+
+                        }
                         finish();
+
+
                     }else{
                         PD.dismiss();
                         Toast.makeText(ChangePassword.this, "Problem Occured - "+msg1, Toast.LENGTH_SHORT).show();

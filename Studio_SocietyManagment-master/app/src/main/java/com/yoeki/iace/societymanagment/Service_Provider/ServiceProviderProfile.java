@@ -18,6 +18,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yoeki.iace.societymanagment.ChangePassword;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
@@ -36,7 +37,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
     AppCompatTextView profilename,profilecontactno;
 
     private ArrayList<String> SrvcProfileList;
-     AppCompatImageButton addservicetype,Ser_Pro_bck;
+     AppCompatImageButton srvcprvd_changepassword,Ser_Pro_bck;
      List<loginObject> SrvcPrvdProfileBData;
       RecyclerView SrvcPrvdProfilerecyclerView;
       ProgressDialog PD;
@@ -45,7 +46,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_provider_profile);
-        addservicetype = (AppCompatImageButton) findViewById(R.id.addservicetype);
+        srvcprvd_changepassword = (AppCompatImageButton) findViewById(R.id.srvcprvd_changepassword);
         profilename=(AppCompatTextView)findViewById(R.id.serviceprovider_name);
         profilecontactno=(AppCompatTextView)findViewById(R.id.profilecontactno);
         Ser_Pro_bck=(AppCompatImageButton)findViewById(R.id.Ser_Pro_bck);
@@ -57,11 +58,12 @@ public class ServiceProviderProfile extends AppCompatActivity {
         PD.setCancelable(false);
 
 
-        addservicetype.setOnClickListener(new View.OnClickListener() {
+        srvcprvd_changepassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(ServiceProviderProfile.this, AddSrvcPrvdProfile.class);
-//                startActivity(intent);
+                Intent intent = new Intent(ServiceProviderProfile.this, ChangePassword.class);
+                intent.putExtra("frompassword","ServceProfile");
+                startActivity(intent);
             }
         });
 
@@ -163,7 +165,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     PD.dismiss();
-                    Toast.makeText(ServiceProviderProfile.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ServiceProviderProfile.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
                     Log.w("error in response", "Error: " + error.getMessage());
                 }
             });

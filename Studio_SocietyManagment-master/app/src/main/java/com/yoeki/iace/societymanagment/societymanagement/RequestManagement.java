@@ -60,7 +60,7 @@ public class RequestManagement extends Fragment {
         db = new DBHandler(getActivity());
         requestRecycler = getView().findViewById(R.id.request);
         fab = (FloatingActionButton) getView().findViewById(R.id.Rfab);
-        requesttype = (AppCompatTextView)getView().findViewById(R.id.requesttypeData);
+//        requesttype = (AppCompatTextView)getView().findViewById(R.id.requesttypeData);
         srch_req_by_type = (Spinner)getView().findViewById(R.id.srch_req_by_type);
 
 
@@ -80,7 +80,7 @@ public class RequestManagement extends Fragment {
             e.printStackTrace();
         }
 
-        reqt_lst_Name = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, RequestListArray);
+        reqt_lst_Name = new ArrayAdapter<String>(getContext(), R.layout.spinner, RequestListArray);
         reqt_lst_Name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         srch_req_by_type.setAdapter(reqt_lst_Name);
         reqt_lst_Name.insert("--Search by Type--", 0);
@@ -99,7 +99,7 @@ public class RequestManagement extends Fragment {
 
                         if (listName.equals(client_Selection)) {
                             try{
-                                requesttype.setText(listName);
+//                                requesttype.setText(listName);
                                 Requestids = String.valueOf(db.getReqListID(listName));
                                 S=1;
 
@@ -110,7 +110,8 @@ public class RequestManagement extends Fragment {
                     }
                     datafrrequest();
                 }else{
-                    requesttype.setText("--Search by Type--");
+//                    requesttype.setText("--Search by Type--");
+                    datafrrequest();
                 }
             }
 
@@ -122,10 +123,9 @@ public class RequestManagement extends Fragment {
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplication(), RequestManagement_Created.class);
                 startActivity(intent);
-
             }
         });
         datafrrequest();

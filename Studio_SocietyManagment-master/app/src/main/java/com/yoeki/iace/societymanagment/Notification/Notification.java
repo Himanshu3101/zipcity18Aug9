@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.yoeki.iace.societymanagment.GateKeeper.GateKeeper;
+import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.R;
 import com.yoeki.iace.societymanagment.Service_Provider.ServiceProvider;
 
@@ -49,7 +50,7 @@ public class Notification extends AppCompatActivity {
                 }else if (toNotify.equals("Serv")){
                     Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
                     startActivity(intent1);
-                }else{
+                }else if (toNotify.equals("Gate")){
                     Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
                     startActivity(intent1);
                 }
@@ -70,7 +71,7 @@ public class Notification extends AppCompatActivity {
         }else if (toNotify.equals("Serv")){
             Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
             startActivity(intent1);
-        }else{
+        }else if (toNotify.equals("Gate")){
             Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
             startActivity(intent1);
         }

@@ -1,47 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f7f7f7">
 
-    <FrameLayout
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:background="#CCCCCC">-->
+
+        <!--<com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+            <!--android:id="@+id/srch_com_by_type"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="center"/>-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<android.support.v7.widget.LinearLayoutCompat-->
+        <!--android:id="@+id/Fl1F"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--&lt;!&ndash;<android.support.v7.widget.AppCompatImageButton&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="08dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_gravity="end"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/search_icon"/>&ndash;&gt;-->
+
+    <!--</android.support.v7.widget.LinearLayoutCompat>-->
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:background="@drawable/spinner_border_color">-->
+
+        <!--<android.support.v7.widget.AppCompatTextView-->
+            <!--android:id="@+id/complainttype"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:textSize="15dp"-->
+            <!--android:hint="Search by Flat Number"-->
+            <!--android:textColorHint="#7a7a7a"-->
+            <!--android:typeface="serif"-->
+            <!--android:paddingLeft="12dp"-->
+            <!--android:paddingTop="11dp"-->
+            <!--android:textColor="#000" />-->
+
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginTop="08dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_gravity="end"-->
+            <!--android:background="@drawable/search_icon"/>-->
+
+        <!--<com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+            <!--android:visibility="invisible"-->
+            <!--android:id="@+id/srch_com_by_type"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/transparent"-->
+            <!--android:textColor="@color/transparent"/>-->
+
+    <!--</FrameLayout>-->
+
+
+
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:background="@drawable/spinner_border_color">
+        android:orientation="horizontal"
+        android:background="@drawable/popupbackground"
+        android:layout_margin="05dp">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/complainttype"
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:textSize="15dp"
-            android:hint="Search by Flat Number"
-            android:textColorHint="#7a7a7a"
-            android:typeface="serif"
-            android:paddingLeft="12dp"
-            android:paddingTop="11dp"
-            android:textColor="#000" />
+            android:id="@+id/srch_com_by_type"
+            android:textSize="17dp"
+            android:layout_weight=".1"
+            android:layout_marginRight="20dp"
+            android:background="#00000000"
+            android:popupTheme="@android:style/ThemeOverlay.Material.Light"/>
 
         <android.support.v7.widget.AppCompatImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="08dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="05dp"
             android:layout_gravity="end"
             android:background="@drawable/search_icon"/>
 
-        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-            android:id="@+id/srch_com_by_type"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:textColor="@color/transparent"/>
-
-    </FrameLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -58,11 +118,6 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"/>
 
-        <!--android:background="@drawable/requestbackground"-->
-
     </android.support.v7.widget.LinearLayoutCompat>
-
-
-
 
 </LinearLayout>

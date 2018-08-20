@@ -4,33 +4,35 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f7f7f7">
+    android:background="@drawable/popupbackground"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp">
+        android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp">
+            android:paddingBottom="5dp">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingBottom="15dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
+                android:paddingBottom="7dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp">
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="7dp"
                     android:layout_marginLeft="7dp"
                     android:layout_marginRight="10dp">
 
@@ -49,9 +51,17 @@
                         android:layout_marginLeft="10dp"
                         android:fontFamily="@font/opensans_bold"
                         android:textSize="14dp"
-                        android:textColor="#3e3e3e"/>
+                        android:textColor="#096a75"
+                        android:inputType="textCapSentences"/>
 
                 </android.support.v7.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#096a75"
+                    android:layout_marginTop="10dp"/>
+
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -236,11 +246,11 @@
                         android:orientation="horizontal"
                         android:layout_weight=".1"
                         android:gravity="start"
-                        android:layout_marginLeft="15dp">
+                        android:layout_marginLeft="19dp">
 
                         <android.support.v7.widget.AppCompatImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/status"/>
 
@@ -251,7 +261,7 @@
                             android:text="Status"
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/opensans_light"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="5dp"
                             android:textColor="#3e3e3e"
                             android:textSize="12dp" />
 
@@ -291,23 +301,13 @@
 
                     </android.support.v7.widget.LinearLayoutCompat>
 
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/to"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="To"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="@font/opensans_bold"
-                        android:textColor="#096a75"
-                        android:textSize="12dp" />
-
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_weight=".1"
                         android:gravity="start"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="20dp">
 
                         <android.support.v7.widget.AppCompatImageView
                             android:layout_width="13dp"
@@ -322,7 +322,7 @@
                             android:text="TDate"
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/opensans_light"
-                            android:layout_marginLeft="4dp"
+                            android:layout_marginLeft="8dp"
                             android:textColor="#3e3e3e"
                             android:textSize="12dp" />
 
@@ -410,6 +410,7 @@
             <android.support.v7.widget.AppCompatImageButton
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_gravity="center"
                 android:background="@drawable/calling"/>
@@ -421,6 +422,7 @@
                 android:textSize="17dp"
                 android:layout_marginLeft="20dp"
                 android:typeface="serif"
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:text="Call"
                 android:editable="false"
@@ -446,12 +448,12 @@
 
         </FrameLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="#d3d3d3"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1.5dp"-->
+            <!--android:background="#d3d3d3"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"/>-->
 
     </android.support.v7.widget.LinearLayoutCompat>
 

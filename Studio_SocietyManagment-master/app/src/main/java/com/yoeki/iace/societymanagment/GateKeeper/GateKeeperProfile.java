@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yoeki.iace.societymanagment.ChangePassword;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
@@ -36,7 +37,7 @@ public class GateKeeperProfile extends AppCompatActivity {
     ProgressDialog PD;
     String UID;
     AppCompatButton Submit;
-    AppCompatImageButton gatekeeper_back;
+    AppCompatImageButton gatekeeper_back,gate_changepassword;
     AppCompatEditText GateK_name,GateK_role,GateK_contactno;
 
     @Override
@@ -47,7 +48,9 @@ public class GateKeeperProfile extends AppCompatActivity {
         GateK_role = (AppCompatEditText)findViewById(R.id.gatekeeper_role);
         GateK_contactno = (AppCompatEditText)findViewById(R.id.gatekeeper_mobile);
         Submit=(AppCompatButton)findViewById(R.id.gatekeeper_submit);
-gatekeeper_back=(AppCompatImageButton)findViewById(R.id.gatekeeper_back);
+        gatekeeper_back=(AppCompatImageButton)findViewById(R.id.gatekeeper_back);
+        gate_changepassword=(AppCompatImageButton)findViewById(R.id.gate_changepassword);
+
         PD = new ProgressDialog(GateKeeperProfile.this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
@@ -61,6 +64,14 @@ gatekeeper_back=(AppCompatImageButton)findViewById(R.id.gatekeeper_back);
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(GateKeeperProfile.this,GateKeeper.class);
+                startActivity(intent);
+            }
+        });
+        gate_changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(GateKeeperProfile.this,ChangePassword.class);
+                intent.putExtra("frompassword","GateProfile");
                 startActivity(intent);
             }
         });

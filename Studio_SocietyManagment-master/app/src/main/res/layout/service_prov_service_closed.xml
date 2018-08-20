@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f7f7f7">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/opensans_light"
+        android:textStyle="bold"
+        android:textColor="#096a75"
+        android:editable="false"
+        android:text="Verification Code"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal"
+        android:background="@drawable/spinner_border_color">
+
+        <EditText
+            android:id="@+id/Ser_Prov_Closed_submit_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textColorHint="#757575"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="08dp"
+            android:textColor="#3e3e3e"
+            android:layout_gravity="left"
+            android:textSize="14dp"
+            android:inputType="none"
+            android:background="@color/transparent"
+            android:fontFamily="@font/opensans_light"
+
+            />
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/Ser_Prov_Closed_submit"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="#096a75"
+            android:textColor="#ffffff"
+            android:layout_width="150dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="40dp"
+            android:text="Closed"
+            android:gravity="center" />
+
+
+</LinearLayout>

@@ -258,6 +258,7 @@ public class Home_Page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Notification.class);
+                intent.putExtra("fromNotify","Home");
                 startActivity(intent);
             }
         });

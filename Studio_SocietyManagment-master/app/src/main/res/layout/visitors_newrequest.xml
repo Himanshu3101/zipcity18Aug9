@@ -47,7 +47,7 @@
                android:textStyle="bold"
                android:textColor="#096a75"
                android:editable="false"
-               android:text="Select Visitor Type"/>
+               android:text="Visitor Type*"/>
 
            <FrameLayout
                android:layout_width="match_parent"
@@ -67,6 +67,8 @@
                    android:textSize="15dp"
                    android:paddingLeft="12dp"
                    android:paddingTop="05dp"
+                   android:hint="Select"
+                   android:textColorHint="#CCCCCC"
                    android:textColor="#3e3e3e"
                    android:background="@drawable/spinner_border_color"/>
 
@@ -96,7 +98,7 @@
                android:textStyle="bold"
                android:textColor="#096a75"
                android:editable="false"
-               android:text="Flat Location"/>
+               android:text="Flat Number*"/>
 
            <FrameLayout
                android:layout_width="match_parent"
@@ -113,6 +115,8 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:layout_gravity="left"
+                   android:hint="Select"
+                   android:textColorHint="#CCCCCC"
                    android:textSize="15dp"
                    android:paddingLeft="12dp"
                    android:paddingTop="05dp"
@@ -144,7 +148,7 @@
                android:textStyle="bold"
                android:textColor="#096a75"
                android:editable="false"
-               android:text="Enter Visitor Name"/>
+               android:text="Enter Visitor Name*"/>
 
            <android.support.v7.widget.LinearLayoutCompat
                android:layout_width="match_parent"
@@ -178,7 +182,7 @@
                android:textStyle="bold"
                android:textColor="#096a75"
                android:editable="false"
-               android:text="Enter Visitor Number"/>
+               android:text="Enter Visitor Number*"/>
 
            <android.support.v7.widget.LinearLayoutCompat
                android:layout_width="match_parent"

@@ -122,6 +122,9 @@ public class password_recovery extends AppCompatActivity {
                         PD.dismiss();
                         passMessage = loginData.getString("message");
                         Toast.makeText(password_recovery.this, passMessage, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),login.class);
+                        startActivity(intent);
+                        finish();
                     }else{
                         PD.dismiss();
                         Toast.makeText(password_recovery.this, resStatusForgetPassword, Toast.LENGTH_SHORT).show();
@@ -134,7 +137,7 @@ public class password_recovery extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 PD.dismiss();
-                Toast.makeText(password_recovery.this, "Server_Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(password_recovery.this, "Server_Error -"+error, Toast.LENGTH_SHORT).show();
                 Log.w("error in response", "Error: " + error.getMessage());
             }
         });
