@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -118,14 +119,27 @@ public class Alloted_Parking extends Activity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    PD.dismiss();
+                    Toast.makeText(Alloted_Parking.this, "Please try after some time", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                PD.dismiss();
                 Log.w("error in response", "Error: " + error.getMessage());
+                Toast.makeText(Alloted_Parking.this, "Server_Error -"+error, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),Profile.class);
+                startActivity(intent);
+                finish();
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 

@@ -1,20 +1,16 @@
 package com.yoeki.iace.societymanagment.profile;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.yoeki.iace.societymanagment.Circular.Circular_Popup;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.R;
+
+import java.util.List;
 
 public class ChargeRecyclerViewAdapter extends RecyclerView.Adapter<ChargeRecyclerViewAdapter.ViewHolder> {
 
@@ -23,6 +19,8 @@ public class ChargeRecyclerViewAdapter extends RecyclerView.Adapter<ChargeRecycl
     private static Context context;
     DBHandler db;
     String[] Break;
+
+
 
     ChargeRecyclerViewAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
@@ -68,7 +66,7 @@ public class ChargeRecyclerViewAdapter extends RecyclerView.Adapter<ChargeRecycl
 
         ViewHolder(View itemView) {
             super(itemView);
-           ChargesType = itemView.findViewById(R.id.chargedesc);
+            ChargesType = itemView.findViewById(R.id.chargedesc);
             ChargesAmount = itemView.findViewById(R.id.amount);
 
         }

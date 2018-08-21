@@ -10,13 +10,28 @@
         android:layout_height="55dp"
         android:background="#096a75 ">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/Ser_Pro_bck"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="07dp"
-            android:background="@drawable/back" />
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/Ser_Pro_bck"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/Ser_Pro_bck"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginRight="05dp"-->
+            <!--android:layout_marginTop="07dp"-->
+            <!--android:background="@drawable/back" />-->
 
         <android.support.v7.widget.AppCompatTextView
 
@@ -37,12 +52,27 @@
             android:layout_gravity="end"
             android:layout_marginRight="15dp">
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/srvcprvd_changepassword"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/change_password_icon"/>
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+                <!--android:id="@+id/srvcprvd_changepassword"-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_marginTop="04dp"-->
+                <!--android:background="@drawable/change_password_icon"/>-->
+
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/srvcprvd_changepassword"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
+
+                <ImageView android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/change_password_icon"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -61,14 +91,14 @@
                android:layout_marginTop="10dp">
 
                <android.support.v7.widget.AppCompatImageView
-                   android:id="@+id/usr_logo"
+                   android:id="@+id/Serv_prof"
                    android:layout_width="150dp"
                    android:layout_height="150dp"
                    android:background="@drawable/img_bck"
                    android:layout_gravity="center"/>
 
                <android.support.v7.widget.AppCompatImageButton
-                   android:id="@+id/chngepic"
+                   android:id="@+id/Ser_chngepic"
                    android:layout_marginTop="-70dp"
                    android:layout_marginLeft="65dp"
                    android:layout_width="50dp"
@@ -186,12 +216,12 @@
                   android:textStyle="bold"
                   android:textColor="#096a75"/>
 
-              <android.support.v7.widget.AppCompatImageButton
-                  android:id="@+id/addservicetype"
-                  android:layout_width="30dp"
-                  android:layout_height="30dp"
-                  android:layout_marginRight="05dp"
-                  android:background="@drawable/man_icon_withplus" />
+              <!--<android.support.v7.widget.AppCompatImageButton-->
+                  <!--android:id="@+id/addservicetype"-->
+                  <!--android:layout_width="30dp"-->
+                  <!--android:layout_height="30dp"-->
+                  <!--android:layout_marginRight="05dp"-->
+                  <!--android:background="@drawable/man_icon_withplus" />-->
 
           </android.support.v7.widget.LinearLayoutCompat>
 

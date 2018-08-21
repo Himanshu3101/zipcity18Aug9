@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.yoeki.iace.societymanagment.Home_Page;
@@ -24,7 +25,7 @@ import java.util.List;
 public class SocietyManagement extends AppCompatActivity{
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    ImageButton Socie_bck;
+    Button Socie_bck;
     Toolbar toolbar;
 
     @Override
@@ -32,7 +33,7 @@ public class SocietyManagement extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.society_management);
 
-        Socie_bck = (ImageButton) findViewById(R.id.Socie_bck);
+        Socie_bck = (Button) findViewById(R.id.Socie_bck);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         setupViewPager(viewPager);

@@ -1,0 +1,210 @@
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f7f7f7">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:background="@drawable/popupbackground"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp">
+
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingBottom="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp">
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/date"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Date"
+              android:layout_weight=".1"
+              android:fontFamily="@font/opensans_bold"
+              android:textColor="#096a75"
+              android:textStyle="bold"
+              android:textSize="17dp" />
+
+
+      </android.support.v7.widget.LinearLayoutCompat>
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp">
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/meter"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Unit No."
+              android:layout_weight=".1"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textStyle="bold"
+              android:textSize="14dp" />
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/metercount"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="A/T-01"
+              android:layout_weight=".1"
+              android:textAlignment="center"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textSize="14dp"/>
+
+      </android.support.v7.widget.LinearLayoutCompat>
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp">
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/invoice"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Invoice Number"
+              android:layout_weight=".1"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textStyle="bold"
+              android:textSize="14dp" />
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/invoiceno"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="3215CDH12"
+              android:layout_weight=".1"
+              android:textAlignment="center"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textSize="14dp"/>
+
+      </android.support.v7.widget.LinearLayoutCompat>
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp">
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/transaction"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Transaction No."
+              android:layout_weight=".1"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textStyle="bold"
+              android:textSize="14dp" />
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/transactionno"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="21H0C3123"
+              android:layout_weight=".1"
+              android:textAlignment="center"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textSize="14dp"/>
+
+      </android.support.v7.widget.LinearLayoutCompat>
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp">
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/status"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Status"
+              android:layout_weight=".1"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#096a75"
+              android:textStyle="bold"
+              android:textSize="14dp" />
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/stausco"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Successfully"
+              android:layout_weight=".1"
+              android:textAlignment="center"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#096a75"
+              android:textSize="14dp"/>
+
+      </android.support.v7.widget.LinearLayoutCompat>
+      <android.support.v7.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp">
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/amountno"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Amount"
+              android:layout_weight=".1"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textStyle="bold"
+              android:textSize="14dp" />
+
+          <android.support.v7.widget.AppCompatTextView
+              android:id="@+id/digit"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="1000"
+              android:layout_weight=".1"
+              android:textAlignment="center"
+              android:fontFamily="@font/opensans_light"
+              android:textColor="#3e3e3e"
+              android:textSize="14dp"/>
+
+      </android.support.v7.widget.LinearLayoutCompat>
+  </LinearLayout>
+
+    <!--<View-->
+        <!--android:background="#d3d3d3"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"/>-->
+
+
+
+</android.support.v7.widget.LinearLayoutCompat>

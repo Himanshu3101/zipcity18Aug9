@@ -4,11 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -16,9 +16,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
+import com.yoeki.iace.societymanagment.GateKeeper.GateKeeper;
 import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
+import com.yoeki.iace.societymanagment.Service_Provider.ServiceProvider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,9 +36,10 @@ public class HelplineNo extends AppCompatActivity {
     HelplineRecyclerViewAdapter hadapter;
     private ArrayList<String> HelplineList;
     RecyclerView HelplinerecyclerView;
-    AppCompatImageButton bck;
+    Button bck;
     DBHandler db;
     List<loginObject> HelplineBData;
+    String toHelpline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,32 +48,73 @@ public class HelplineNo extends AppCompatActivity {
 
         db = new DBHandler(this);
 
-        bck = (AppCompatImageButton)findViewById(R.id.back);
+        bck = (Button)findViewById(R.id.back);
         HelplinerecyclerView = findViewById(R.id.helpline);
 
-        bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        bck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         PD = new ProgressDialog(HelplineNo.this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
 
         forHelplineContact();
+
+        Intent intent= getIntent();
+        toHelpline = intent.getStringExtra("fromHelpline");
+
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(toHelpline.equals("Home")){
+                    Intent intent1 =new Intent(getApplicationContext(), Home_Page.class);
+                    startActivity(intent1);
+                }else if (toHelpline.equals("Serv")){
+                    Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
+                    startActivity(intent1);
+                }else if (toHelpline.equals("GateKeeper")){
+                    Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
+                    startActivity(intent1);
+                }else {
+
+                }
+                finish();
+            }
+        });
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+//        startActivity(intent);
+//        finish();
+//    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-        startActivity(intent);
+        if(toHelpline.equals("Home")){
+            Intent intent1 =new Intent(getApplicationContext(), Home_Page.class);
+            startActivity(intent1);
+        }else if (toHelpline.equals("Serv")){
+            Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
+            startActivity(intent1);
+        }else  if (toHelpline.equals("GateKeeper")){
+            Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
+            startActivity(intent1);
+        }else{
+
+        }
         finish();
     }
+
 
     public void forHelplineContact() {
         PD.show();
@@ -107,7 +151,7 @@ public class HelplineNo extends AppCompatActivity {
                                 i++;
                             }
                             PD.dismiss();
-                          recycler();
+                            recycler();
                         }catch(Exception e){
                             e.printStackTrace();
                         }
@@ -128,6 +172,7 @@ public class HelplineNo extends AppCompatActivity {
         });
         MyApplication.getInstance().addToReqQueue(req);
     }
+
     public void recycler(){
         HelplinerecyclerView.setLayoutManager(new LinearLayoutManager(this));
         hadapter = new HelplineRecyclerViewAdapter(this, HelplineList);

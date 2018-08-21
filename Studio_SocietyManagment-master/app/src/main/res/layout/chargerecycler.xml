@@ -23,7 +23,7 @@
             android:fontFamily="@font/opensans_light"
             android:textColor="#3e3e3e"
             android:textStyle="bold"
-            android:textSize="14dp" />
+            android:textSize="13dp" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/amount"
@@ -34,7 +34,7 @@
             android:textAlignment="center"
             android:fontFamily="@font/opensans_light"
             android:textColor="#3e3e3e"
-            android:textSize="14dp"/>
+            android:textSize="13dp"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
     <View

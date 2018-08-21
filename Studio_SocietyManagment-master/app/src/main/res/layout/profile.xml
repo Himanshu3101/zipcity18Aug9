@@ -10,13 +10,28 @@
         android:layout_height="55dp"
         android:background="#096a75 ">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/Pro_bck"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="07dp"
-            android:background="@drawable/back" />
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/Pro_bck"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+        <!--android:id="@+id/Pro_bck"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginRight="05dp"-->
+        <!--android:layout_marginTop="07dp"-->
+        <!--android:background="@drawable/back" />-->
 
         <android.support.v7.widget.AppCompatTextView
 
@@ -34,24 +49,52 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginRight="15dp">
+            android:layout_gravity="end">
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/changepassword"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/change_password_icon"
-                android:layout_marginRight="20dp"/>
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/changepassword"-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:background="@drawable/change_password_icon"-->
+            <!--android:layout_marginRight="20dp"/>-->
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/add_member"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/add_member"
-                />
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/changepassword"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
+
+                <ImageView android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/change_password_icon"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/add_member"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
+
+                <ImageView android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/add_member"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/add_member"-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:background="@drawable/add_member"-->
+            <!--/>-->
 
             <!--<android.support.v7.widget.AppCompatImageButton-->
             <!--android:id="@+id/logout"-->
@@ -70,42 +113,42 @@
         android:orientation="vertical"
         android:layout_marginTop="10dp">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:paddingBottom="10dp">
-
-        <android.support.v7.widget.AppCompatTextView
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name:"
-            android:layout_weight=".1"
-            android:textSize="15dp"
-            android:fontFamily="@font/opensans_light"
-            android:textStyle="bold"
-            android:textColor="#096a75"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="10dp">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/Pro_name"
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:layout_weight=".1"
+                android:textSize="15dp"
+                android:fontFamily="@font/opensans_light"
+                android:textStyle="bold"
+                android:textColor="#096a75"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/Pro_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_light"
+                android:layout_marginRight="10dp"
+                android:layout_weight=".1"
+                android:textSize="15dp"
+                android:textColor="#3e3e3e"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_light"
-            android:layout_marginRight="10dp"
-            android:layout_weight=".1"
-            android:textSize="15dp"
-            android:textColor="#3e3e3e"/>
-    </android.support.v7.widget.LinearLayoutCompat>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#d3d3d3"/>
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#d3d3d3"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -138,106 +181,106 @@
                 android:textColor="#3e3e3e"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
-       <View
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="#d3d3d3"/>
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
 
-      <FrameLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_weight=".1">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1">
 
-          <android.support.v7.widget.LinearLayoutCompat
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:layout_marginTop="05dp"
-              android:layout_marginLeft="20dp"
-              android:layout_marginRight="20dp"
-               android:paddingBottom="10dp">
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="05dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingBottom="10dp">
 
-              <android.support.v7.widget.AppCompatTextView
-                  android:id="@+id/allot_unit"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:fontFamily="@font/opensans_light"
-                  android:layout_marginRight="10dp"
-                  android:textAlignment="center"
-                  android:textSize="15dp"
-                  android:textColor="#3e3e3e"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/allot_unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginRight="10dp"
+                        android:textAlignment="center"
+                        android:textSize="15dp"
+                        android:textColor="#3e3e3e"/>
 
-              <android.support.v7.widget.AppCompatTextView
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:text="Alloted Unit"
-                  android:textAlignment="center"
-                  android:textSize="15dp"
-                  android:fontFamily="@font/opensans_light"
-                  android:textStyle="bold"
-                  android:textColor="#096a75"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alloted Unit"
+                        android:textAlignment="center"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:textColor="#096a75"/>
 
-          </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.LinearLayoutCompat>
 
-          <android.support.v7.widget.AppCompatButton
-              android:id="@+id/unit_btn"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/transparent"/>
-      </FrameLayout>
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/unit_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"/>
+            </FrameLayout>
 
-       <FrameLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_weight=".1">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1">
 
-           <android.support.v7.widget.LinearLayoutCompat
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:layout_marginTop="05dp"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
-               android:paddingBottom="10dp">
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="05dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingBottom="10dp">
 
-               <android.support.v7.widget.AppCompatTextView
-                   android:id="@+id/allot_parking"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:fontFamily="@font/opensans_light"
-                   android:layout_marginRight="10dp"
-                   android:textAlignment="center"
-                   android:textSize="15dp"
-                   android:textColor="#3e3e3e"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/allot_parking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginRight="10dp"
+                        android:textAlignment="center"
+                        android:textSize="15dp"
+                        android:textColor="#3e3e3e"/>
 
-               <android.support.v7.widget.AppCompatTextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="Alloted Parking"
-                   android:textAlignment="center"
-                   android:textSize="15dp"
-                   android:fontFamily="@font/opensans_light"
-                   android:textStyle="bold"
-                   android:textColor="#096a75"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alloted Parking"
+                        android:textAlignment="center"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:textStyle="bold"
+                        android:textColor="#096a75"/>
 
-           </android.support.v7.widget.LinearLayoutCompat>
-           <android.support.v7.widget.AppCompatButton
-               android:id="@+id/parking_btn"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:background="@color/transparent"/>
-       </FrameLayout>
+                </android.support.v7.widget.LinearLayoutCompat>
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/parking_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"/>
+            </FrameLayout>
 
-    </android.support.v7.widget.LinearLayoutCompat>
+        </android.support.v7.widget.LinearLayoutCompat>
 
         <View
             android:layout_width="match_parent"

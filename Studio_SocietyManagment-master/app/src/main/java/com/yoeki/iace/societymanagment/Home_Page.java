@@ -9,18 +9,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageButton;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.yoeki.iace.societymanagment.Circular.Circular;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.Helpline.HelplineNo;
 import com.yoeki.iace.societymanagment.Notification.Notification;
-import com.yoeki.iace.societymanagment.Recharge.Recharge;
+import com.yoeki.iace.societymanagment.Recharge.RechargeTab;
 import com.yoeki.iace.societymanagment.Rules.Rules;
 import com.yoeki.iace.societymanagment.Services.Services;
 import com.yoeki.iace.societymanagment.Society_Information.New.Society_Info;
@@ -28,6 +28,8 @@ import com.yoeki.iace.societymanagment.Visitors_Management.VisitorsManagement;
 import com.yoeki.iace.societymanagment.profile.Profile;
 import com.yoeki.iace.societymanagment.societymanagement.SocietyManagement;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class Home_Page extends AppCompatActivity {
 
 //    RecyclerView MenuRecycle;
 //    private RecyclerView.Adapter Home_menu_adptr;
-    AppCompatImageButton menu,notified,profile;
+    String foepswdLayout,pswd;
+    Button menu,notified,profile;
     NavigationView navigation;
     DrawerLayout drawer;
     List<String> UserRoleID;
@@ -43,6 +46,8 @@ public class Home_Page extends AppCompatActivity {
 //    ArrayList<Drawable> SocietyIcon;
     ArrayList<String> finalRoleIDList;
     DBHandler db;
+    String filepathN = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.notify.txt";
+    String filepath = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.autologin.txt";
 
     GridView HomePagegrid;
     String[] SocietyName = {
@@ -50,7 +55,7 @@ public class Home_Page extends AppCompatActivity {
             "Complaint/Request",
             "Visitors ",
             "Services",
-            "Recharge",
+            "Payment",
             "Gallery",
             "Circular",
 //            "Profile",
@@ -79,13 +84,26 @@ public class Home_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__page);
 
+        foepswdLayout = getIntent().getStringExtra("chngepswd");
+        String oldpsswd = getIntent().getStringExtra("oldpsswd");
+        try {
+            if (foepswdLayout.equals("1")) {
+                Intent intent = new Intent(getApplicationContext(), ChangePassword.class);
+                intent.putExtra("firstTIme_Member", "firstTme_Member");
+                intent.putExtra("old_frst_pswd", oldpsswd);
+                startActivity(intent);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
         HomePagegrid=(GridView)findViewById(R.id.Homepage_gridview);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigation = (NavigationView) findViewById(R.id.nav_view);
         db = new DBHandler(this);
-        menu = (AppCompatImageButton)findViewById(R.id.menu);
-        notified = (AppCompatImageButton)findViewById(R.id.notify);
-        profile = (AppCompatImageButton)findViewById(R.id.profile);
+        menu = (Button)findViewById(R.id.menu);
+        notified = (Button)findViewById(R.id.notify);
+        profile = (Button)findViewById(R.id.profile);
 
 //        MenuRecycle = findViewById(R.id.recycler_view);
 
@@ -104,7 +122,7 @@ public class Home_Page extends AppCompatActivity {
                     myIntent = new Intent(view.getContext(), Services.class);
                 }
                 if(position ==3){
-                    myIntent = new Intent(view.getContext(), Recharge.class);
+                    myIntent = new Intent(view.getContext(), RechargeTab.class);
                 }
 //                if(position ==4){
 //                    myIntent = new Intent(view.getContext(), Profile.class);
@@ -283,10 +301,12 @@ public class Home_Page extends AppCompatActivity {
                         break;
                     case R.id.helpline:
                         Intent intent2=new Intent(Home_Page.this,HelplineNo.class);
+                        intent2.putExtra("fromHelpline","Home");
                         startActivity(intent2);
                         break;
                     case R.id.rules:
                         Intent intent1=new Intent(Home_Page.this,Rules.class);
+                        intent1.putExtra("fromRules","Home");
                         startActivity(intent1);
                         break;
                     case R.id.share:
@@ -302,13 +322,21 @@ public class Home_Page extends AppCompatActivity {
                         drawer.openDrawer(Gravity.START);
                         AlertDialog.Builder builder = new AlertDialog.Builder(Home_Page.this);
                         builder.setCancelable(false);
-                        builder.setMessage("Do you want to log out?");
+                        builder.setMessage("Do you want to Log-Out?");
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 db.deleteall();
+
+                                try {
+                                    dlteusernameandpwd();
+                                    deleteNotofy();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                                 Intent intent = new Intent(Home_Page.this,login.class);
                                 startActivity(intent);
+//                    stopService(view);
                                 finish();
                             }
                         });
@@ -354,8 +382,16 @@ public class Home_Page extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     db.deleteall();
+
+                    try {
+                        dlteusernameandpwd();
+                        deleteNotofy();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     Intent intent = new Intent(Home_Page.this,login.class);
                     startActivity(intent);
+//                    stopService(view);
                     finish();
                 }
             });
@@ -369,6 +405,16 @@ public class Home_Page extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
         }
+    }
+
+    public void dlteusernameandpwd() throws IOException {
+        File file = new File(filepath);
+        file.delete();
+    }
+
+    public void deleteNotofy() throws IOException {
+        File file = new File(filepathN);
+        file.delete();
     }
 
 

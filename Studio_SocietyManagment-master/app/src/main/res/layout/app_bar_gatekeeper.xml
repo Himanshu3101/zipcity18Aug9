@@ -12,13 +12,27 @@
         android:layout_height="55dp"
         android:background="#096a75 ">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/menu"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="07dp"
-            android:background="@drawable/menu" />
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/menu"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+        <!--android:id="@+id/menu"-->
+        <!--android:layout_width="23dp"-->
+        <!--android:layout_height="23dp"-->
+        <!--android:layout_marginRight="05dp"-->
+        <!--android:layout_marginTop="07dp"-->
+        <!--android:background="@drawable/menu" />-->
         <TextView
             android:text="Visitors List"
             android:textSize="20sp"
@@ -36,21 +50,49 @@
             android:layout_gravity="end"
             android:layout_marginRight="10dp">
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/profile"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/profile"/>
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/profile"-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:background="@drawable/profile"/>-->
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <Button android:id="@+id/profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/gate_notify"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/notification" />
+                <ImageView android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/profile"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/gate_notify"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
+
+                <ImageView android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/notification"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/gate_notify"-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:background="@drawable/notification" />-->
 
         </LinearLayout>
 

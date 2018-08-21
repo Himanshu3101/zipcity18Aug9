@@ -48,7 +48,12 @@
         <activity android:name=".Notification.Notification" android:screenOrientation="portrait" />
         <activity android:name=".Service_Provider.ServiceProvider" android:screenOrientation="portrait" />
         <activity android:name=".Home_Page" android:screenOrientation="portrait" />
-        <activity android:name=".Recharge.Recharge" android:screenOrientation="portrait" />
+        <activity android:name=".Recharge.RechargeTab" android:screenOrientation="portrait" />
+        <activity android:name=".profile.Profile" android:screenOrientation="portrait" />
+        <activity android:name=".GateKeeper.GateKeeper" android:screenOrientation="portrait" />
+        <activity android:name=".GateKeeper.GateKeeperProfile" android:screenOrientation="portrait" />
+        <activity android:name=".ChangePassword" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
+        <activity android:name=".profile.Alloted_Unit" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
         <activity android:name=".Visitors_Management.VisitorsNewRequest" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
         <activity android:name=".societymanagement.Complaint_Created" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
         <activity android:name=".societymanagement.RequestManagement_Created" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
@@ -69,6 +74,7 @@
         <!--<activity android:name=".VendorList.VendorList" android:screenOrientation="portrait"/>-->
         <activity android:name=".VendorApproval.VendorApproval" android:screenOrientation="portrait"/>
         <activity android:name=".Society_Information.New.Society_Info" android:screenOrientation="portrait"/>
+        <activity android:name=".Service_Provider.ServiceProviderProfile" android:screenOrientation="portrait"/>
 
         <service
             android:name=".Firebase.MyFirebaseMessagingService">

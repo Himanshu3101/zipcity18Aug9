@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
+import com.yoeki.iace.societymanagment.GateKeeper.GateKeeper;
 import com.yoeki.iace.societymanagment.GateKeeper.GateKeeperProfile;
 import com.yoeki.iace.societymanagment.Service_Provider.ServiceProvider;
 import com.yoeki.iace.societymanagment.Service_Provider.ServiceProviderProfile;
@@ -41,14 +42,14 @@ public class ChangePassword extends Activity {
     DBHandler dbHandler;
     AppCompatButton Submit;
     Boolean validation;
-    String tochangePassword;
+    String tochangePassword,first_pswd_lyout,home_pswd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
-        this.setFinishOnTouchOutside(true);
 
+        this.setFinishOnTouchOutside(true);
         oldpass = (EditText) findViewById(R.id.oldpass);
         newpass = (EditText) findViewById(R.id.newpass);
         confpass = (EditText) findViewById(R.id.confpass);
@@ -62,6 +63,41 @@ public class ChangePassword extends Activity {
 
         Intent intent= getIntent();
         tochangePassword = intent.getStringExtra("frompassword");
+        try {
+            if (tochangePassword.equals(null)) {
+                tochangePassword = "empty";
+            }
+        }catch (Exception e){
+            tochangePassword = "empty";
+        }
+
+        try {
+            first_pswd_lyout = intent.getStringExtra("firstTIme_Member");
+            if(first_pswd_lyout.equals(null)){
+                first_pswd_lyout = "empty";
+            }
+        }catch (Exception e){
+            first_pswd_lyout = "empty";
+        }
+
+
+
+
+
+
+        if(first_pswd_lyout.equals("firstTme_Member")){
+            home_pswd = intent.getStringExtra("old_frst_pswd");
+            oldpass.setText(home_pswd);
+            oldpass.setEnabled(false);
+        }else if(first_pswd_lyout.equals("secondTme_Member")){
+            home_pswd = intent.getStringExtra("old_frst_pswd");
+            oldpass.setText(home_pswd);
+            oldpass.setEnabled(false);
+        }else if(first_pswd_lyout.equals("Gatekeeper")){
+            home_pswd = intent.getStringExtra("old_frst_pswd");
+            oldpass.setText(home_pswd);
+            oldpass.setEnabled(false);
+        }
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +154,7 @@ public class ChangePassword extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
         if(tochangePassword.equals("Profile")){
             Intent intent1 =new Intent(getApplicationContext(), Profile.class);
             startActivity(intent1);
@@ -127,8 +164,15 @@ public class ChangePassword extends Activity {
         }else if(tochangePassword.equals("GateProfile")){
             Intent intent1 =new Intent(getApplicationContext(), GateKeeperProfile.class);
             startActivity(intent1);
-        }else{
-
+        }else if(first_pswd_lyout.equals("firstTme_Member")){
+            Intent intent1 =new Intent(getApplicationContext(), Home_Page.class);
+            startActivity(intent1);
+        }else if(first_pswd_lyout.equals("secondTme_Member")){
+            Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
+            startActivity(intent1);
+        }else if(first_pswd_lyout.equals("Gatekeeper")){
+            Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
+            startActivity(intent1);
         }
         finish();
     }
@@ -177,8 +221,10 @@ public class ChangePassword extends Activity {
                             Intent intent1 =new Intent(getApplicationContext(), GateKeeperProfile.class);
                             intent1.putExtra("frompassword","GateProfile");
                             startActivity(intent1);
-                        }else{
 
+                        }else if(first_pswd_lyout.equals("firstTme_Member")){
+                            Intent intent1 =new Intent(getApplicationContext(), Home_Page.class);
+                            startActivity(intent1);
                         }
                         finish();
 

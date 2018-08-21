@@ -9,7 +9,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,14 +39,14 @@ import java.util.List;
 
 public class Profile extends AppCompatActivity {
     AppCompatEditText Po_username,Po_phonenumber,Po_emailid,Po_dob,Po_flatno,Po_parking;
-    AppCompatImageButton edit_Name,edit_Phone,edit_Email,edit_Dateofbirth,edit_flatno,edit_Parking,changepassword;
+//    Button edit_Name,edit_Phone,edit_Email,edit_Dateofbirth,edit_flatno,edit_Parking,changepassword;
     List<loginObject> loginBData;
     Button Update;
     Boolean validation;
     AppCompatButton unit_btn,parking_btn;
 
     AppCompatTextView name,role,address,allot_parking,allot_unit;
-    AppCompatImageButton add_member,Pro_bck;
+    Button add_member,Pro_bck,changepassword;
     ProfileRecyclerViewAdapter profileadapter;
     private ArrayList<String> Mem_List;
     RecyclerView recyclerView;
@@ -78,9 +77,9 @@ public class Profile extends AppCompatActivity {
         address = (AppCompatTextView)findViewById(R.id.address);
         allot_parking = (AppCompatTextView)findViewById(R.id.allot_parking);
         allot_unit = (AppCompatTextView)findViewById(R.id.allot_unit);
-        Pro_bck=(AppCompatImageButton)findViewById(R.id.Pro_bck);
-        add_member=(AppCompatImageButton)findViewById(R.id.add_member);
-        changepassword=(AppCompatImageButton)findViewById(R.id.changepassword);
+        Pro_bck=(Button)findViewById(R.id.Pro_bck);
+        add_member=(Button)findViewById(R.id.add_member);
+        changepassword=(Button)findViewById(R.id.changepassword);
 
         recyclerView = findViewById(R.id.member_list);
 
@@ -256,9 +255,12 @@ public class Profile extends AppCompatActivity {
                                JSONObject BDetailJsonData = ProfileDetailArray.getJSONObject(i);
                                loginObject loginObject_recycler = new loginObject();
                                loginObject_recycler.Owner_name = BDetailJsonData.getString("UserName");
+                               loginObject_recycler.Owner_role = BDetailJsonData.getString("UserType");
                                loginBData.add(loginObject_recycler);
                                String O_UserName = loginBData.get(i).Owner_name;
+                               String O_Role = loginBData.get(i).Owner_role;
                                name.setText(O_UserName);
+                               role.setText(O_Role);
                                i++;
                            }
                        }catch(Exception e){

@@ -1,46 +1,174 @@
-<android.support.v7.widget.LinearLayoutCompat
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:background="#f7f7f7">
+
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="20dp"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_marginBottom="10dp">-->
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/unitno"
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="unitno"
-            android:layout_weight=".1"
-            android:textAlignment="center"
-            android:fontFamily="@font/opensans_light"
-            android:textColor="#3e3e3e"
-            android:textSize="13dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/u_status"
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/flatno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="Flatno"
+                android:layout_weight=".1"
+                android:textColor="#096a75"
+                android:fontFamily="@font/opensans_bold"
+                android:textSize="15dp" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_weight=".1">
+
+                <FrameLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/icondownframe">
+
+                    <Button android:id="@+id/icondown"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/transparent"/>
+
+                    <ImageView android:layout_width="16dp"
+                        android:layout_height="12dp"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/down_arrow"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+                <FrameLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/iconupframe">
+
+                    <Button
+                        android:id="@+id/iconup"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/transparent"/>
+
+                    <ImageView android:layout_width="16dp"
+                        android:layout_height="12dp"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/up_arrow"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+
+                <!--<android.support.v7.widget.AppCompatImageView-->
+                <!--android:id="@+id/icondown"-->
+                <!--android:layout_width="16dp"-->
+                <!--android:layout_height="12dp"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="@drawable/down_arrow"/>-->
+
+                <!--<android.support.v7.widget.AppCompatImageView-->
+                <!--android:visibility="gone"-->
+                <!--android:id="@+id/iconup"-->
+                <!--android:layout_width="16dp"-->
+                <!--android:layout_height="12dp"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="@drawable/up_arrow"/>-->
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Status"
-            android:textAlignment="center"
-            android:layout_weight=".1"
-            android:fontFamily="@font/opensans_light"
-            android:textColor="#3e3e3e"
-            android:textSize="13dp"/>
+            android:layout_height="1dp"
+            android:background="#D3D3D3" />
 
     </android.support.v7.widget.LinearLayoutCompat>
-    <View
-        android:background="#d3d3d3"
-        android:layout_height="0.5dp"
+
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/unitlayout"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="@drawable/popupbackground"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight=".1">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Status"
+                android:textColor="#096a75"
+                android:fontFamily="@font/opensans_bold"
+                android:textSize="12dp" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:gravity="end">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="by"
+                android:textAlignment="center"
+                android:textColor="#3e3e3e"
+                android:fontFamily="@font/opensans_bold"
+                android:textSize="13dp" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chargesflatno"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scrollbars="vertical"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
-</android.support.v7.widget.LinearLayoutCompat>
+
+</LinearLayout>

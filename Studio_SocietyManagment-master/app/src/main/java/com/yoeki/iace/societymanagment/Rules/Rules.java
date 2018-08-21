@@ -11,15 +11,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
+import com.yoeki.iace.societymanagment.GateKeeper.GateKeeper;
 import com.yoeki.iace.societymanagment.Home_Page;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
+import com.yoeki.iace.societymanagment.Service_Provider.ServiceProvider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,11 +34,12 @@ import java.util.List;
 
 public class Rules extends AppCompatActivity {
     RulesRecyclerViewAdapter radapter;
-    AppCompatImageButton r_back;
+    Button r_back;
     private ArrayList<String> RulesList;
     List<loginObject> RulesBData;
     RecyclerView RulesrecyclerView;
     ProgressDialog PD;
+    String toRules;
 
 
     @Override
@@ -43,33 +47,72 @@ public class Rules extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rule);
 
-      RulesrecyclerView = findViewById(R.id.rules);
-        r_back = (AppCompatImageButton)findViewById(R.id.r_back) ;
+        RulesrecyclerView = findViewById(R.id.rules);
+        r_back = (Button)findViewById(R.id.r_back) ;
 
         PD = new ProgressDialog(Rules.this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
 
+//        r_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+
+        Intent intent= getIntent();
+        toRules = intent.getStringExtra("fromRules");
+
         r_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-                startActivity(intent);
+                if(toRules.equals("Home")){
+                    Intent intent1 =new Intent(getApplicationContext(), Home_Page.class);
+                    startActivity(intent1);
+                }else if (toRules.equals("Serv")){
+                    Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
+                    startActivity(intent1);
+                }else  if (toRules.equals("GateKeeper")){
+                    Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
+                    startActivity(intent1);
+                }else {
+
+                }
                 finish();
             }
         });
-
         BindRulesData();
 
     }
 
+    //    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+//        startActivity(intent);
+//        finish();
+//    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-        startActivity(intent);
+        if(toRules.equals("Home")){
+            Intent intent1 =new Intent(getApplicationContext(), Home_Page.class);
+            startActivity(intent1);
+        }else if (toRules.equals("Serv")){
+            Intent intent1 =new Intent(getApplicationContext(), ServiceProvider.class);
+            startActivity(intent1);
+        }else  if (toRules.equals("GateKeeper")){
+            Intent intent1 =new Intent(getApplicationContext(), GateKeeper.class);
+            startActivity(intent1);
+        }else {
+
+        }
         finish();
     }
+
 
     public void BindRulesData() {
         PD.show();

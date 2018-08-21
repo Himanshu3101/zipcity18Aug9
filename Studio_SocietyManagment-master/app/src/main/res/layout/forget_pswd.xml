@@ -12,13 +12,28 @@
         android:layout_height="55dp"
         android:background="#096a75">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/back_pass"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="07dp"
-            android:background="@drawable/back" />
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/back_pass"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+        <!--android:id="@+id/back_pass"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginRight="05dp"-->
+        <!--android:layout_marginTop="07dp"-->
+        <!--android:background="@drawable/back" />-->
 
         <TextView
             android:text="Password Recovery"
@@ -39,21 +54,21 @@
         android:orientation="vertical"
         android:gravity="center">
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/enter_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:textColorHint="#096a75"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:textColor="#3e3e3e"
-                android:textSize="14sp"
-                android:backgroundTint="#096a75"
-                android:hint="Enter Email"
-                android:typeface="serif" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/enter_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textColorHint="#096a75"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="#3e3e3e"
+            android:textSize="14sp"
+            android:backgroundTint="#096a75"
+            android:hint="Enter Email"
+            android:typeface="serif" />
 
         <android.support.v7.widget.AppCompatTextView
             android:layout_below="@+id/l1"

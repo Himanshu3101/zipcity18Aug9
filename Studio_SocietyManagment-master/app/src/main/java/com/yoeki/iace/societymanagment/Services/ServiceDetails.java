@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -35,7 +36,7 @@ public class ServiceDetails extends AppCompatActivity {
 
     ServicesDetailsRecyclerViewAdapter servicesdetailsadapter;
     AppCompatTextView title_serv;
-    AppCompatImageButton serv_detail_bck;
+    Button serv_detail_bck;
     private ArrayList<String> Ven_List;
     DBHandler dbHandler;
     ProgressDialog PD;
@@ -51,7 +52,7 @@ public class ServiceDetails extends AppCompatActivity {
 
         dbHandler = new DBHandler(this);
         recyclerView = (RecyclerView) findViewById(R.id.profile);
-        serv_detail_bck= (AppCompatImageButton) findViewById(R.id.serv_detail_bck);
+        serv_detail_bck= (Button) findViewById(R.id.serv_detail_bck);
         title_serv = (AppCompatTextView) findViewById(R.id.title_serv);
 
         Intent intent = getIntent();

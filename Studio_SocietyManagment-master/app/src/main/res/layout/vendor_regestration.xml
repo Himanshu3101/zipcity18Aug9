@@ -9,13 +9,28 @@
         android:layout_height="55dp"
         android:background="#096a75">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="08dp"
-            android:background="@drawable/back" />
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+        <!--android:id="@+id/back"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginRight="05dp"-->
+        <!--android:layout_marginTop="08dp"-->
+        <!--android:background="@drawable/back" />-->
 
         <TextView
             android:text="Registration"
@@ -35,30 +50,30 @@
         android:layout_height="match_parent">
 
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/footer"
-        android:fillViewport="true" >
-
-        <android.support.v7.widget.LinearLayoutCompat
-            android:id="@+id/linearlayt1"
-            android:layout_width="match_parent"
+        <ScrollView
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="02dp"
-            android:background="#FFFFFF"
-            android:orientation="vertical">
+            android:layout_above="@+id/footer"
+            android:fillViewport="true" >
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:typeface="serif"
-                android:textColor="#096a75"
-                android:textSize="14sp"
-                android:editable="false"
-                android:text="Name" />
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linearlayt1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="02dp"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:typeface="serif"
+                    android:textColor="#096a75"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:text="Name" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/vndr_nme"
@@ -79,16 +94,16 @@
                     android:focusableInTouchMode="true"
                     android:background="@drawable/spinner_border_color" />
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:typeface="serif"
-                android:textColor="#096a75"
-                android:textSize="14sp"
-                android:editable="false"
-                android:text="Contact Number"/>
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:typeface="serif"
+                    android:textColor="#096a75"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:text="Contact Number"/>
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/vndr_contact"
@@ -111,172 +126,172 @@
                     android:maxLength="12"
                     android:background="@drawable/spinner_border_color" />
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:typeface="serif"
-                android:textColor="#096a75"
-                android:textSize="14sp"
-                android:editable="false"
-                android:text="Service Type"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:background="@drawable/spinner_border_color">
-
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/vndr_serviceType"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:textSize="14dp"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="08dp"
-                    android:hint="Select Service Type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
                     android:typeface="serif"
-                    android:textColorHint="#757575"
-                    android:textColor="#3e3e3e"
-                    android:background="@drawable/spinner_border_color"/>
+                    android:textColor="#096a75"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:text="Service Type"/>
 
-                <android.support.v7.widget.AppCompatImageButton
-                    android:layout_width="15dp"
-                    android:layout_height="10dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="end"
-                    android:background="@drawable/down_arrow"
-                    />
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/service_type"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:background="@color/transparent"/>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/spinner_border_color">
 
-            </FrameLayout>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/vndr_serviceType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:textSize="14dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="08dp"
+                        android:hint="Select Service Type"
+                        android:typeface="serif"
+                        android:textColorHint="#757575"
+                        android:textColor="#3e3e3e"
+                        android:background="@drawable/spinner_border_color"/>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:typeface="serif"
-                android:textColor="#096a75"
-                android:textSize="14sp"
-                android:editable="false"
-                android:text="Society"/>
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:layout_width="15dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/down_arrow"
+                        />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:background="@drawable/spinner_border_color">
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/service_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@color/transparent"/>
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/vndr_society"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:textSize="14dp"
-                    android:typeface="serif"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="08dp"
-                    android:hint="Select Society"
-                    android:textColorHint="#757575"
-                    android:textColor="#3e3e3e"
-                    android:background="@drawable/spinner_border_color"/>
-
-                <android.support.v7.widget.AppCompatImageButton
-                    android:layout_width="15dp"
-                    android:layout_height="10dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="end"
-                    android:background="@drawable/down_arrow"
-                    />
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnfrSociety"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:background="@color/transparent"/>
-
-            </FrameLayout>
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:typeface="serif"
-                android:textColor="#096a75"
-                android:textSize="14sp"
-                android:editable="false"
-                android:text="Verification Id"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:background="@drawable/spinner_border_color">
+                </FrameLayout>
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/vndr_verificationID"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:textSize="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
                     android:typeface="serif"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="08dp"
-                    android:hint="Select Verification ID"
-                    android:textColorHint="#757575"
-                    android:textColor="#3e3e3e"
-                    android:background="@drawable/spinner_border_color"/>
+                    android:textColor="#096a75"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:text="Society"/>
 
-                <android.support.v7.widget.AppCompatImageButton
-                    android:layout_width="15dp"
-                    android:layout_height="10dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="end"
-                    android:background="@drawable/down_arrow" />
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnverification"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:background="@color/transparent"/>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/spinner_border_color">
 
-            </FrameLayout>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/vndr_society"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:textSize="14dp"
+                        android:typeface="serif"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="08dp"
+                        android:hint="Select Society"
+                        android:textColorHint="#757575"
+                        android:textColor="#3e3e3e"
+                        android:background="@drawable/spinner_border_color"/>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:typeface="serif"
-                android:textColor="#096a75"
-                android:textSize="14sp"
-                android:editable="false"
-                android:text="Verification"/>
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:layout_width="15dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/down_arrow"
+                        />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btnfrSociety"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@color/transparent"/>
+
+                </FrameLayout>
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:typeface="serif"
+                    android:textColor="#096a75"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:text="Verification Id"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/spinner_border_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/vndr_verificationID"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:textSize="14dp"
+                        android:typeface="serif"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="08dp"
+                        android:hint="Select Verification ID"
+                        android:textColorHint="#757575"
+                        android:textColor="#3e3e3e"
+                        android:background="@drawable/spinner_border_color"/>
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:layout_width="15dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/down_arrow" />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btnverification"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@color/transparent"/>
+
+                </FrameLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:typeface="serif"
+                    android:textColor="#096a75"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:text="Verification"/>
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/vndr_verificatioln"
@@ -300,9 +315,9 @@
                     android:background="@drawable/spinner_border_color"
                     />
 
-        </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.LinearLayoutCompat>
 
-    </ScrollView>
+        </ScrollView>
 
         <RelativeLayout
             android:id="@+id/footer"

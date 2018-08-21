@@ -79,7 +79,11 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         if(Break[3].equalsIgnoreCase("null")|| Break[3].equalsIgnoreCase("") || Break[3].equalsIgnoreCase(" ")){
             holder.mem_status.setText("");
         }else {
-            holder.mem_status.setText(Break[3]);
+            if(Break[3].equals("Active")){
+                holder.mem_status.setText("Deactive");
+            }else{
+                holder.mem_status.setText("Active");
+            }
         }
 
         if(Break[4].equalsIgnoreCase("null")|| Break[4].equalsIgnoreCase("") || Break[4].equalsIgnoreCase(" ")){
@@ -156,7 +160,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
                             String msg = loginData.getString("message");
                             if (resStatus.equalsIgnoreCase("Success")) {
                                 String Status = loginData.getString("UserStatus");
-                                if(Status.equals("ACTIVE")){
+                                if(Status.equals("Active")){
                                     mem_status.setText("Deactive");
                                 }else{
                                     mem_status.setText("Active");

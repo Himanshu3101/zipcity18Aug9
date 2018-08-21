@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -35,21 +36,19 @@ public class Alloted_Unit extends Activity {
     List<loginObject>  UnitBData;
     RecyclerView UnitrecyclerView;
     ProgressDialog PD;
-
-    ChargeRecyclerViewAdapter cadapter;
     private ArrayList<String> ChargesList;
-    RecyclerView ChargesrecyclerView;
-    List<loginObject>  ChargesBData;
+    public static final String MY_PREFS_NAME = "ChargesList";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alloted__unit);
-
-
         this.setFinishOnTouchOutside(true);
-         UnitrecyclerView = findViewById(R.id.allotedunit);
-        ChargesrecyclerView = findViewById(R.id.charges);
+
+        UnitrecyclerView = findViewById(R.id.allotedunit);
+
 
         PD = new ProgressDialog(Alloted_Unit.this);
         PD.setMessage("Loading...");
@@ -113,7 +112,7 @@ public class Alloted_Unit extends Activity {
                                 String U_no = UnitBData.get(i).Unit_no;
                                 String U_status = UnitBData.get(i).Unit_status;
 
-                                String UnitDetails = U_no+"&"+U_status;
+                                String UnitDetails = U_no +"&"+U_status;
                                 UnitList.add(UnitDetails);
                                 i++;
                             }
@@ -121,27 +120,31 @@ public class Alloted_Unit extends Activity {
                             e.printStackTrace();
                         }
 //charges details
-//                        try {
-//                            UnitDetailArray = response.getJSONArray("listAssignUnits");
-//                            ChargesBData = new ArrayList<>();
-//                            for (int i = 0; i < UnitDetailArray.length();) {
-//                                JSONObject ChargesDetailJsonData = UnitDetailArray.getJSONObject(i);
-//                                loginObject loginObject_recycler = new loginObject();
-//
-//                                loginObject_recycler.Charges_Type = ChargesDetailJsonData.getString("NoOfCount");
-//                                loginObject_recycler.Charges_Amount = ChargesDetailJsonData.getString("UnitStatus");
-//
-//                                ChargesBData.add(loginObject_recycler);
-//                                String CH_TYPE = ChargesBData.get(i).Charges_Type;
-//                                String CH_AMOUNT = ChargesBData.get(i).Charges_Amount;
-//
-//                                String ChargesDetails = CH_TYPE+"&"+CH_AMOUNT;
-//                                ChargesList.add(ChargesDetails);
-//                                i++;
-//                            }
-//                        }catch(Exception e){
-//                            e.printStackTrace();
-//                        }
+                        try {
+                            UnitDetailArray = response.getJSONArray("listUnitWiseChargesDetail");
+                            UnitBData = new ArrayList<>();
+                            for (int i = 0; i < UnitDetailArray.length();) {
+                                JSONObject ChargesDetailJsonData = UnitDetailArray.getJSONObject(i);
+                                loginObject loginObject_recycler = new loginObject();
+
+                                loginObject_recycler.Charges_Type = ChargesDetailJsonData.getString("ChargeName");
+                                loginObject_recycler.Charges_Amount = ChargesDetailJsonData.getString("Value");
+
+                                UnitBData.add(loginObject_recycler);
+                                String CH_TYPE = UnitBData.get(i).Charges_Type;
+                                String CH_AMOUNT = UnitBData.get(i).Charges_Amount;
+
+                                String ChargesDetails = CH_TYPE+"&"+CH_AMOUNT;
+                                ChargesList.add(ChargesDetails);
+                                i++;
+                            }
+
+
+
+
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
 
                         recycler();
                         PD.dismiss();
@@ -150,32 +153,35 @@ public class Alloted_Unit extends Activity {
                         Toast.makeText(Alloted_Unit.this, "Please try after some time...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
+                    PD.dismiss();
+                    Toast.makeText(Alloted_Unit.this, "Please try after some time", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                PD.dismiss();
                 Log.w("error in response", "Error: " + error.getMessage());
+                Toast.makeText(Alloted_Unit.this, "Server_Error -"+error, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),Profile.class);
+                startActivity(intent);
+                finish();
             }
         });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         MyApplication.getInstance().addToReqQueue(req);
     }
 
     public void recycler(){
-
         try {
             UnitrecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            uadapter = new AllotedUnitRecyclerViewAdapter(this, UnitList);
+            uadapter = new AllotedUnitRecyclerViewAdapter(this, ChargesList,UnitList);
             UnitrecyclerView.setAdapter(uadapter);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        try {
-            ChargesrecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            cadapter = new ChargeRecyclerViewAdapter(this, ChargesList);
-            ChargesrecyclerView.setAdapter(cadapter);
         }catch (Exception e){
             e.printStackTrace();
         }

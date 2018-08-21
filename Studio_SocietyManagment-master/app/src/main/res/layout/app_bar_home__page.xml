@@ -13,13 +13,27 @@
         android:layout_height="55dp"
         android:background="#096a75 ">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/menu"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="07dp"
-            android:background="@drawable/menu" />
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+        <!--android:id="@+id/menu"-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_marginRight="05dp"-->
+        <!--android:layout_marginTop="07dp"-->
+        <!--android:background="@drawable/menu" />-->
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/menu"
+                android:layout_gravity="center"/>
+        </FrameLayout>
 
         <TextView
             android:text="Homepage"
@@ -27,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:textColor="#fff"
             android:paddingRight="50dp"
             android:layout_marginTop="13dp"/>
@@ -35,31 +49,60 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginRight="10dp">
+            android:layout_gravity="end">
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/profile"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/profile"/>
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
+
+                <ImageView android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/profile"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
             <!--<android.support.v7.widget.AppCompatImageButton-->
-                <!--android:id="@+id/logout"-->
-                <!--android:layout_width="20dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:layout_marginTop="04dp"-->
-                <!--android:background="@drawable/logout"/>-->
+            <!--android:id="@+id/profile"-->
+            <!--android:layout_width="23dp"-->
+            <!--android:layout_height="23dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:background="@drawable/profile"/>-->
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/notify"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="04dp"
-                android:background="@drawable/notification" />
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/logout"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:background="@drawable/logout"/>-->
+
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+            <!--android:id="@+id/notify"-->
+            <!--android:layout_width="23dp"-->
+            <!--android:layout_height="23dp"-->
+            <!--android:layout_marginTop="04dp"-->
+            <!--android:padding="5dp"-->
+            <!--android:background="@drawable/notification" />-->
+            <FrameLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/notify"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/transparent"/>
+
+                <ImageView android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/notification"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
         </LinearLayout>
 

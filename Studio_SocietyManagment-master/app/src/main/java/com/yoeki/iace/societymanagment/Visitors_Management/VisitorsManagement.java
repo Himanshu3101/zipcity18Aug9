@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -48,7 +49,7 @@ public class VisitorsManagement extends AppCompatActivity implements View.OnClic
     String UID,MEM_STATUS = "1",STATUS;
     SwitchCompat switchCompat;
     int i;
-    AppCompatImageButton Visit_bck;
+    Button Visit_bck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class VisitorsManagement extends AppCompatActivity implements View.OnClic
         recyclerView = (RecyclerView) findViewById(R.id.request);
 //        fab = (FloatingActionButton)findViewById(R.id.fab);
 //        openpopup = (FloatingActionButton)findViewById(R.id.openpopup);
-        Visit_bck = (AppCompatImageButton)findViewById(R.id.Visit_bck);
+        Visit_bck = (Button)findViewById(R.id.Visit_bck);
         gotoactivity = (FloatingActionButton)findViewById(R.id.openactivity);
         switchCompat=(SwitchCompat)findViewById(R.id.HomeNtHome);
 

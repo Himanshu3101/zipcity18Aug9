@@ -16,7 +16,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -24,6 +23,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +52,7 @@ import static com.yoeki.iace.societymanagment.R.layout.single_bottomsheet;
 public class vendor_Reg extends AppCompatActivity {
     AppCompatEditText Vndr_nme, Vndr_cntct, Vndr_vrfctn_name;
     static AppCompatTextView VerIDName,societyeName,serviceName;
-    AppCompatImageButton back;
+    Button back;
     AppCompatButton submit;
     Boolean validation;
     DBHandler dbHandler;
@@ -76,7 +76,7 @@ public class vendor_Reg extends AppCompatActivity {
         Vndr_nme = (AppCompatEditText)findViewById(R.id.vndr_nme);
         Vndr_cntct = (AppCompatEditText)findViewById(R.id.vndr_contact);
         Vndr_vrfctn_name = (AppCompatEditText)findViewById(R.id.vndr_verificatioln);
-        back = (AppCompatImageButton) findViewById(R.id.back);
+        back = (Button) findViewById(R.id.back);
         submit = (AppCompatButton) findViewById(R.id.Vndr_submt_btn);
 
         serviceName = (AppCompatTextView)findViewById(R.id.vndr_serviceType);

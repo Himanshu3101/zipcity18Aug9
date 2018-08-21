@@ -13,13 +13,28 @@
         android:layout_height="55dp"
         android:background="#096a75">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/Visit_bck"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="05dp"
-            android:layout_marginTop="07dp"
-            android:background="@drawable/back" />
+        <!--<android.support.v7.widget.AppCompatImageButton-->
+        <!--android:id="@+id/Visit_bck"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginRight="05dp"-->
+        <!--android:layout_marginTop="07dp"-->
+        <!--android:background="@drawable/back" />-->
+
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/Visit_bck"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <ImageView android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
 
         <android.support.v7.widget.AppCompatTextView
             android:text="Visitors Management"
@@ -38,20 +53,20 @@
         android:layout_height="50dp"
         android:background="#0a7b87">
 
-    <android.support.v7.widget.SwitchCompat
-        android:id="@+id/HomeNtHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-       android:layout_marginLeft="30dp"
-        android:layout_marginRight="20dp"
-        android:checked="false"
-        android:textSize="15sp"
-        android:fontFamily="@font/opensans_bold"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:text="Home Status"
-        />
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/HomeNtHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:checked="false"
+            android:textSize="15sp"
+            android:fontFamily="@font/opensans_bold"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:text="Home Status"
+            />
 
     </android.support.v7.widget.LinearLayoutCompat>
 

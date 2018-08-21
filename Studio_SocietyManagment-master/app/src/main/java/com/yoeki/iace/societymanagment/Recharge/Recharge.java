@@ -1,56 +1,49 @@
 package com.yoeki.iace.societymanagment.Recharge;
 
+
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.yoeki.iace.societymanagment.Database.DBHandler;
+
 import com.yoeki.iace.societymanagment.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class Recharge extends AppCompatActivity {
+public class Recharge extends Fragment {
 
     RechargeRecyclerViewAdapter radapter;
     private ArrayList<String> RechargeList;
-    static List<String> NV_FlatList;
-    static ArrayList<String> NV_FlatListArray;
-    DBHandler db;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.recharge);
-
-        db=new DBHandler(this);
-
-
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         RechargeList = new ArrayList<>();
         RechargeList.add("T1-204");
         RechargeList.add("T1-206");
         RechargeList.add("T1-209");
         RechargeList.add("T1-212");
-        forService();
 
-        RecyclerView recyclerView = findViewById(R.id.recharge);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        radapter = new RechargeRecyclerViewAdapter(this, RechargeList);
+
+        RecyclerView recyclerView = getView().findViewById(R.id.recharge);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        radapter = new RechargeRecyclerViewAdapter( getActivity() ,RechargeList);
         recyclerView.setAdapter(radapter);
 
     }
 
-    public void forService() {
-        NV_FlatList = db.getFlatList();
-        NV_FlatListArray = new ArrayList<String>();
-        for (final String link : NV_FlatList) {
-            String log =  link;
-            NV_FlatListArray.add(log);
-        }
-        String VerName = NV_FlatListArray.toString();
-//                visit_location.setText(VerName);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.recharge, container, false);
     }
+
 }
+
+
+

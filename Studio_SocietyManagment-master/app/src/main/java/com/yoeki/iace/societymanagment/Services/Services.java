@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -32,7 +33,7 @@ public class Services extends AppCompatActivity {
     ProgressDialog PD;
     ArrayList<String> listServices  ;
     List<loginObject> ServiceData;
-    AppCompatImageButton bck;
+    Button bck;
     ServicesRecyclerViewAdapter serviceadapter;
     RecyclerView recyclerView;
     private ArrayList<String> ServicesList;
@@ -45,7 +46,7 @@ public class Services extends AppCompatActivity {
         db = new DBHandler(this);
 //        ServicesList = new ArrayList<>();
 //        ServicesList.add("M");
-        bck = (AppCompatImageButton)findViewById(R.id.Serv_bck);
+        bck = (Button)findViewById(R.id.Serv_bck);
         recyclerView = findViewById(R.id.services);
 
         bck.setOnClickListener(new View.OnClickListener() {

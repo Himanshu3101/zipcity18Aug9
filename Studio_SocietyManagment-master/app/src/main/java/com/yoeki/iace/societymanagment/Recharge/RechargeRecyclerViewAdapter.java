@@ -1,7 +1,6 @@
 package com.yoeki.iace.societymanagment.Recharge;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,9 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yoeki.iace.societymanagment.R;
 
@@ -23,6 +23,7 @@ public class RechargeRecyclerViewAdapter extends RecyclerView.Adapter<RechargeRe
     private List<String> mData;
     private LayoutInflater mInflater;
     private static Context context;
+
 //    private ItemClickListener mClickListener;
 
     // data is passed into the constructor
@@ -57,9 +58,12 @@ public class RechargeRecyclerViewAdapter extends RecyclerView.Adapter<RechargeRe
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
-        ImageView icondown,iconup;
+        Button icondown,iconup;
+        AppCompatButton rchrge_proceed;
+        FrameLayout up,down;
         RecyclerView recharge;
         LinearLayoutCompat layout1;
+        View view_recharge;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -67,17 +71,28 @@ public class RechargeRecyclerViewAdapter extends RecyclerView.Adapter<RechargeRe
             name = itemView.findViewById(R.id.data);
             icondown=itemView.findViewById(R.id.icondown);
             iconup=itemView.findViewById(R.id.iconup);
+            view_recharge=itemView.findViewById(R.id.view_recharge);
             recharge = itemView.findViewById(R.id.rechargeamount);
             layout1=itemView.findViewById(R.id.layout1);
+            rchrge_proceed = itemView.findViewById(R.id.rchrge_proceed);
+            up =itemView.findViewById(R.id.up);
+            down =itemView.findViewById(R.id.down);
 
+            rchrge_proceed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "Recharge Proceed", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             iconup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     layout1.setVisibility(View.GONE);
-                    icondown.setVisibility(View.VISIBLE);
-                    iconup.setVisibility(View.GONE);
+                    down.setVisibility(View.VISIBLE);
+                    up.setVisibility(View.GONE);
+                    view_recharge.setVisibility(View.VISIBLE);
                    /* if (iconup.getVisibility()==View.VISIBLE) {
                         layout1.setVisibility(View.GONE);
                     } else {
@@ -93,8 +108,9 @@ public class RechargeRecyclerViewAdapter extends RecyclerView.Adapter<RechargeRe
                 @Override
                 public void onClick(View v) {
                     layout1.setVisibility(View.VISIBLE);
-                    iconup.setVisibility(View.VISIBLE);
-                    icondown.setVisibility(View.GONE);
+                    up.setVisibility(View.VISIBLE);
+                    down.setVisibility(View.GONE);
+                    view_recharge.setVisibility(View.GONE);
 //                    if (layout1.getVisibility() == View.VISIBLE) {
 //                        layout1.setVisibility(View.GONE);
 //                    } else {
@@ -109,17 +125,17 @@ public class RechargeRecyclerViewAdapter extends RecyclerView.Adapter<RechargeRe
                     ArrayList<String> RechargeAmountList;
 
 
-                  RechargeAmountList = new ArrayList<>();
-                  RechargeAmountList.add("Meter Number");
-                  RechargeAmountList.add("Electricity");
-                  RechargeAmountList.add("Balance");
-                  RechargeAmountList.add("Previous Amount");
+                    RechargeAmountList = new ArrayList<>();
+                    RechargeAmountList.add("Meter Number");
+                    RechargeAmountList.add("Last Recharge Amount");
+                    RechargeAmountList.add("Previous Recharge Amount");
+                    RechargeAmountList.add("Balance");
 
 
-                 recharge.setLayoutManager(new LinearLayoutManager(context));
-                 amountadapter = new RechargeAmountRecyclerViewAdapter(context, RechargeAmountList);
-                 recharge.setAdapter(amountadapter);
-                   }
+                    recharge.setLayoutManager(new LinearLayoutManager(context));
+                    amountadapter = new RechargeAmountRecyclerViewAdapter(context, RechargeAmountList);
+                    recharge.setAdapter(amountadapter);
+                }
             });
         }
     }

@@ -125,12 +125,6 @@
                 android:background="@drawable/down_arrow"/>
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/image_type"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:background="@color/transparent"/>
-
-            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/complaintlocation"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"

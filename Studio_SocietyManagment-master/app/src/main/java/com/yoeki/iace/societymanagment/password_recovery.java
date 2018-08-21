@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 public class password_recovery extends AppCompatActivity {
     AppCompatEditText forget_Email;
     AppCompatButton register;
-    AppCompatImageButton back;
+    Button back;
     Boolean validation;
     ProgressDialog PD;
     String resStatusForgetPassword,passMessage;
@@ -43,7 +44,7 @@ public class password_recovery extends AppCompatActivity {
         setContentView(R.layout.forget_pswd);
 
         forget_Email= (AppCompatEditText)findViewById(R.id.enter_email);
-        back = (AppCompatImageButton)findViewById(R.id.back_pass);
+        back = (Button)findViewById(R.id.back_pass);
         register = (AppCompatButton)findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override

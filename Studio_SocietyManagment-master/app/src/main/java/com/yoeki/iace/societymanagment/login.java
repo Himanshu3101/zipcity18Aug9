@@ -42,9 +42,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import se.simbio.encryption.Encryption;
 
 public class login extends AppCompatActivity {
     AppCompatEditText Uname,Pswd;
@@ -52,11 +60,15 @@ public class login extends AppCompatActivity {
     DBHandler db;
     AppCompatButton Forget_pswd,Vendor_regs;
     AppCompatButton Login;
-    Boolean conn,validation;
+    Boolean conn,validation,encrypted = false;
+    String unme,pwd;
+    String forchangepswd = "1";
 
     private MyFirebaseInstanceID mService;
     private boolean mBounded;
     private static final String TAG = "Login";
+
+    String filepath = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.autologin.txt";
 
 
     String json_url,resStatus,resMessage,resUserID,resUserName,resUserRole,tokenR,UserWiseId;
@@ -89,7 +101,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        directory();
         if(!hasPermissions(this, PERMISSIONS)){
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
@@ -120,12 +132,17 @@ public class login extends AppCompatActivity {
 //        Uname.setText("9013688825");
 //        Pswd.setText("000000");
 
-        Uname.setText("9015032816");
-        Pswd.setText("000000");
-
         PD = new ProgressDialog(login.this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
+
+        Uname.setText("");
+        Pswd.setText("");
+        autologin();
+        if(encrypted==true) {
+            forlogin();
+            forchangepswd = "0";
+        }
 
         Forget_pswd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,8 +187,15 @@ public class login extends AppCompatActivity {
         });
 
         getDeviceToken();
+    }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
     }
 
     public String getDeviceToken() {
@@ -261,6 +285,7 @@ public class login extends AppCompatActivity {
                     JSONObject loginData = new JSONObject(String.valueOf(response));
                     resStatus = loginData.getString("status");
                     if (resStatus.equalsIgnoreCase("success")) {
+                        getDeviceToken();
                         db.deleteall();
 
                         resMessage = loginData.getString("status");
@@ -398,15 +423,21 @@ public class login extends AppCompatActivity {
                         PD.dismiss();
                         if(UserWiseId.equals("4")){
                             Intent intent = new Intent(login.this, ServiceProvider.class);
+                            intent.putExtra("chngepswd",forchangepswd);
+                            intent.putExtra("oldpsswd",password);
                             startActivity(intent);
                         }else if(UserWiseId.equals("3")){
                             Intent intent = new Intent(login.this, Home_Page.class);
+                            intent.putExtra("chngepswd",forchangepswd);
+                            intent.putExtra("oldpsswd",password);
                             startActivity(intent);
                         }else {
                             Intent intent = new Intent(login.this, GateKeeper.class);
+                            intent.putExtra("chngepswd",forchangepswd);
+                            intent.putExtra("oldpsswd",password);
                             startActivity(intent);
                         }
-
+                        writenitem();
 
                     } else {
                         PD.dismiss();
@@ -432,6 +463,79 @@ public class login extends AppCompatActivity {
 
         MyApplication.getInstance().addToReqQueue(req);
 //        }
+    }
+
+    public void writenitem(){
+        try {
+            File file = new File(filepath);
+            file.createNewFile();
+            writenameandpswd();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writenameandpswd() {
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filepath));
+            String uname = Uname.getText().toString();
+            String psswd = Pswd.getText().toString();
+            Encryption encryption = Encryption.getDefault("Key", "Salt", new byte[16]);
+            unme = encryption.encryptOrNull(uname);
+            pwd = encryption.encryptOrNull(psswd);
+            bufferedWriter.write(unme);
+            bufferedWriter.write(":");
+            bufferedWriter.write(pwd);
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void directory() {
+        File dir = new File("/mnt/sdcard/Android/data/com.android.ZipCity");
+        try {
+            if (dir.mkdir()) {
+                System.out.println("Directory created");
+            } else {
+                System.out.println("Directory is not created");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean autologin() {
+        try {
+            encrypted = false;
+            File file = new File(filepath);
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            StringBuffer stringBuffer = new StringBuffer();
+            String line,line1 = "";
+            while ((line = bufferedReader.readLine()) != null)  line1+=line; {
+                stringBuffer.append(line1);
+                String[] ipparts = line1.split("\\:");
+                try {
+                    String ip1 = String.valueOf(ipparts[0]);
+                    String ip2 = String.valueOf(ipparts[1]);
+                    Encryption encryption = Encryption.getDefault("Key", "Salt", new byte[16]);
+                    String Eusname = encryption.decryptOrNull(ip1);
+                    String Epasswd = encryption.decryptOrNull(ip2);
+                    String afteencryip = Eusname.toString();
+                    String aftrencryport = Epasswd.toString();
+                    Uname.setText(afteencryip);
+                    Pswd.setText(aftrencryport);
+                    encrypted = true;
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return encrypted;
     }
 
 }

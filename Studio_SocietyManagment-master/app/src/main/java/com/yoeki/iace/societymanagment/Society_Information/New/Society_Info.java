@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -37,7 +38,7 @@ import java.util.List;
  */
 
 public class Society_Info extends AppCompatActivity {
-    ImageButton Soc_bck;
+    Button Soc_bck;
     ProgressDialog PD;
     String UID;
     AppCompatTextView S_code,So_Name,Lift_G_No,Lift_S_No,PARKING_C_No,PARKING_S_No;
@@ -55,7 +56,7 @@ public class Society_Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.society_info);
 
-        Soc_bck = (ImageButton)findViewById(R.id.New_Soc_bck);
+        Soc_bck = (Button)findViewById(R.id.New_Soc_bck);
 
         S_code = (AppCompatTextView)findViewById(R.id.S_code);
         So_Name = (AppCompatTextView)findViewById(R.id.So_Name);

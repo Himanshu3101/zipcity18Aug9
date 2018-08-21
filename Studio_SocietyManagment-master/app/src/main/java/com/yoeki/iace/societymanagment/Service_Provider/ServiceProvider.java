@@ -12,19 +12,20 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yoeki.iace.societymanagment.ChangePassword;
 import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.Helpline.HelplineNo;
@@ -37,6 +38,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,25 +49,43 @@ public class ServiceProvider extends AppCompatActivity {
     ServiceProviderRecyclerViewAdapter sadapter;
 
     private ArrayList<String> ServiceproviderList;
-    AppCompatImageButton menu,Ser_notify,profile;
+    Button menu,Ser_notify,profile;
     RecyclerView recyclerView;
     NavigationView navigation;
+    String foepswdLayout;
     DrawerLayout drawer;
     ProgressDialog PD;
     private ArrayList<String> RequestList;
     List<loginObject> loginBData;
     DBHandler db;
+    String filepathN = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.notify.txt";
+    String filepath = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.autologin.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_provider);
 
+
+        foepswdLayout = getIntent().getStringExtra("chngepswd");
+        String oldpsswd = getIntent().getStringExtra("oldpsswd");
+        try {
+            if (foepswdLayout.equals("1")) {
+                Intent intent = new Intent(getApplicationContext(), ChangePassword.class);
+                intent.putExtra("firstTIme_Member", "secondTme_Member");
+                intent.putExtra("old_frst_pswd", oldpsswd);
+                startActivity(intent);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
         db = new DBHandler(this);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigation = (NavigationView) findViewById(R.id.nav_view);
-        menu = (AppCompatImageButton)findViewById(R.id.menu);
-        Ser_notify = (AppCompatImageButton)findViewById(R.id.Ser_notify);
-        profile = (AppCompatImageButton)findViewById(R.id.Ser_profile);
+        menu = (Button)findViewById(R.id.menu);
+        Ser_notify = (Button)findViewById(R.id.Ser_notify);
+        profile = (Button)findViewById(R.id.Ser_profile);
         recyclerView = findViewById(R.id.serviceprovider);
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -107,10 +128,12 @@ public class ServiceProvider extends AppCompatActivity {
 
                     case R.id.helpline:
                         Intent intent=new Intent(ServiceProvider.this,HelplineNo.class);
+                        intent.putExtra("fromHelpline","Serv");
                         startActivity(intent);
                         break;
                     case R.id.rules:
                         Intent intent1=new Intent(ServiceProvider.this,Rules.class);
+                        intent1.putExtra("fromRules","Serv");
                         startActivity(intent1);
                         break;
                     case R.id.share:
@@ -126,13 +149,21 @@ public class ServiceProvider extends AppCompatActivity {
                         drawer.openDrawer(Gravity.START);
                         AlertDialog.Builder builder = new AlertDialog.Builder(ServiceProvider.this);
                         builder.setCancelable(false);
-                        builder.setMessage("Do you want to log out?");
+                        builder.setMessage("Do you want to Log-Out?");
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 db.deleteall();
+
+                                try {
+                                    dlteusernameandpwd();
+                                    deleteNotofy();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                                 Intent intent = new Intent(ServiceProvider.this,login.class);
                                 startActivity(intent);
+//                    stopService(view);
                                 finish();
                             }
                         });
@@ -162,13 +193,21 @@ public class ServiceProvider extends AppCompatActivity {
 //            super.onBackPressed();
             AlertDialog.Builder builder = new AlertDialog.Builder(ServiceProvider.this);
             builder.setCancelable(false);
-            builder.setMessage("Do you want to log out?");
+            builder.setMessage("Do you want to Log-Out?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     db.deleteall();
+
+                    try {
+                        dlteusernameandpwd();
+                        deleteNotofy();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     Intent intent = new Intent(ServiceProvider.this,login.class);
                     startActivity(intent);
+//                    stopService(view);
                     finish();
                 }
             });
@@ -182,6 +221,16 @@ public class ServiceProvider extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
         }
+    }
+
+    public void dlteusernameandpwd() throws IOException {
+        File file = new File(filepath);
+        file.delete();
+    }
+
+    public void deleteNotofy() throws IOException {
+        File file = new File(filepathN);
+        file.delete();
     }
 
     public void datafrrequest(){

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:focusable="true"-->
+    <!--android:focusableInTouchMode="true"-->
+    <!--android:background="@drawable/spinner_border_color">-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+    <!--android:id="@+id/historytype"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="left"-->
+    <!--android:textSize="15dp"-->
+    <!--android:hint="Search by Flat Number"-->
+    <!--android:textColorHint="#7a7a7a"-->
+    <!--android:typeface="serif"-->
+    <!--android:paddingLeft="12dp"-->
+    <!--android:paddingTop="11dp"-->
+    <!--android:textColor="#000" />-->
+
+    <!--<android.support.v7.widget.AppCompatImageButton-->
+    <!--android:layout_width="30dp"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:layout_marginTop="08dp"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_gravity="end"-->
+    <!--android:background="@drawable/search_icon"/>-->
+
+    <!--<com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+    <!--android:id="@+id/srch_com_by_type"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:textColor="@color/transparent"/>-->
+
+    <!--</FrameLayout>-->
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/opensans_light"
+            android:textStyle="bold"
+            android:textColor="#096a75"
+            android:editable="false"
+            android:text="Flat Number*"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/spinner_border_color">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/location_Stat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:textSize="12dp"
+                android:fontFamily="@font/opensans_light"
+                android:text="Select Flat Number"
+                android:paddingLeft="12dp"
+                android:paddingTop="08dp"
+                android:textColor="#3e3e3e"
+                android:background="@drawable/spinner_border_color"/>
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="15dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="end"
+                android:background="@drawable/down_arrow"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/unit_location"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@color/transparent"/>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/opensans_light"
+            android:textStyle="bold"
+            android:textColor="#096a75"
+            android:editable="false"
+            android:text="Select Date Range"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="22dp"
+
+                android:layout_marginRight="22dp">
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".1">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/opensans_light"
+                        android:paddingTop="08dp"
+                        android:textStyle="bold"
+                        android:textColor="#096a75"
+                        android:textAlignment="viewStart"
+                        android:editable="false"
+                        android:text="From"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight=".12">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:textColor="#000"
+                        android:textAlignment="viewStart"
+                        android:text="21/08/2018"
+                        android:backgroundTint="@color/transparent"/>
+
+                    <FrameLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="05dp">
+
+                        <Button android:id="@+id/RE_from_date"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/transparent"/>
+
+                        <ImageView android:layout_width="27dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/calender_icon"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"
+                android:background="#D3D3D3" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="08dp"
+                android:layout_marginRight="22dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".1">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/opensans_light"
+                        android:paddingTop="08dp"
+                        android:textStyle="bold"
+                        android:textColor="#096a75"
+                        android:textAlignment="viewStart"
+                        android:editable="false"
+                        android:text="To"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight=".12">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_light"
+                        android:textColor="#000"
+                        android:textAlignment="viewStart"
+                        android:text="21/08/2018"
+                        android:backgroundTint="@color/transparent"/>
+
+                    <FrameLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="05dp">
+
+                        <Button
+                            android:id="@+id/RE_to_date"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/transparent"/>
+
+                        <ImageView android:layout_width="27dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/calender_icon"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/statement"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/Vndr_submt_btn"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="#096a75"
+            android:textAlignment="center"
+            android:text="View Statement"
+            android:typeface="serif"
+            android:textSize="15sp"
+            android:textColor="#fff"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

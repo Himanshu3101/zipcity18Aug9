@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.yoeki.iace.societymanagment.GateKeeper.GateKeeper;
 import com.yoeki.iace.societymanagment.Home_Page;
@@ -26,7 +26,7 @@ public class Notification extends AppCompatActivity {
     RecyclerView recyclerView;
     NotificationRecyclerViewAdapter nadapter;
     private ArrayList<String> NotificationList;
-    AppCompatImageButton Notify_bck;
+    Button Notify_bck;
     String toNotify;
     String filepath = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.notify.txt";
 

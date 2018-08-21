@@ -23,30 +23,30 @@
             android:textColor="#096a75"
             android:textSize="20sp"
             android:editable="false"
-            android:text="Alloted Parking"/>
+            android:text="Alloted Parkings"/>
 
         <View
             android:background="#d3d3d3"
             android:layout_height="1dp"
             android:layout_width="fill_parent"/>
 
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:layout_marginTop="10dp">
+        <!--<android.support.v7.widget.LinearLayoutCompat-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:layout_marginTop="10dp">-->
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Parking No"
-                android:fontFamily="@font/opensans_light"
-                android:textColor="#096a75"
-                android:textSize="16dp"
-                android:textAlignment="center"/>
+            <!--<android.support.v7.widget.AppCompatTextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="Parking No"-->
+                <!--android:fontFamily="@font/opensans_light"-->
+                <!--android:textColor="#096a75"-->
+                <!--android:textSize="16dp"-->
+                <!--android:textAlignment="center"/>-->
 
-        </android.support.v7.widget.LinearLayoutCompat>
+        <!--</android.support.v7.widget.LinearLayoutCompat>-->
         <View
             android:background="#d3d3d3"
             android:layout_height="0.5dp"
