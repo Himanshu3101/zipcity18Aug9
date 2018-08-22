@@ -52,6 +52,7 @@
         <activity android:name=".profile.Profile" android:screenOrientation="portrait" />
         <activity android:name=".GateKeeper.GateKeeper" android:screenOrientation="portrait" />
         <activity android:name=".GateKeeper.GateKeeperProfile" android:screenOrientation="portrait" />
+        <activity android:name=".Recharge.StatementPopup" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
         <activity android:name=".ChangePassword" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
         <activity android:name=".profile.Alloted_Unit" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />
         <activity android:name=".Visitors_Management.VisitorsNewRequest" android:screenOrientation="portrait" android:theme="@style/FullDialogActivityTheme" />

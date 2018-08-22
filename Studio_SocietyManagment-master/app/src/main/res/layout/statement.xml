@@ -149,19 +149,22 @@
                     android:layout_weight=".12">
 
                     <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/Stat_fromdate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/opensans_light"
                         android:textColor="#000"
                         android:textAlignment="viewStart"
-                        android:text="21/08/2018"
+                        android:hint="mm/dd/yyyy"
+                        android:textColorHint="#757575"
                         android:backgroundTint="@color/transparent"/>
 
                     <FrameLayout android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="05dp">
 
-                        <Button android:id="@+id/RE_from_date"
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/RE_from_date"
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"/>
@@ -220,19 +223,21 @@
                     android:layout_weight=".12">
 
                     <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/Stat_todate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/opensans_light"
                         android:textColor="#000"
                         android:textAlignment="viewStart"
-                        android:text="21/08/2018"
+                        android:hint="mm/dd/yyyy"
+                        android:textColorHint="#757575"
                         android:backgroundTint="@color/transparent"/>
 
                     <FrameLayout android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="05dp">
 
-                        <Button
+                        <android.support.v7.widget.AppCompatButton
                             android:id="@+id/RE_to_date"
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
@@ -252,16 +257,240 @@
         </android.support.v7.widget.LinearLayoutCompat>
 
 
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="10dp">-->
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="5dp"
-            android:id="@+id/statement"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:id="@+id/total_stat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:background="@drawable/popupbackground"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp">
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21/08/2018   -"
+                            android:fontFamily="@font/opensans_bold"
+                            android:textColor="#096a75"
+                            android:textStyle="bold"
+                            android:textSize="14dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/date2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="    22/08/2018"
+                            android:fontFamily="@font/opensans_bold"
+                            android:textColor="#096a75"
+                            android:textStyle="bold"
+                            android:textSize="14dp" />
+
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <!--<android.support.v7.widget.LinearLayoutCompat-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingBottom="5dp"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginRight="10dp">-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                    <!--android:id="@+id/invoice"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="Area"-->
+                    <!--android:layout_weight=".1"-->
+                    <!--android:fontFamily="@font/opensans_light"-->
+                    <!--android:textColor="#3e3e3e"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="14dp" />-->
+
+                    <!--<android.support.v7.widget.AppCompatTextView-->
+                    <!--android:id="@+id/invoiceno"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="3200 sq."-->
+                    <!--android:layout_weight=".1"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:fontFamily="@font/opensans_light"-->
+                    <!--android:textColor="#3e3e3e"-->
+                    <!--android:textSize="14dp"/>-->
+
+                    <!--</android.support.v7.widget.LinearLayoutCompat>-->
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/amountno"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Consume Unit"
+                            android:layout_weight=".1"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textStyle="bold"
+                            android:textSize="13dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/digit"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="30 Unit"
+                            android:layout_weight=".1"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textSize="13dp"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/transaction"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Electricity Charge"
+                            android:layout_weight=".1"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textStyle="bold"
+                            android:textSize="13dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/transactionno"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="50/-"
+                            android:layout_weight=".1"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textSize="13dp"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/status"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Maintainence Charge"
+                            android:layout_weight=".1"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textStyle="bold"
+                            android:textSize="13dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/stausco"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="150/-"
+                            android:layout_weight=".1"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textSize="13dp"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/TotChrg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Total"
+                            android:layout_weight=".1"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textStyle="bold"
+                            android:textSize="13dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/amunt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="200/-"
+                            android:layout_weight=".1"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/opensans_light"
+                            android:textColor="#3e3e3e"
+                            android:textSize="13dp"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </LinearLayout>
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:id="@+id/clickpopup"/>
+            </FrameLayout>
+        <!--</ScrollView>-->
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:id="@+id/statement"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginBottom="50dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:scrollbars="vertical"/>-->
 
     </android.support.v7.widget.LinearLayoutCompat>
 
@@ -272,7 +501,7 @@
         android:layout_alignParentBottom="true">
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/Vndr_submt_btn"
+            android:id="@+id/view_stat"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:background="#096a75"

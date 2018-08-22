@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
@@ -41,6 +42,7 @@ public class Complaint_Created extends Activity {
     String[] dataFlat, ComplaintFlat;
     String ComplaintIds, LocatIds;
     Boolean validation;
+    Drawable drawable;
 
 
     @Override
@@ -162,19 +164,20 @@ public class Complaint_Created extends Activity {
                 C_Title.getText().toString().equals("")) {
 
             validation = false;
-            Complaint_Type.setError("Select Complaint Type");
-            Complaint_Location.setError("Select Flat Number");
-            C_Title.setError("Enter Title");
+//            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+            Complaint_Type.setError("Select Complaint Type"/*, drawable*/);
+            Complaint_Location.setError("Select Flat Number"/*, drawable*/);
+            C_Title.setError("Enter Title"/*, drawable*/);
 
         } else if (com_t.equals("Select Complaint Type") || com_t.equals(null)) {
             validation = false;
-            Complaint_Type.setError("Select Complaint Type");
+            Complaint_Type.setError("Select Complaint Type"/*, drawable*/);
         } else if (com_loc.equals("Select Flat Number") || com_loc.equals(null)) {
             validation = false;
-            Complaint_Location.setError("Select Flat Number");
+            Complaint_Location.setError("Select Flat Number"/*, drawable*/);
         } else if (com_tit.equals("") || com_tit.equals(null)) {
             validation = false;
-            C_Title.setError("Enter Title");
+            C_Title.setError("Enter Title"/*, drawable*/);
 //        }else if (C_Description.getText().toString().equals("")) {
 //            validation = false;
 //            C_Description.setError("Enter Description");
