@@ -1,41 +1,59 @@
 package com.yoeki.iace.societymanagment;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.Circular.Circular;
+import com.yoeki.iace.societymanagment.ComplaintNew.ComplaintManagementTab;
+import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
+import com.yoeki.iace.societymanagment.Directory.Directory;
 import com.yoeki.iace.societymanagment.Helpline.HelplineNo;
 import com.yoeki.iace.societymanagment.Notification.Notification;
 import com.yoeki.iace.societymanagment.Recharge.RechargeTab;
+import com.yoeki.iace.societymanagment.RequestNew.RequestManagementTab;
 import com.yoeki.iace.societymanagment.Rules.Rules;
 import com.yoeki.iace.societymanagment.Services.Services;
 import com.yoeki.iace.societymanagment.Society_Information.New.Society_Info;
 import com.yoeki.iace.societymanagment.Visitors_Management.VisitorsManagement;
 import com.yoeki.iace.societymanagment.profile.Profile;
-import com.yoeki.iace.societymanagment.societymanagement.SocietyManagement;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Home_Page extends AppCompatActivity {
-
-//    RecyclerView MenuRecycle;
+TextView login_username;
+    //    RecyclerView MenuRecycle;
 //    private RecyclerView.Adapter Home_menu_adptr;
     String foepswdLayout,pswd;
     Button menu,notified,profile;
@@ -43,34 +61,33 @@ public class Home_Page extends AppCompatActivity {
     DrawerLayout drawer;
     List<String> UserRoleID;
     ArrayList<String> HomePageList;
-//    ArrayList<Drawable> SocietyIcon;
+    //    ArrayList<Drawable> SocietyIcon;
     ArrayList<String> finalRoleIDList;
     DBHandler db;
     String filepathN = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.notify.txt";
     String filepath = "/mnt/sdcard/Android/data/com.android.ZipCity/com.android.ZipCity.autologin.txt";
+    ProgressDialog PD;
+    private ArrayList<String> Mem_List;
+    List<loginObject> loginBData;
 
     GridView HomePagegrid;
     String[] SocietyName = {
-//            "Society Info",
-            "Complaint/Request",
+            "Complaint",
+            "Request",
             "Visitors ",
             "Services",
             "Payment",
-            "Gallery",
             "Circular",
-//            "Profile",
-//            "Vendor Approval",
-//            "Regular Passes",
-//            "Tenant",
-
+//            "Complaint/Request",
+//
     } ;
     int[] SocietyIcon = {
-//            R.drawable.society_management_icon,
-            R.drawable.societ_mgmnt,
             R.drawable.complaintmanagementicon,
+            R.drawable.request_management_icon,
             R.drawable.visitorsmanagement_icon,
+            R.drawable.societ_mgmnt,
             R.drawable.recharge_icon,
-            R.drawable.gallery,
+//            R.drawable.gallery,
             R.drawable.news,
 //            R.drawable.regularpasses_icon,
 //            R.drawable.tenant_icon,
@@ -83,6 +100,7 @@ public class Home_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__page);
+        login_username=(TextView)findViewById(R.id.loginusername);
 
         foepswdLayout = getIntent().getStringExtra("chngepswd");
         String oldpsswd = getIntent().getStringExtra("oldpsswd");
@@ -105,6 +123,13 @@ public class Home_Page extends AppCompatActivity {
         notified = (Button)findViewById(R.id.notify);
         profile = (Button)findViewById(R.id.profile);
 
+
+
+        PD = new ProgressDialog(Home_Page.this);
+        PD.setMessage("Loading...");
+        PD.setCancelable(false);
+        getUsername();
+
 //        MenuRecycle = findViewById(R.id.recycler_view);
 
         HomePagegrid.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -113,20 +138,20 @@ public class Home_Page extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = null;
                 if(position == 0){
-                    myIntent = new Intent(view.getContext(), SocietyManagement.class);
+                    myIntent = new Intent(view.getContext(), ComplaintManagementTab.class);
                 }
                 if(position == 1){
-                    myIntent = new Intent(view.getContext(), VisitorsManagement.class);
+                    myIntent = new Intent(view.getContext(), RequestManagementTab.class);
                 }
                 if(position ==2){
-                    myIntent = new Intent(view.getContext(), Services.class);
+                    myIntent = new Intent(view.getContext(), VisitorsManagement.class);
                 }
                 if(position ==3){
+                    myIntent = new Intent(view.getContext(), Services.class);
+                }
+                if(position ==4){
                     myIntent = new Intent(view.getContext(), RechargeTab.class);
                 }
-//                if(position ==4){
-//                    myIntent = new Intent(view.getContext(), Profile.class);
-//                }
                 if(position ==5){
                     myIntent = new Intent(view.getContext(), Circular.class);
                 }
@@ -284,8 +309,8 @@ public class Home_Page extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(),Profile.class);
-            startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(),Profile.class);
+                startActivity(intent);
             }
         });
 
@@ -309,7 +334,12 @@ public class Home_Page extends AppCompatActivity {
                         intent1.putExtra("fromRules","Home");
                         startActivity(intent1);
                         break;
-                    case R.id.share:
+                    case R.id.directory:
+                        Intent inten=new Intent(Home_Page.this,Directory.class);
+                        //                        intent.putExtra("fromRules","Home");
+                        startActivity(inten);
+                        break;
+                                            case R.id.share:
                         Intent i = new Intent(Intent.ACTION_SEND);
                         i.setType("text/plain");
                         i.putExtra(Intent.EXTRA_SUBJECT, "Zipcity App");
@@ -361,7 +391,7 @@ public class Home_Page extends AppCompatActivity {
         UserRoleID = db.getRoleID();
 
         for (final String link : UserRoleID) {
-          String log =  link;
+            String log =  link;
             finalRoleIDList.add(log);
         }
 
@@ -417,7 +447,71 @@ public class Home_Page extends AppCompatActivity {
         file.delete();
     }
 
+    public void getUsername(){
+        PD.show();
+        Mem_List = new ArrayList<>();
+        String json_url=(getString(R.string.BASE_URL) + "/BindUserProfile");
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String UID = prefs.getString("UserID"," ");
 
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("UserId",UID);
+
+        JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(
+                params), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                String mes;
+                JSONArray ProfileDetailArray = null,requestTypeArray = null,rejectionListArray = null,bindUserArray = null,userWiseRoleArray = null;
+
+                try {
+                    JSONObject loginData = new JSONObject(String.valueOf(response));
+                    String resStatus = loginData.getString("status");
+                    mes = loginData.getString("message");
+                    if (resStatus.equalsIgnoreCase("Success")) {
+
+//                           Owner Details
+                        try {
+                            ProfileDetailArray = response.getJSONArray("listOwner");
+                            loginBData = new ArrayList<>();
+                            for (int i = 0; i < ProfileDetailArray.length();) {
+                                JSONObject BDetailJsonData = ProfileDetailArray.getJSONObject(i);
+                                loginObject loginObject_recycler = new loginObject();
+                                loginObject_recycler.Owner_name = BDetailJsonData.getString("UserName");
+                                loginBData.add(loginObject_recycler);
+                                String O_UserName = loginBData.get(i).Owner_name;
+                                login_username.setText(O_UserName);
+
+                                i++;
+                            }
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                        PD.dismiss();
+                    }else{
+                        PD.dismiss();
+                        Toast.makeText(Home_Page.this, mes, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                PD.dismiss();
+//               Toast.makeText(Profile.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
+                Log.w("error in response", "Error: " + error.getMessage());
+            }
+        });
+
+        req.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
+        MyApplication.getInstance().addToReqQueue(req);
+    }
 
 
 

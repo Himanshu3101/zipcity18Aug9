@@ -349,7 +349,7 @@ public class Profile extends AppCompatActivity {
            @Override
            public void onErrorResponse(VolleyError error) {
                PD.dismiss();
-               Toast.makeText(Profile.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
+//               Toast.makeText(Profile.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
                Log.w("error in response", "Error: " + error.getMessage());
            }
        });

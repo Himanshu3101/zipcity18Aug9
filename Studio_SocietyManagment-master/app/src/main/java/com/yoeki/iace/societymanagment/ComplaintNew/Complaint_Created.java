@@ -1,4 +1,4 @@
-package com.yoeki.iace.societymanagment.societymanagement;
+package com.yoeki.iace.societymanagment.ComplaintNew;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
+import com.yoeki.iace.societymanagment.societymanagement.SocietyManagement;
 
 import org.json.JSONObject;
 
@@ -69,6 +70,7 @@ public class Complaint_Created extends Activity {
         C_ComplaintType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PD.show();
                 complaintList = new ArrayList<String>();
                 ComplaintReqArray = new ArrayList<String>();
                 complaintList = db.getComplaintList();
@@ -89,6 +91,7 @@ public class Complaint_Created extends Activity {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Complaint_Type.setText(checkedItem.toString());
+                                    PD.dismiss();
 //                                    ((AlertDialog) dialog).setCanceledOnTouchOutside(false);
                                     try {
                                         ComplaintIds = String.valueOf(db.getComplaintListID(checkedItem.toString()));
@@ -106,6 +109,7 @@ public class Complaint_Created extends Activity {
         C_FlatLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PD.show();
                 FlatList = new ArrayList<String>();
                 FlatListArray = new ArrayList<String>();
                 FlatList = db.getFlatList();
@@ -121,17 +125,17 @@ public class Complaint_Created extends Activity {
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     dialog.dismiss();
-//                                    int selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
+                                    int selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
                                     ListView lw = ((AlertDialog)dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Complaint_Location.setText(checkedItem.toString());
+                                    PD.dismiss();
                                     ((AlertDialog) dialog).setCanceledOnTouchOutside(false);
                                     try{
                                         LocatIds = String.valueOf(db.getFlatListID(checkedItem.toString()));
                                     }catch(Exception e){
                                         e.printStackTrace();
                                     }
-
                                 }
                             })
                             .show();
@@ -161,7 +165,7 @@ public class Complaint_Created extends Activity {
                 C_Title.getText().toString().equals("")) {
 
             validation = false;
-            drawable.setBounds(0, 0,65,0/*, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()*/);
+//            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             Complaint_Type.setError("Select Complaint Type"/*, drawable*/);
             Complaint_Location.setError("Select Flat Number"/*, drawable*/);
             C_Title.setError("Enter Title"/*, drawable*/);
@@ -211,7 +215,7 @@ public class Complaint_Created extends Activity {
                     if (resStatus.equals("Success")){
                         PD.dismiss();
                         Toast.makeText(Complaint_Created.this, "Complaint Submitted", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),SocietyManagement.class);
+                        Intent intent = new Intent(getApplicationContext(),ComplaintManagementTab.class);
                         startActivity(intent);
                     }else{
                         PD.dismiss();

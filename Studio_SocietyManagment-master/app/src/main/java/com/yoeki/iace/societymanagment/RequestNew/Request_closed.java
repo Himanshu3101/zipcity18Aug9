@@ -1,9 +1,7 @@
-package com.yoeki.iace.societymanagment.societymanagement;
+package com.yoeki.iace.societymanagment.RequestNew;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
+import com.yoeki.iace.societymanagment.societymanagement.SocietyManagement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +37,7 @@ import java.util.List;
 public class Request_closed extends Activity {
     EditText Req_Closed_submit_reason;
     TextView Req_Closed_submit_feedback,Req_Closed_submit_code;
-    Button Req_Closed_submit_feedback_btn,Req_Closed_submit;
+    Button /*Req_Closed_submit_feedback_btn,*/Req_Closed_submit;
     RatingBar Req_Closed_submit_rating_btn;
     ProgressDialog PD;
 
@@ -78,60 +76,63 @@ public class Request_closed extends Activity {
         feedback = new String[FeedbackD.size()];
         feedback = FeedbackD.toArray(feedback);
 
-        Req_Closed_submit_feedback_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    new AlertDialog.Builder(Request_closed.this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-                            .setTitle("Select Feedback")
-                            .setSingleChoiceItems(feedback, 0, null)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    dialog.dismiss();
-                                    ListView lw = ((AlertDialog)dialog).getListView();
-                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    Req_Closed_submit_feedback.setText(checkedItem.toString());
-                                    if(checkedItem.toString().equals("Satisfy")) {
-                                        f = 0;
-                                        feedbackStat = "S";
-                                    }else if(checkedItem.toString().equals("Not Satisfy")){
-                                        f=1;
-                                        feedbackStat = "N";
-                                    }
-//                                    try{
-//                                        VisitIds = String.valueOf(db.getVisitListID(checkedItem.toString()));
-//                                    }catch(Exception e){
-//                                        e.printStackTrace();
+//        Req_Closed_submit_feedback_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try {
+//                    new AlertDialog.Builder(Request_closed.this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+//                            .setTitle("Select Feedback")
+//                            .setSingleChoiceItems(feedback, 0, null)
+//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int whichButton) {
+//                                    dialog.dismiss();
+//                                    ListView lw = ((AlertDialog)dialog).getListView();
+//                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+//                                    Req_Closed_submit_feedback.setText(checkedItem.toString());
+//                                    if(checkedItem.toString().equals("Satisfy")) {
+//                                        f = 0;
+//                                        feedbackStat = "S";
+//                                    }else if(checkedItem.toString().equals("Not Satisfy")){
+//                                        f=1;
+//                                        feedbackStat = "N";
 //                                    }
-                                }
-                            })
-                            .show();
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
+////                                    try{
+////                                        VisitIds = String.valueOf(db.getVisitListID(checkedItem.toString()));
+////                                    }catch(Exception e){
+////                                        e.printStackTrace();
+////                                    }
+//                                }
+//                            })
+//                            .show();
+//                }catch(Exception e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
         Req_Closed_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    fbckstat = feedbackStat;
-                    if (fbckstat.equals("") || fbckstat.equals("null")) {
-                        Toast.makeText(Request_closed.this, "Please Select Feedback", Toast.LENGTH_SHORT).show();
-                    } else {
-                        validations();
-                        if (validation == true) {
-                            try {
-                                forClosedRequest();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                Intent intent1 = new Intent(getApplicationContext(),RequestManagementTab.class);
+                startActivity(intent1);
+                finish();
+//                try {
+//                    fbckstat = feedbackStat;
+//                    if (fbckstat.equals("") || fbckstat.equals("null")) {
+//                        Toast.makeText(Request_closed.this, "Please Select Feedback", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        validations();
+//                        if (validation == true) {
+//                            try {
+//                                forClosedRequest();
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
             }
         });
     }

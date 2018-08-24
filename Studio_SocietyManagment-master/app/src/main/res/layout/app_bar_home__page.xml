@@ -110,16 +110,40 @@
 
     <include layout="@layout/content_home__page" />
 
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="40dp"
+       android:layout_marginTop="56dp"
+       android:background="#c8e0e3"
+       android:gravity="center">
+
+       <!--<ImageView-->
+           <!--android:layout_width="20dp"-->
+           <!--android:layout_height="20dp"-->
+           <!--android:gravity="center"-->
+           <!--android:layout_marginTop="3dp"-->
+            <!--android:background="@drawable/profileicon"/>-->
+
+       <TextView
+           android:id="@+id/loginusername"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:gravity="center"
+           android:layout_marginLeft="10dp"
+           android:fontFamily="@font/opensans_bold"
+           android:textSize="17dp"
+           android:textColor="#096a75"/>
+   </LinearLayout>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="100dp">
 
         <GridView
             android:id="@+id/Homepage_gridview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:columnWidth="90dp"
             android:numColumns="2"
             android:verticalSpacing="15dp"

@@ -1,4 +1,4 @@
-package com.yoeki.iace.societymanagment.societymanagement;
+package com.yoeki.iace.societymanagment.RequestNew;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
+import com.yoeki.iace.societymanagment.societymanagement.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,11 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by IACE on 13-Aug-18.
- */
+public class ClosedRequestFeedBackPopup extends Activity {
 
-public class Request_closed extends Activity {
     EditText Req_Closed_submit_reason;
     TextView Req_Closed_submit_feedback,Req_Closed_submit_code;
     Button Req_Closed_submit_feedback_btn,Req_Closed_submit;
@@ -50,26 +48,27 @@ public class Request_closed extends Activity {
     List<String> FeedbackD;
     int f;
     protected ArrayList<CharSequence> feedbackServices = new ArrayList<CharSequence>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.request_closed);
+        setContentView(R.layout.closed_request_feed_back);
 
-        Req_Closed_submit_code = (TextView)findViewById(R.id.Req_Closed_submit_code);
-//        Req_Closed_submit_feedback = (TextView)findViewById(R.id.Req_Closed_submit_feedback);
-//        Req_Closed_submit_reason = (EditText)findViewById(R.id.Req_Closed_submit_reason);
-//        Req_Closed_submit_feedback_btn = (Button)findViewById(R.id.Req_Closed_submit_feedback_btn);
+//        Req_Closed_submit_code = (TextView)findViewById(R.id.Req_Closed_submit_code);
+        Req_Closed_submit_feedback = (TextView)findViewById(R.id.Req_Closed_submit_feedback);
+        Req_Closed_submit_reason = (EditText)findViewById(R.id.Req_Closed_submit_reason);
+        Req_Closed_submit_feedback_btn = (Button)findViewById(R.id.Req_Closed_submit_feedback_btn);
         Req_Closed_submit = (Button)findViewById(R.id.Req_Closed_submit);
-//        Req_Closed_submit_rating_btn = (RatingBar)findViewById(R.id.Req_Closed_submit_rating_btn);
+        Req_Closed_submit_rating_btn = (RatingBar)findViewById(R.id.Req_Closed_submit_rating_btn);
 
         PD = new ProgressDialog(this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
 
-        Intent intent= getIntent();
-        String unCode = intent.getStringExtra("R_Unique");
-        idReques = intent.getStringExtra("R_requestIID");
-        Req_Closed_submit_code.setText(unCode);
+//        Intent intent= getIntent();
+//        String unCode = intent.getStringExtra("R_Unique");
+//        idReques = intent.getStringExtra("R_requestIID");
+//        Req_Closed_submit_code.setText(unCode);
 
         FeedbackD = new ArrayList<String>();
         FeedbackD.add("Satisfy");
@@ -82,7 +81,7 @@ public class Request_closed extends Activity {
             @Override
             public void onClick(View v) {
                 try {
-                    new AlertDialog.Builder(Request_closed.this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                    new AlertDialog.Builder(ClosedRequestFeedBackPopup.this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                             .setTitle("Select Feedback")
                             .setSingleChoiceItems(feedback, 0, null)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -118,7 +117,7 @@ public class Request_closed extends Activity {
                 try {
                     fbckstat = feedbackStat;
                     if (fbckstat.equals("") || fbckstat.equals("null")) {
-                        Toast.makeText(Request_closed.this, "Please Select Feedback", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ClosedRequestFeedBackPopup.this, "Please Select Feedback", Toast.LENGTH_SHORT).show();
                     } else {
                         validations();
                         if (validation == true) {
@@ -187,7 +186,7 @@ public class Request_closed extends Activity {
                     if (resStatus.equalsIgnoreCase("Success")) {
                         PD.dismiss();
                         Toast.makeText(getApplicationContext(), "Request Closed Successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplication(),SocietyManagement.class);
+                        Intent intent = new Intent(getApplication(),RequestManagementTab.class);
                         startActivity(intent);
                         finish();
                     }else{

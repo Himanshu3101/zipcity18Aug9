@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f7f7f7">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/opensans_light"
+        android:textStyle="bold"
+        android:textColor="#096a75"
+        android:editable="false"
+        android:text="Feedback"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/spinner_border_color">
+
+        <TextView
+            android:id="@+id/Req_Closed_submit_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:textSize="12dp"
+            android:fontFamily="@font/opensans_light"
+            android:text="Select Feedback"
+            android:paddingLeft="12dp"
+            android:paddingTop="08dp"
+            android:textColor="#3e3e3e"
+            android:background="@drawable/spinner_border_color"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end"
+            android:background="@drawable/down_arrow"/>
+
+        <Button
+            android:id="@+id/Req_Closed_submit_feedback_btn"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/transparent"/>
+
+        <!--<android.support.v7.widget.AppCompatButton-->
+        <!--android:id="@+id/complaintlocation"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="36dp"-->
+        <!--android:background="@color/transparent"/>-->
+
+    </FrameLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <RatingBar
+            android:layout_below="@+id/Req_Closed_submit_rating_btn"
+            android:id="@+id/Req_Closed_submit_rating_btn"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_gravity="center"
+            android:stepSize="1.0"
+            android:isIndicator="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!--<RatingBar-->
+        <!--android:layout_below="@+id/Req_Closed_submit_rating_btn"-->
+        <!--android:id="@+id/Req_Closed_submit_rating_btn"-->
+        <!--style="?android:attr/ratingBarStyleIndicator"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:numStars="5"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:stepSize="1.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"/>-->
+
+    </LinearLayout>
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/opensans_light"
+        android:textStyle="bold"
+        android:textColor="#096a75"
+        android:editable="false"
+        android:text="Reason*"/>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal"
+        android:background="@drawable/spinner_border_color">
+
+        <EditText
+            android:id="@+id/Req_Closed_submit_reason"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textColorHint="#757575"
+            android:hint="Enter Reason"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="#3e3e3e"
+            android:layout_gravity="left"
+            android:textSize="14dp"
+            android:fontFamily="@font/opensans_light"
+            android:background="@drawable/spinner_border_color"
+            />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+    <Button
+        android:id="@+id/Req_Closed_submit"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="#096a75"
+        android:textColor="#ffffff"
+        android:layout_width="150dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="40dp"
+        android:text="SUBMIT"
+        android:gravity="center" />
+
+
+</android.support.v7.widget.LinearLayoutCompat>

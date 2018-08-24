@@ -28,6 +28,16 @@
             android:title="Helpline No." />
 
         <item
+            android:id="@+id/gallery"
+            android:icon="@drawable/gallery"
+            android:title="Gallery" />
+
+        <item
+            android:id="@+id/directory"
+            android:icon="@drawable/directory"
+            android:title="Directory" />
+
+        <item
             android:id="@+id/rules"
             android:icon="@drawable/rules"
             android:title="Rules" />

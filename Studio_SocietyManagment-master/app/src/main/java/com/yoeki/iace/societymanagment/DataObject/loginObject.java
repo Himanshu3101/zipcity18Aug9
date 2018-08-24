@@ -165,6 +165,15 @@ public class loginObject implements Serializable {
     public String Owner_role;
     public String Charges_Type;
     public String Charges_Amount;
+    public String UnitID;
+    public String Unit_Name;
+    public String DP_Unit_Typee;
+    public String DP_Occupancy_Status;
+    public String DP_User_Type;
+    public String DP_Profession;
+    public String DP_Location;
+    public String DP_Mobile;
+    public String DP_Username;
 
     public static String getVisitor_nme() {
         return visitor_nme;

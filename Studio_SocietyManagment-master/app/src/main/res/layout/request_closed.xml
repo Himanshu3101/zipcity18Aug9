@@ -45,80 +45,67 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
-      <android.support.v7.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/opensans_light"
-            android:textStyle="bold"
-            android:textColor="#096a75"
-            android:editable="false"
-            android:text="Feedback"/>
+      <!--<android.support.v7.widget.AppCompatTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:fontFamily="@font/opensans_light"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="#096a75"-->
+            <!--android:editable="false"-->
+            <!--android:text="Feedback"/>-->
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="@drawable/spinner_border_color">
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="36dp"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:background="@drawable/spinner_border_color">-->
 
-            <TextView
-                android:id="@+id/Req_Closed_submit_feedback"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:textSize="12dp"
-                android:fontFamily="@font/opensans_light"
-                android:text="Select Feedback"
-                android:paddingLeft="12dp"
-                android:paddingTop="08dp"
-                android:textColor="#3e3e3e"
-                android:background="@drawable/spinner_border_color"/>
+            <!--<TextView-->
+                <!--android:id="@+id/Req_Closed_submit_feedback"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:textSize="12dp"-->
+                <!--android:fontFamily="@font/opensans_light"-->
+                <!--android:text="Select Feedback"-->
+                <!--android:paddingLeft="12dp"-->
+                <!--android:paddingTop="08dp"-->
+                <!--android:textColor="#3e3e3e"-->
+                <!--android:background="@drawable/spinner_border_color"/>-->
 
-            <android.support.v7.widget.AppCompatImageButton
-                android:layout_width="15dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="end"
-                android:background="@drawable/down_arrow"/>
+            <!--<android.support.v7.widget.AppCompatImageButton-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="10dp"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_gravity="end"-->
+                <!--android:background="@drawable/down_arrow"/>-->
 
-            <Button
-                android:id="@+id/Req_Closed_submit_feedback_btn"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:background="@color/transparent"/>
-
-            <!--<android.support.v7.widget.AppCompatButton-->
-                <!--android:id="@+id/complaintlocation"-->
+            <!--<Button-->
+                <!--android:id="@+id/Req_Closed_submit_feedback_btn"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="36dp"-->
                 <!--android:background="@color/transparent"/>-->
 
-        </FrameLayout>
+            <!--&lt;!&ndash;<android.support.v7.widget.AppCompatButton&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/complaintlocation"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="36dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@color/transparent"/>&ndash;&gt;-->
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        <!--</FrameLayout>-->
 
-        <RatingBar
-            android:layout_below="@+id/Req_Closed_submit_rating_btn"
-            android:id="@+id/Req_Closed_submit_rating_btn"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:layout_gravity="center"
-            android:stepSize="1.0"
-            android:isIndicator="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:orientation="vertical">-->
 
         <!--<RatingBar-->
             <!--android:layout_below="@+id/Req_Closed_submit_rating_btn"-->
@@ -129,46 +116,59 @@
             <!--android:numStars="5"-->
             <!--android:layout_gravity="center"-->
             <!--android:stepSize="1.0"-->
+            <!--android:isIndicator="false"-->
             <!--app:layout_constraintStart_toStartOf="parent"-->
             <!--app:layout_constraintTop_toTopOf="parent"/>-->
 
-    </LinearLayout>
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-             android:fontFamily="@font/opensans_light"
-            android:textStyle="bold"
-            android:textColor="#096a75"
-            android:editable="false"
-            android:text="Reason*"/>
+        <!--&lt;!&ndash;<RatingBar&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@+id/Req_Closed_submit_rating_btn"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/Req_Closed_submit_rating_btn"&ndash;&gt;-->
+            <!--&lt;!&ndash;style="?android:attr/ratingBarStyleIndicator"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:numStars="5"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:stepSize="1.0"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:layout_constraintTop_toTopOf="parent"/>&ndash;&gt;-->
 
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:orientation="horizontal"
-            android:background="@drawable/spinner_border_color">
+    <!--</LinearLayout>-->
+        <!--<android.support.v7.widget.AppCompatTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="15dp"-->
+             <!--android:fontFamily="@font/opensans_light"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="#096a75"-->
+            <!--android:editable="false"-->
+            <!--android:text="Reason*"/>-->
 
-            <EditText
-                android:id="@+id/Req_Closed_submit_reason"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:textColorHint="#757575"
-                android:hint="Enter Reason"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:textColor="#3e3e3e"
-                android:layout_gravity="left"
-                android:textSize="14dp"
-                android:fontFamily="@font/opensans_light"
-                android:background="@drawable/spinner_border_color"
-                />
+        <!--<android.support.v7.widget.LinearLayoutCompat-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:background="@drawable/spinner_border_color">-->
 
-        </android.support.v7.widget.LinearLayoutCompat>
+            <!--<EditText-->
+                <!--android:id="@+id/Req_Closed_submit_reason"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:textCursorDrawable="@drawable/color_cursor"-->
+                <!--android:textColorHint="#757575"-->
+                <!--android:hint="Enter Reason"-->
+                <!--android:paddingLeft="12dp"-->
+                <!--android:paddingRight="12dp"-->
+                <!--android:textColor="#3e3e3e"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:textSize="14dp"-->
+                <!--android:fontFamily="@font/opensans_light"-->
+                <!--android:background="@drawable/spinner_border_color"-->
+                <!--/>-->
+
+        <!--</android.support.v7.widget.LinearLayoutCompat>-->
 
 
 
@@ -182,7 +182,7 @@
             android:textSize="15sp"
             android:layout_marginBottom="20dp"
             android:layout_height="40dp"
-            android:text="SUBMIT"
+            android:text="OK"
             android:gravity="center" />
 
 

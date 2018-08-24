@@ -367,13 +367,13 @@
                         android:textColor="#3e3e3e"/>
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/Req_uniqueCode"
+                        android:id="@+id/CReq_uniqueCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"/>
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/Req_IID"
+                        android:id="@+id/CReq_IID"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"/>
@@ -411,9 +411,9 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="40dp"
                 android:layout_gravity="center"
-                android:background="@drawable/calling"/>
+                android:background="@drawable/feedbackicon"/>
 
 
             <android.support.v7.widget.AppCompatTextView
@@ -424,12 +424,12 @@
                 android:typeface="serif"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center"
-                android:text="Call"
+                android:text="Feedback"
                 android:editable="false"
                 android:textColor="#3e3e3e" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/vndr_number"
+                android:id="@+id/vndr_feedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
@@ -437,11 +437,10 @@
                 android:typeface="serif"
                 android:layout_gravity="center"
                 android:visibility="invisible"
-                android:text="Call"
                 android:textColor="#3e3e3e" />
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/req_call"
+                android:id="@+id/feedback"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/transparent"/>
@@ -449,11 +448,11 @@
         </FrameLayout>
 
         <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="1.5dp"-->
-            <!--android:background="#d3d3d3"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:layout_marginRight="5dp"/>-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1.5dp"-->
+        <!--android:background="#d3d3d3"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_marginRight="5dp"/>-->
 
     </android.support.v7.widget.LinearLayoutCompat>
 

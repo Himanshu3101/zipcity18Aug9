@@ -63,7 +63,6 @@ public class VisitorsNewRequest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitors_newrequest);
 
-        this.setFinishOnTouchOutside(true);
         db=new DBHandler(this);
         NvisitorR = (AppCompatTextView)findViewById(R.id.NvisitorR);
         N_Flat_location = (AppCompatTextView)findViewById(R.id.N_Flat_location);

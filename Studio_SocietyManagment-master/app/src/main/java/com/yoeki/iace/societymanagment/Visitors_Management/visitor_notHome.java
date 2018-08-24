@@ -71,7 +71,6 @@ public class visitor_notHome extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitor_not_home);
 
-        this.setFinishOnTouchOutside(true);
         db = new DBHandler(this);
         Visit_emergencyNo = (EditText) findViewById(R.id.Visit_emergencyNo);
 //        visit_location = (AppCompatTextView) findViewById(R.id.visit_location);

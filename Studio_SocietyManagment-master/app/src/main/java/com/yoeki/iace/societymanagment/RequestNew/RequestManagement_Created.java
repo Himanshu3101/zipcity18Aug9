@@ -1,4 +1,4 @@
-package com.yoeki.iace.societymanagment.societymanagement;
+package com.yoeki.iace.societymanagment.RequestNew;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -81,6 +81,7 @@ public class RequestManagement_Created extends Activity {
         R_RequestType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PD.show();
                 requestList = new ArrayList<String>();
                 RequestReqArray = new ArrayList<String>();
                 requestList = db.getReqList();
@@ -101,6 +102,7 @@ public class RequestManagement_Created extends Activity {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Request_Type.setText(checkedItem.toString());
+                                    PD.dismiss();
                                     try {
                                         RequestIds = String.valueOf(db.getReqListID(checkedItem.toString()));
                                     } catch (Exception e) {
@@ -117,6 +119,7 @@ public class RequestManagement_Created extends Activity {
         R_FlatLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PD.show();
                 FlatList = new ArrayList<String>();
                 FlatListArray = new ArrayList<String>();
                 FlatList = db.getFlatList();
@@ -136,6 +139,7 @@ public class RequestManagement_Created extends Activity {
                                     ListView lw = ((AlertDialog)dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
                                     Flat_Location.setText(checkedItem.toString());
+                                    PD.dismiss();
 
                                     try{
                                         LocatIds = String.valueOf(db.getFlatListID(checkedItem.toString()));
@@ -364,7 +368,7 @@ public class RequestManagement_Created extends Activity {
                     if (resStatus.equals("Success")){
                         PD.dismiss();
                         Toast.makeText(RequestManagement_Created.this, "Request Submitted", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),SocietyManagement.class);
+                        Intent intent = new Intent(getApplicationContext(),RequestManagementTab.class);
                         startActivity(intent);
                     }else{
                         PD.dismiss();
