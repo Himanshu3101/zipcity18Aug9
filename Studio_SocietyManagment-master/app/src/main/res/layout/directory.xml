@@ -15,7 +15,8 @@
         <FrameLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.AppCompatButton android:id="@+id/Circ_bck"
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/dir_bck"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@color/transparent"/>
@@ -41,187 +42,360 @@
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.LinearLayoutCompat
+        android:layout_below="@+id/dir_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/dir_toolbar">
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:typeface="serif"
-            android:textColor="#096a75"
-            android:textSize="15sp"
-            android:editable="false"
-            android:text="Service Unit Type"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="@drawable/spinner_border_color">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/dire_unit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:textSize="15dp"
-                android:paddingLeft="12dp"
-                android:paddingTop="08dp"
-                android:hint="Select Unit"
-                android:typeface="serif"
-                android:textColorHint="#757575"
-                android:textColor="#3e3e3e"
-                android:background="@drawable/spinner_border_color"/>
-
-            <android.support.v7.widget.AppCompatImageView
-                android:layout_width="15dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="end"
-                android:background="@drawable/down_arrow"
-                />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/Btn_dire_unit"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:background="@color/transparent"/>
-
-        </FrameLayout>
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:typeface="serif"
-            android:textColor="#096a75"
-            android:textSize="15sp"
-            android:editable="false"
-            android:text="Unit Status"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#096a75"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            />
+        android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_height="wrap_content">
 
-            <RadioGroup
-                android:layout_margin="10dp"
-                android:id="@+id/unit_stat"
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp">
 
-                <RadioButton
-                    android:id="@+id/unit_stat_owned"
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/All_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:text="All"
+                    android:textColor="#096a75"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textSize="15dp" />
+
+                <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Self Owned"
-                    android:textSize="15sp"
-                    android:textColor="#096a75"
-                    android:layout_weight=".1"
-                    android:buttonTint="#096a75"/>
+                    android:gravity="end">
 
-                <RadioButton
-                    android:id="@+id/unit_stat_Rent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="For Rent"
-                    android:textSize="15sp"
-                    android:textColor="#096a75"
-                    android:layout_weight=".1"
-                    android:buttonTint="#096a75"/>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible">
 
-            </RadioGroup>
+                        <Button
+                            android:id="@+id/icondown_dir"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@color/transparent"/>
 
+                        <ImageView android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/down_arrow"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/iconup_dir"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@color/transparent"/>
+
+                        <ImageView android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/up_arrow"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.v7.widget.LinearLayoutCompat>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical">
-
-           <android.support.v7.widget.AppCompatTextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="15dp"
-               android:layout_marginTop="20dp"
-               android:typeface="serif"
-               android:textColor="#096a75"
-               android:textSize="15sp"
-               android:editable="false"
-               android:text="Tenant Status"/>
-
-           <View
-               android:layout_width="match_parent"
-               android:layout_height="0.5dp"
-               android:background="#096a75"
-               android:layout_marginTop="8dp"
-               android:layout_marginLeft="15dp"
-               android:layout_marginRight="15dp"
-               />
-
-           <android.support.v7.widget.LinearLayoutCompat
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               android:layout_marginLeft="15dp"
-               android:layout_marginRight="15dp">
-
-               <RadioGroup
-                   android:layout_margin="10dp"
-                   android:id="@+id/Tenant_stat"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal">
-
-                   <RadioButton
-                       android:id="@+id/Tenant_stat_Avail"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:text="Available"
-                       android:textSize="15sp"
-                       android:textColor="#096a75"
-                       android:layout_weight=".1"
-                       android:buttonTint="#096a75"/>
-
-                   <RadioButton
-                       android:id="@+id/Tenant_stat_Not_Avail"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:text="Not Available"
-                       android:textSize="15sp"
-                       android:textColor="#096a75"
-                       android:layout_weight=".1"
-                       android:buttonTint="#096a75"/>
-
-               </RadioGroup>
 
 
-           </android.support.v7.widget.LinearLayoutCompat>
 
-       </LinearLayout>
+        <View
+            android:id="@+id/view_recharge"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="visible"
+            android:background="#D3D3D3" />
+
+
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/filter_dir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:text="Data"
+                    android:textColor="#096a75"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textSize="15dp" />
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+
+                    <FrameLayout
+                        android:id="@+id/filterDown_dir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible">
+
+                        <Button
+                            android:id="@+id/icondown_filterBtn"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@color/transparent"/>
+
+                        <ImageView android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/down_arrow"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/iconup_filterBtn"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@color/transparent"/>
+
+                        <ImageView android:layout_width="20dp"
+                            android:layout_height="15dp"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/up_arrow"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/filter_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_below="@+id/dir_toolbar">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:typeface="serif"
+                android:textColor="#096a75"
+                android:textSize="15sp"
+                android:editable="false"
+                android:text="Service Unit Type"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/spinner_border_color">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/dire_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:textSize="15dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="08dp"
+                    android:hint="Select Unit"
+                    android:typeface="serif"
+                    android:textColorHint="#757575"
+                    android:textColor="#3e3e3e"
+                    android:background="@drawable/spinner_border_color"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="15dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="end"
+                    android:background="@drawable/down_arrow"
+                    />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/Btn_dire_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@color/transparent"/>
+
+            </FrameLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:typeface="serif"
+                android:textColor="#096a75"
+                android:textSize="15sp"
+                android:editable="false"
+                android:text="Unit Status"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#096a75"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <RadioGroup
+                    android:layout_margin="10dp"
+                    android:id="@+id/unit_stat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/unit_stat_owned"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Self Owned"
+                        android:textSize="15sp"
+                        android:textColor="#096a75"
+                        android:layout_weight=".1"
+                        android:checked="true"
+                        android:buttonTint="#096a75"/>
+
+                    <RadioButton
+                        android:id="@+id/unit_stat_Rent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="For Rent"
+                        android:textSize="15sp"
+                        android:textColor="#096a75"
+                        android:layout_weight=".1"
+                        android:buttonTint="#096a75"/>
+
+                </RadioGroup>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <LinearLayout
+                android:id="@+id/directory_tenant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:typeface="serif"
+                    android:textColor="#096a75"
+                    android:textSize="15sp"
+                    android:editable="false"
+                    android:text="Tenant Status"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#096a75"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    />
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp">
+
+                    <RadioGroup
+                        android:layout_margin="10dp"
+                        android:id="@+id/Tenant_stat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/Tenant_stat_Avail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Available"
+                            android:textSize="15sp"
+                            android:textColor="#096a75"
+                            android:layout_weight=".1"
+                            android:buttonTint="#096a75"/>
+
+                        <RadioButton
+                            android:id="@+id/Tenant_stat_Not_Avail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Not Available"
+                            android:textSize="15sp"
+                            android:textColor="#096a75"
+                            android:layout_weight=".1"
+                            android:buttonTint="#096a75"/>
+
+                    </RadioGroup>
+
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </LinearLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+
+
+
+
+
     </android.support.v7.widget.LinearLayoutCompat>
 
     <RelativeLayout
@@ -242,7 +416,6 @@
             android:textColor="#fff"/>
 
     </RelativeLayout>
-
 
 </RelativeLayout>
 

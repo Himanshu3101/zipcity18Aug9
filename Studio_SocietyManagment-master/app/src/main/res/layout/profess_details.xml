@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/dir_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#096a75">
+
+        <FrameLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/Dir_back_Details"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/transparent"/>
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:text="Details"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:paddingRight="50dp"
+            android:layout_marginTop="13dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#c8e0e3"
+        android:gravity="center">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/Filter_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:fontFamily="@font/opensans_bold"
+            android:textSize="14dp"
+            android:textColor="#096a75"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f7">
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/popupbackground"
+        android:layout_marginTop="05dp"
+        android:layout_marginLeft="05dp"
+        android:layout_marginRight="05dp">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/srch_by_profess"
+            android:textSize="17dp"
+            android:background="#00000000"
+            android:popupTheme="@android:style/ThemeOverlay.Material.Light"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="end"
+            android:background="@drawable/search_icon"/>
+
+    </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/by_prof_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="05dp"
+            android:scrollbars="vertical"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>

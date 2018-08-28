@@ -38,6 +38,11 @@
             android:title="Directory" />
 
         <item
+            android:id="@+id/pooling"
+            android:icon="@drawable/pooling"
+            android:title="Poll" />
+
+        <item
             android:id="@+id/rules"
             android:icon="@drawable/rules"
             android:title="Rules" />

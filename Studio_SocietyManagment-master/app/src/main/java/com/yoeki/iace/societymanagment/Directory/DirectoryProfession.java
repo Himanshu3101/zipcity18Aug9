@@ -2,160 +2,142 @@ package com.yoeki.iace.societymanagment.Directory;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.yoeki.iace.societymanagment.DataObject.loginObject;
 import com.yoeki.iace.societymanagment.Database.DBHandler;
-import com.yoeki.iace.societymanagment.Home_Page;
-import com.yoeki.iace.societymanagment.MyApplication;
 import com.yoeki.iace.societymanagment.R;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class DirectoryProfession extends AppCompatActivity {
+/**
+ * Created by IACE on 25-Aug-18.
+ */
 
+public class DirectoryProfession extends AppCompatActivity {
+    profess_detail_recycler cadapter;
+    ArrayList<String> Member_Detail;
     ProgressDialog PD;
-    List<loginObject> DirectoryProData;
-    Button bck;
-    DirectoryProRecyclerViewAdapter DirectoryProadapter;
-    RecyclerView DirectoryProrecyclerView;
-    private ArrayList<String> DirectoryProServicesList;
+    AppCompatTextView Filter_data;
     DBHandler db;
-    String groupid,usertypeid,status;
+    AppCompatButton bck;
+    Spinner srch_by_profess;
+    String ProffessionIds;
+    ArrayAdapter<String> profee_lst_Name;
+    static ArrayList<String> ProfessionListArray,Mem_detailsArray;
+    static List<String> professionaltList,mem_detail;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.directoryprofession);
-        db = new DBHandler(this);
+        setContentView(R.layout.profess_details);
 
-        bck = (Button)findViewById(R.id.profession_bck);
-        DirectoryProrecyclerView = findViewById(R.id.directoryprofession);
+        db = new DBHandler(this);
+        Intent i = getIntent();
+        Member_Detail = new ArrayList<String>();
+        Member_Detail = i.getStringArrayListExtra("Member Details");
+        String bhk_Type = i.getStringExtra("BHK type");
+        String unit_stat = i.getStringExtra("Unit Stat");
+        String tenant_Stat = i.getStringExtra("Tenant Stat");
+
+        final RecyclerView recyclerView = findViewById(R.id.by_prof_detail);
+        bck = findViewById(R.id.Dir_back_Details);
+        srch_by_profess = findViewById(R.id.srch_by_profess);
+        Filter_data = findViewById(R.id.Filter_data);
+
+        if(tenant_Stat.equals("Not Available")) {
+            Filter_data.setText(bhk_Type + ">>" + unit_stat);
+        }
+        else{
+            Filter_data.setText(bhk_Type + ">>" + unit_stat+ ">>" + tenant_Stat);
+        }
 
         bck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-                startActivity(intent);
-                finish();
+               db.deleteMem_directory();
+               Intent intent = new Intent(getApplicationContext(),Directory.class);
+               startActivity(intent);
+               finish();
             }
         });
 
-        PD = new ProgressDialog(DirectoryProfession.this);
+        ProfessionListArray = new ArrayList<>();
+        Mem_detailsArray = new ArrayList<>();
+        PD = new ProgressDialog(this);
         PD.setMessage("Loading...");
         PD.setCancelable(false);
 
-        forProfession();
+        try {
+            professionaltList = db.getProfeesionList();
+            for (final String list : professionaltList) {
+                String log = list;
+                ProfessionListArray.add(log);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        profee_lst_Name =new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner, ProfessionListArray);
+        profee_lst_Name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        srch_by_profess.setAdapter(profee_lst_Name);
+        profee_lst_Name.insert("--Search by Profession--", 0);
+
+        srch_by_profess.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                String client_Selection = adapterView.getItemAtPosition(position).toString();
+
+                if(!client_Selection.equals("--Search by Profession--")) {
+
+                    for (int i = 0; i < ProfessionListArray.size(); i++) {
+                        String listName = String.valueOf(ProfessionListArray.get(i));
+                        if (listName.equals(client_Selection)) {
+                            try {
+
+                                mem_detail = db.getMemberDetails(listName);
+                                for (final String list : mem_detail) {
+                                    String log = list;
+                                    Mem_detailsArray.add(log);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    cadapter = new profess_detail_recycler(getApplicationContext(),Mem_detailsArray);
+                    recyclerView.setAdapter(cadapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        cadapter = new profess_detail_recycler(this,Member_Detail);
+        recyclerView.setAdapter(cadapter);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+        db.deleteMem_directory();
+        Intent intent = new Intent(getApplicationContext(),Directory.class);
         startActivity(intent);
         finish();
-    }
-
-    public void forProfession() {
-        PD.show();
-        String  json_url = (getString(R.string.BASE_URL) + "/SearchUserDirectory");
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String UID = prefs.getString("UserID", " ");
-
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("UserId",UID);
-//        params.put("ProGroupId",groupid);
-//        params.put("UserTypeId",usertypeid);
-//        params.put("OccupancyStatusId",status);
-
-        JsonObjectRequest req = new JsonObjectRequest(json_url, new JSONObject(), new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                JSONArray ProfessionArray = null;
-                try {
-                    DirectoryProServicesList = new ArrayList<>();
-                    ProfessionArray = response.getJSONArray("listSearchUserDirectory");
-                    DirectoryProData = new ArrayList<>();
-                    for (int i = 0; i < ProfessionArray.length();) {
-                        JSONObject ProfessionJsonData = ProfessionArray.getJSONObject(i);
-                        loginObject loginObject_recycler = new loginObject();
-                        loginObject_recycler.DP_Unit_Typee = ProfessionJsonData.getString("Name");
-                        loginObject_recycler.DP_Occupancy_Status = ProfessionJsonData.getString("OccupancyStatuss");
-                        loginObject_recycler.DP_User_Type = ProfessionJsonData.getString("UserTypee");
-                        loginObject_recycler.DP_Profession = ProfessionJsonData.getString("Profession");
-                        loginObject_recycler.DP_Location = ProfessionJsonData.getString("Location");
-                        loginObject_recycler.DP_Mobile = ProfessionJsonData.getString("MobileNo");
-                        loginObject_recycler.DP_Username = ProfessionJsonData.getString("UserName");
-
-                        DirectoryProData.add(loginObject_recycler);
-
-
-                        String DP_UNIT = DirectoryProData.get(i).DP_Unit_Typee;
-                        String DP_OCCUPANCY = DirectoryProData.get(i).DP_Occupancy_Status;
-                        String DP_USER = DirectoryProData.get(i).DP_User_Type;
-                        String DP_PROFESSION = DirectoryProData.get(i).DP_Profession;
-                        String DP_LOCATION = DirectoryProData.get(i).DP_Location;
-                        String DP_MOBILE = DirectoryProData.get(i).DP_Mobile;
-                        String DP_USERNAME = DirectoryProData.get(i).DP_Username;
-
-//                        String ProfessionDetails = DP_UNIT+"&"+DP_OCCUPANCY+"&"+DP_USER+"&"+DP_PROFESSION+"&"+DP_LOCATION+"&"+DP_MOBILE+"&"+DP_USERNAME;
-                        DirectoryProServicesList.add(DP_PROFESSION);
-//                        db.saveServices(new loginObject(ID, Name));
-                        i++;
-
-                    }
-//                    services = new String[listServices.size()];
-//                    services = listServices.toArray(services);
-                    recycler();
-                    PD.dismiss();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                PD.dismiss();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                PD.dismiss();
-                Toast.makeText(getApplicationContext(), "Something went Wrong :"+error, Toast.LENGTH_SHORT).show();
-                Log.w("error in response", "Error: " + error.getMessage());
-            }
-        });
-
-        req.setRetryPolicy(new DefaultRetryPolicy(5000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-        try {
-            MyApplication.getInstance().addToReqQueue(req,"BottomService");
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void recycler(){
-        DirectoryProrecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DirectoryProadapter = new DirectoryProRecyclerViewAdapter(this, DirectoryProServicesList);
-        DirectoryProrecyclerView.setAdapter(DirectoryProadapter);
     }
 }

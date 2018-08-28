@@ -115,6 +115,20 @@
             android:name=".ComplaintNew.ComplaintManagementTab"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Pooling.PoolingSystem"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Directory.DirectoryProfession"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pooling.CandidateVote"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullDialogActivityTheme" />
+        <activity
+            android:name=".Pooling.Candidate_profile"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullDialogActivityTheme" />
+        <activity
             android:name=".RequestNew.ClosedRequestFeedBackPopup"
             android:screenOrientation="portrait"
             android:theme="@style/FullDialogActivityTheme" />
@@ -249,7 +263,6 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Directory.DirectoryProfession"></activity>
     </application>
 
 </manifest>

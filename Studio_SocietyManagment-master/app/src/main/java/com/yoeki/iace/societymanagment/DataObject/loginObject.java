@@ -165,8 +165,8 @@ public class loginObject implements Serializable {
     public String Owner_role;
     public String Charges_Type;
     public String Charges_Amount;
-    public String UnitID;
-    public String Unit_Name;
+//    public String UnitID;
+//    public String Unit_Name;
     public String DP_Unit_Typee;
     public String DP_Occupancy_Status;
     public String DP_User_Type;
@@ -174,6 +174,115 @@ public class loginObject implements Serializable {
     public String DP_Location;
     public String DP_Mobile;
     public String DP_Username;
+    public static String Dir_UnitID;
+    public String Dir_Profession;
+    public String Dir_Profession_UserName;
+    public String Dir_Profession_Locat;
+    public String Dir_Profession_Mobile;
+
+    public static String Member_profession;
+    public static String Member_name;
+    public static String Member_location;
+    public static String Member_mobile;
+
+
+    public loginObject(){}
+
+
+
+    public loginObject(String Member_profession, String Member_name, String Member_location, String Member_mobile) {
+        this.Member_profession=Member_profession;
+        this.Member_name=Member_name;
+        this.Member_location=Member_location;
+        this.Member_mobile=Member_mobile;
+    }
+
+    public static String getMember_profession() {
+        return Member_profession;
+    }
+
+    public void setMember_profession(String member_profession) {
+        Member_profession = member_profession;
+    }
+
+    public static String getMember_name() {
+        return Member_name;
+    }
+
+    public void setMember_name(String member_name) {
+        Member_name = member_name;
+    }
+
+    public static String getMember_location() {
+        return Member_location;
+    }
+
+    public void setMember_location(String member_location) {
+        Member_location = member_location;
+    }
+
+    public static String getMember_mobile() {
+        return Member_mobile;
+    }
+
+    public void setMember_mobile(String member_mobile) {
+        Member_mobile = member_mobile;
+    }
+
+
+
+
+
+
+    public static String Dir_ProfessionID;
+    public static String Dir_Profession_Name;
+
+    public static String getDir_ProfessionID() {
+        return Dir_ProfessionID;
+    }
+
+    public void setDir_ProfessionID(String dir_ProfessionID) {
+        Dir_ProfessionID = dir_ProfessionID;
+    }
+
+    public static String getDir_Profession_Name() {
+        return Dir_Profession_Name;
+    }
+
+    public void setDir_Profession_Name(String dir_Profession_Name) {
+        Dir_Profession_Name = dir_Profession_Name;
+    }
+
+
+
+
+
+
+
+
+    public static String Dir_Unit_Name;
+
+    public static String getDir_UnitID() {
+        return Dir_UnitID;
+    }
+
+    public void setDir_UnitID(String dir_UnitID) {
+        Dir_UnitID = dir_UnitID;
+    }
+
+    public static String getDir_Unit_Name() {
+        return Dir_Unit_Name;
+    }
+
+    public void setDir_Unit_Name(String dir_Unit_Name) {
+        Dir_Unit_Name = dir_Unit_Name;
+    }
+
+
+
+
+    public static String visitor_nme;
+    public static String visitor_lst_id;
 
     public static String getVisitor_nme() {
         return visitor_nme;
@@ -191,19 +300,21 @@ public class loginObject implements Serializable {
         this.visitor_lst_id = visitor_lst_id;
     }
 
-    public static String visitor_nme;
-    public static String visitor_lst_id;
 
 
-    public loginObject(){}
+
+
+
+
+
+
+
+
+
 
     public loginObject(String ComplaintTypeId, String ComplaintTypeName){
         this.ComplaintTypeId=ComplaintTypeId;
         this.ComplaintTypeName=ComplaintTypeName;
-    }
-
-    public loginObject(String id) {
-        this.UserRoleId = id;
     }
 
     public static String getComplaintTypeId() {
@@ -221,6 +332,19 @@ public class loginObject implements Serializable {
     public void setComplaintTypeName(String complaintTypeName) {
         ComplaintTypeName = complaintTypeName;
     }
+
+
+
+
+
+
+
+
+    public loginObject(String id) {
+        this.UserRoleId = id;
+    }
+
+
 
     public static String getRequestTypeId() {
         return RequestTypeId;
@@ -254,6 +378,12 @@ public class loginObject implements Serializable {
         RejectionName = rejectionName;
     }
 
+
+
+
+
+
+
     public static String getLocation() {
         return Location;
     }
@@ -269,6 +399,12 @@ public class loginObject implements Serializable {
     public void setUnitMasterDetailId(String unitMasterDetailId) {
         UnitMasterDetailId = unitMasterDetailId;
     }
+
+
+
+
+
+
 
     public static String getUserRoleId() {
         return UserRoleId;

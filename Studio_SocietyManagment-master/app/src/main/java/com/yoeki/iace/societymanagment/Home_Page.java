@@ -33,6 +33,7 @@ import com.yoeki.iace.societymanagment.Database.DBHandler;
 import com.yoeki.iace.societymanagment.Directory.Directory;
 import com.yoeki.iace.societymanagment.Helpline.HelplineNo;
 import com.yoeki.iace.societymanagment.Notification.Notification;
+import com.yoeki.iace.societymanagment.Pooling.PoolingSystem;
 import com.yoeki.iace.societymanagment.Recharge.RechargeTab;
 import com.yoeki.iace.societymanagment.RequestNew.RequestManagementTab;
 import com.yoeki.iace.societymanagment.Rules.Rules;
@@ -347,6 +348,11 @@ TextView login_username;
                         sAux = sAux + "https://play.google.com/store/apps?hl=en\n\n";
                         i.putExtra(Intent.EXTRA_TEXT, sAux);
                         startActivity(Intent.createChooser(i, "choose one"));
+                        break;
+                    case R.id.pooling:
+                        Intent inte=new Intent(Home_Page.this,PoolingSystem.class);
+//                        inte.putExtra("fromRules","Home");
+                        startActivity(inte);
                         break;
                     case R.id.logout:
                         drawer.openDrawer(Gravity.START);

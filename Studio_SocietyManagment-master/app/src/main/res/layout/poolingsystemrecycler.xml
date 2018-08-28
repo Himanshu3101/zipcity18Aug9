@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/popupbackground"
+    android:layout_marginRight="6dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="5dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/title_icon"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/p_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textSize="14dp"
+                    android:textColor="#096a75"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.4dp"
+                android:background="#096a75"
+                android:layout_marginTop="5dp"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="3dp">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight=".1"
+                    android:layout_marginLeft="10dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/clock_icon"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/p_startdate"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="startDate"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginLeft="12dp"
+                        android:textColor="#3e3e3e"
+                        android:textSize="12dp" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textColor="#096a75"
+                    android:textSize="12dp" />
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight=".1"
+                    android:gravity="end">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/clock_icon"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/p_enddate"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="EndDate"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/opensans_light"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="#3e3e3e"
+                        android:textSize="12dp" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/status"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/p_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:layout_marginTop="2dp"
+                    android:maxLength="35"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/opensans_light"
+                    android:textSize="13dp"
+                    android:textColor="#3e3e3e"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/P_popup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"/>
+    </FrameLayout>
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="#096a75"-->
+    <!--android:layout_marginLeft="20dp"-->
+    <!--android:layout_marginRight="20dp"/>-->
+
+</android.support.v7.widget.LinearLayoutCompat>

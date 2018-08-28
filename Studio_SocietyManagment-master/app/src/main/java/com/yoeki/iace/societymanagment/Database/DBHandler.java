@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    String create_table_complaint, create_table_society,create_table_verification,create_table_request, create_table_rejection, create_table_flat, create_table_UserWiseRoleID, create_table_services, create_table_visitor,result = "";
+    String create_table_complaint, create_table_society, create_table_UserProfessionDetail, create_table_Profession,create_table_Uint, create_table_verification,create_table_request, create_table_rejection, create_table_flat, create_table_UserWiseRoleID, create_table_services, create_table_visitor,result = "";
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "society_mgmnt";
 
@@ -36,9 +36,11 @@ public class DBHandler extends SQLiteOpenHelper {
             create_table_visitor = "CREATE TABLE Visitor_List ( visitor_lst_id INTEGER PRIMARY KEY, visitor_nme VARCHAR UNIQUEKEY)";
             create_table_UserWiseRoleID = "CREATE TABLE UserWiseRoleID_List ( UserRoleId INTEGER PRIMARY KEY)";
             create_table_verification = "CREATE TABLE Verification_List ( verification_lst_id INTEGER PRIMARY KEY, verification_nme VARCHAR UNIQUEKEY)";
-
             create_table_society = "CREATE TABLE Society_List ( Society_lst_id INTEGER PRIMARY KEY, Society_nme VARCHAR UNIQUEKEY)";
+            create_table_Uint = "CREATE TABLE Unit_List ( Unit_lst_id INTEGER PRIMARY KEY, Unit_type VARCHAR UNIQUEKEY)";
+            create_table_Profession = "CREATE TABLE Profession_List ( Profession_List_id INTEGER PRIMARY KEY, Profession_Name VARCHAR UNIQUEKEY)";
 
+            create_table_UserProfessionDetail = "CREATE TABLE Member_Detail_Directory (Member_Profession VARCHAR, Member_Name VARCHAR, Member_Location VARCHAR, Member_MobileNo VARCHAR)";
 //            table_for_token = "CREATE TABLE Token_List ( token VARCHAR)";
             db.execSQL(create_table_complaint);
             db.execSQL(create_table_request);
@@ -49,6 +51,9 @@ public class DBHandler extends SQLiteOpenHelper {
             db.execSQL(create_table_UserWiseRoleID);
             db.execSQL(create_table_verification);
             db.execSQL(create_table_society);
+            db.execSQL(create_table_Uint);
+            db.execSQL(create_table_Profession);
+            db.execSQL(create_table_UserProfessionDetail);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,6 +70,9 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS UserWiseRoleID_List");
         db.execSQL("DROP TABLE IF EXISTS Verification_List");
         db.execSQL("DROP TABLE IF EXISTS Society_List");
+        db.execSQL("DROP TABLE IF EXISTS Unit_List");
+        db.execSQL("DROP TABLE IF EXISTS Profession_List");
+        db.execSQL("DROP TABLE IF EXISTS Member_Detail_Directory");
         onCreate(db);
     }
 
@@ -80,8 +88,27 @@ public class DBHandler extends SQLiteOpenHelper {
 //        db.close();
 //        return null;
 //    }
+    public Void saveUserProfession_details(loginObject set) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Member_Profession", loginObject.getMember_profession());
+        values.put("Member_Name", loginObject.getMember_name());
+        values.put("Member_Location", loginObject.getMember_location());
+        values.put("Member_MobileNo", loginObject.getMember_mobile());
+        db.insert("Member_Detail_Directory", null, values);
+        db.close();
+        return null;
+    }
 
-
+    public Void saveProfessioln(loginObject set) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Profession_List_id",loginObject.getDir_ProfessionID());
+        values.put("Profession_Name",loginObject.getDir_Profession_Name());
+        db.insert("Profession_List", null, values);
+        db.close();
+        return null;
+    }
 
     public Void saveServices(loginObject set) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -99,6 +126,16 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put("ComplaintTypeId", loginObject.getComplaintTypeId());
         values.put("ComplaintTypeName", loginObject.getComplaintTypeName());
         db.insert("Complaint_List", null, values);
+        db.close();
+        return null;
+    }
+
+    public Void saveUnit(loginObject set) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Unit_lst_id", loginObject.getDir_UnitID());
+        values.put("Unit_type", loginObject.getDir_Unit_Name());
+        db.insert("Unit_List", null, values);
         db.close();
         return null;
     }
@@ -345,6 +382,31 @@ public class DBHandler extends SQLiteOpenHelper {
         return reqid;
     }
 
+    public String getUnit_ListID(String s) {
+        String unitid = null;
+        String selectQuery = "SELECT Unit_lst_id FROM Unit_List where Unit_type = '" + s + "'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        while(cursor.moveToNext()){
+            unitid = cursor.getString(cursor.getColumnIndex("Unit_lst_id"));
+        }
+        cursor.close();
+        return unitid;
+    }
+
+    public List<String> getUnit_List() {
+        String selectQuery = "SELECT * FROM Unit_List";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        List<String> array = new ArrayList<String>();
+        while(cursor.moveToNext()){
+            String complaintname = cursor.getString(cursor.getColumnIndex("Unit_type"));
+            array.add(complaintname);
+        }
+        cursor.close();
+        return array;
+    }
+
     public List<String> getComplaintList() {
         String selectQuery = "SELECT * FROM Complaint_List";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -355,6 +417,41 @@ public class DBHandler extends SQLiteOpenHelper {
             array.add(complaintname);
         }
         cursor.close();
+        return array;
+    }
+
+    public List<String> getProfeesionList() {
+        String selectQuery = "SELECT * FROM Profession_List";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        List<String> array = new ArrayList<String>();
+        while(cursor.moveToNext()){
+            String complaintname = cursor.getString(cursor.getColumnIndex("Profession_Name"));
+            array.add(complaintname);
+        }
+        cursor.close();
+        return array;
+    }
+
+    public List<String> getMemberDetails(String name) {
+        List<String> array = null;
+        try {
+            String selectQuery = "SELECT Member_Profession, Member_Name, Member_Location, Member_MobileNo  FROM Member_Detail_Directory where Member_Profession = '" + name + "'";
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            array = new ArrayList<String>();
+            while(cursor.moveToNext()){
+                String mem_profess = cursor.getString(cursor.getColumnIndex("Member_Profession"));
+                String mem_name = cursor.getString(cursor.getColumnIndex("Member_Name"));
+                String mem_locat = cursor.getString(cursor.getColumnIndex("Member_Location"));
+                String mem_mobile = cursor.getString(cursor.getColumnIndex("Member_MobileNo"));
+                String FullData = mem_profess+"$"+mem_name+"$"+mem_locat+"$"+mem_mobile;
+                array.add(FullData);
+            }
+            db.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return array;
     }
 
@@ -376,7 +473,6 @@ public class DBHandler extends SQLiteOpenHelper {
         return complaintid;
     }
 
-
     public String deleteall() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from Complaint_List");
@@ -384,6 +480,19 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("delete from Rejection_List");
         db.execSQL("delete from Flat_List");
         db.execSQL("delete from UserWiseRoleID_List");
+        db.execSQL("delete from Service_List");
+        db.execSQL("delete from Visitor_List");
+        db.execSQL("delete from Verification_List");
+        db.execSQL("delete from Society_List");
+        db.execSQL("delete from Unit_List");
+        db.close();
+        return null;
+    }
+
+    public String deleteMem_directory() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from Member_Detail_Directory");
+        db.execSQL("delete from Profession_List");
         db.close();
         return null;
     }
